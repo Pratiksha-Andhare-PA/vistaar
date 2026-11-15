@@ -1,5 +1,8 @@
 
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Building2,
@@ -12,22 +15,58 @@ import {
   Settings,
   Sparkles,
   Globe2,
+  type LucideIcon,
 } from "lucide-react";
 
-const navigation = [
-  { name: "Overview", icon: LayoutDashboard },
-  { name: "Business profile", icon: Building2 },
-  { name: "My products", icon: Package },
-  { name: "Market discovery", icon: Compass },
-  { name: "Localization", icon: Languages },
-  { name: "Global pricing", icon: Wallet },
-  { name: "Export readiness", icon: FileCheck2 },
-  { name: "My storefronts", icon: Store },
+type NavigationItem = {
+  name: string;
+  href?: string;
+  icon: LucideIcon;
+};
+
+const navigation: NavigationItem[] = [
+  {
+    name: "Overview",
+    href: "/",
+    icon: LayoutDashboard,
+  },
+  {
+    name: "Business profile",
+    href: "/onboarding",
+    icon: Building2,
+  },
+  {
+    name: "My products",
+    icon: Package,
+  },
+  {
+    name: "Market discovery",
+    icon: Compass,
+  },
+  {
+    name: "Localization",
+    icon: Languages,
+  },
+  {
+    name: "Global pricing",
+    icon: Wallet,
+  },
+  {
+    name: "Export readiness",
+    icon: FileCheck2,
+  },
+  {
+    name: "My storefronts",
+    icon: Store,
+  },
 ];
 
 export function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <aside className="hidden min-h-screen w-64 shrink-0 flex-col border-r border-slate-200 bg-white lg:flex">
+
       {/* Brand */}
       <div className="flex h-20 items-center gap-3 border-b border-slate-100 px-6">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#102B3F] text-white">
@@ -38,6 +77,7 @@ export function Sidebar() {
           <h1 className="text-xl font-extrabold tracking-[0.12em] text-[#102B3F]">
             VISTAAR
           </h1>
+
           <p className="text-[9px] font-semibold tracking-widest text-teal-700">
             LOCAL ROOTS. GLOBAL REACH.
           </p>
@@ -50,34 +90,54 @@ export function Sidebar() {
           Workspace
         </p>
 
-        <nav className="space-y-1">
-          {navigation.map((item, index) => {
+        <nav className="space-y-1" aria-label="Main navigation">
+          {navigation.map((item) => {
             const Icon = item.icon;
-            const active = index === 0;
 
+            // Determine active page from current URL
+            const active = item.href
+              ? item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href ||
+                  pathname.startsWith(`${item.href}/`)
+              : false;
+
+            const linkClassName = `flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition-all ${
+              active
+                ? "bg-[#E8F4F1] font-semibold text-[#087E70]"
+                : "text-slate-500 hover:bg-slate-50 hover:text-slate-800"
+            }`;
+
+            // Active or available navigation links
+            if (item.href) {
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={linkClassName}
+                  aria-current={active ? "page" : undefined}
+                >
+                  <Icon size={19} />
+                  <span>{item.name}</span>
+                </Link>
+              );
+            }
+
+            // Upcoming modules
             return (
-              <div key={item.name}>
-                {active ? (
-                  <Link
-                    href="/"
-                    className="flex items-center gap-3 rounded-xl bg-[#E8F4F1] px-3 py-3 text-sm font-semibold text-[#087E70]"
-                  >
-                    <Icon size={19} />
-                    {item.name}
-                  </Link>
-                ) : (
-                  <div
-                    aria-disabled="true"
-                    title="Coming soon"
-                    className="flex cursor-not-allowed items-center gap-3 rounded-xl px-3 py-3 text-sm text-slate-500"
-                  >
-                    <Icon size={19} />
-                    <span>{item.name}</span>
-                    <span className="ml-auto text-[9px] text-slate-400">
-                      Soon
-                    </span>
-                  </div>
-                )}
+              <div
+                key={item.name}
+                aria-disabled="true"
+                title="Coming soon"
+                className="flex cursor-not-allowed items-center gap-3 rounded-xl px-3 py-3 text-sm text-slate-400"
+              >
+                <Icon size={19} />
+
+                <span>{item.name}</span>
+
+                <span className="ml-auto rounded-md bg-slate-100 px-2 py-0.5 text-[9px] font-medium text-slate-400">
+                  Soon
+                </span>
               </div>
             );
           })}
@@ -99,16 +159,22 @@ export function Sidebar() {
           </p>
 
           <Link
-            href="#getting-started"
-            className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-teal-300"
+            href="/#getting-started"
+            className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-teal-300 transition hover:text-teal-200"
           >
             Get started →
           </Link>
         </div>
 
-        <div className="mt-5 flex items-center gap-3 px-3 py-2 text-sm text-slate-500">
+        {/* Settings - upcoming functionality */}
+        <div
+          aria-disabled="true"
+          title="Settings coming soon"
+          className="mt-5 flex cursor-not-allowed items-center gap-3 px-3 py-2 text-sm text-slate-400"
+        >
           <Settings size={17} />
-          Settings
+          <span>Settings</span>
+          <span className="ml-auto text-[9px]">Soon</span>
         </div>
       </div>
     </aside>

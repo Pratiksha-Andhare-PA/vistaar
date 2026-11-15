@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: vistaar-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-vistaar}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-vistaar_db}
+
+    ports:
+      - "127.0.0.1:5432:5432"
+
+    volumes:
+      - vistaar_postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U ${POSTGRES_USER:-vistaar} -d ${POSTGRES_DB:-vistaar_db}
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  vistaar_postgres_data:
