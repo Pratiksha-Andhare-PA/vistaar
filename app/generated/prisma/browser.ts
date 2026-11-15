@@ -27,3 +27,18 @@ export type Business = Prisma.BusinessModel
  * 
  */
 export type Product = Prisma.ProductModel
+/**
+ * Model MarketResearch
+ * 
+ */
+export type MarketResearch = Prisma.MarketResearchModel
+/**
+ * Model MarketResult
+ * 
+ */
+export type MarketResult = Prisma.MarketResultModel
+/**
+ * Model MarketEvidence
+ * 
+ */
+export type MarketEvidence = Prisma.MarketEvidenceModel

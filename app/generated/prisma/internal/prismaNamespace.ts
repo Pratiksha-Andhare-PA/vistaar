@@ -398,7 +398,10 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Business: 'Business',
-  Product: 'Product'
+  Product: 'Product',
+  MarketResearch: 'MarketResearch',
+  MarketResult: 'MarketResult',
+  MarketEvidence: 'MarketEvidence'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +417,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "business" | "product"
+    modelProps: "business" | "product" | "marketResearch" | "marketResult" | "marketEvidence"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -566,6 +569,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MarketResearch: {
+      payload: Prisma.$MarketResearchPayload<ExtArgs>
+      fields: Prisma.MarketResearchFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MarketResearchFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MarketResearchFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>
+        }
+        findFirst: {
+          args: Prisma.MarketResearchFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MarketResearchFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>
+        }
+        findMany: {
+          args: Prisma.MarketResearchFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>[]
+        }
+        create: {
+          args: Prisma.MarketResearchCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>
+        }
+        createMany: {
+          args: Prisma.MarketResearchCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MarketResearchCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>[]
+        }
+        delete: {
+          args: Prisma.MarketResearchDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>
+        }
+        update: {
+          args: Prisma.MarketResearchUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>
+        }
+        deleteMany: {
+          args: Prisma.MarketResearchDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MarketResearchUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MarketResearchUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>[]
+        }
+        upsert: {
+          args: Prisma.MarketResearchUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResearchPayload>
+        }
+        aggregate: {
+          args: Prisma.MarketResearchAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMarketResearch>
+        }
+        groupBy: {
+          args: Prisma.MarketResearchGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketResearchGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MarketResearchCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketResearchCountAggregateOutputType> | number
+        }
+      }
+    }
+    MarketResult: {
+      payload: Prisma.$MarketResultPayload<ExtArgs>
+      fields: Prisma.MarketResultFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MarketResultFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MarketResultFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>
+        }
+        findFirst: {
+          args: Prisma.MarketResultFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MarketResultFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>
+        }
+        findMany: {
+          args: Prisma.MarketResultFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>[]
+        }
+        create: {
+          args: Prisma.MarketResultCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>
+        }
+        createMany: {
+          args: Prisma.MarketResultCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MarketResultCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>[]
+        }
+        delete: {
+          args: Prisma.MarketResultDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>
+        }
+        update: {
+          args: Prisma.MarketResultUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>
+        }
+        deleteMany: {
+          args: Prisma.MarketResultDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MarketResultUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MarketResultUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>[]
+        }
+        upsert: {
+          args: Prisma.MarketResultUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketResultPayload>
+        }
+        aggregate: {
+          args: Prisma.MarketResultAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMarketResult>
+        }
+        groupBy: {
+          args: Prisma.MarketResultGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketResultGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MarketResultCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketResultCountAggregateOutputType> | number
+        }
+      }
+    }
+    MarketEvidence: {
+      payload: Prisma.$MarketEvidencePayload<ExtArgs>
+      fields: Prisma.MarketEvidenceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MarketEvidenceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MarketEvidenceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>
+        }
+        findFirst: {
+          args: Prisma.MarketEvidenceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MarketEvidenceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>
+        }
+        findMany: {
+          args: Prisma.MarketEvidenceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>[]
+        }
+        create: {
+          args: Prisma.MarketEvidenceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>
+        }
+        createMany: {
+          args: Prisma.MarketEvidenceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MarketEvidenceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>[]
+        }
+        delete: {
+          args: Prisma.MarketEvidenceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>
+        }
+        update: {
+          args: Prisma.MarketEvidenceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>
+        }
+        deleteMany: {
+          args: Prisma.MarketEvidenceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MarketEvidenceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MarketEvidenceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>[]
+        }
+        upsert: {
+          args: Prisma.MarketEvidenceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketEvidencePayload>
+        }
+        aggregate: {
+          args: Prisma.MarketEvidenceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMarketEvidence>
+        }
+        groupBy: {
+          args: Prisma.MarketEvidenceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketEvidenceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MarketEvidenceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketEvidenceCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -636,6 +861,62 @@ export const ProductScalarFieldEnum = {
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+export const MarketResearchScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  status: 'status',
+  requestedCountries: 'requestedCountries',
+  summary: 'summary',
+  recommendedCountry: 'recommendedCountry',
+  recommendationReason: 'recommendationReason',
+  modelUsed: 'modelUsed',
+  errorMessage: 'errorMessage',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MarketResearchScalarFieldEnum = (typeof MarketResearchScalarFieldEnum)[keyof typeof MarketResearchScalarFieldEnum]
+
+
+export const MarketResultScalarFieldEnum = {
+  id: 'id',
+  researchId: 'researchId',
+  country: 'country',
+  countryCode: 'countryCode',
+  rank: 'rank',
+  opportunityScore: 'opportunityScore',
+  demandLevel: 'demandLevel',
+  competitionLevel: 'competitionLevel',
+  targetCustomers: 'targetCustomers',
+  marketRationale: 'marketRationale',
+  opportunities: 'opportunities',
+  risks: 'risks',
+  culturalConsiderations: 'culturalConsiderations',
+  suggestedPriceMin: 'suggestedPriceMin',
+  suggestedPriceMax: 'suggestedPriceMax',
+  suggestedCurrency: 'suggestedCurrency',
+  createdAt: 'createdAt'
+} as const
+
+export type MarketResultScalarFieldEnum = (typeof MarketResultScalarFieldEnum)[keyof typeof MarketResultScalarFieldEnum]
+
+
+export const MarketEvidenceScalarFieldEnum = {
+  id: 'id',
+  marketResultId: 'marketResultId',
+  title: 'title',
+  publisher: 'publisher',
+  url: 'url',
+  claim: 'claim',
+  sourceType: 'sourceType',
+  publishedAt: 'publishedAt',
+  retrievedAt: 'retrievedAt'
+} as const
+
+export type MarketEvidenceScalarFieldEnum = (typeof MarketEvidenceScalarFieldEnum)[keyof typeof MarketEvidenceScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -739,6 +1020,20 @@ export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMo
 
 
 /**
+ * Reference to a field of type 'ResearchStatus'
+ */
+export type EnumResearchStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResearchStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ResearchStatus[]'
+ */
+export type ListEnumResearchStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResearchStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -749,6 +1044,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**
@@ -904,6 +1213,9 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   business?: Prisma.BusinessOmit
   product?: Prisma.ProductOmit
+  marketResearch?: Prisma.MarketResearchOmit
+  marketResult?: Prisma.MarketResultOmit
+  marketEvidence?: Prisma.MarketEvidenceOmit
 }
 
 /* Types for Logging */
