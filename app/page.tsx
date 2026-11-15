@@ -9,7 +9,6 @@ export default function Home() {
   return (
     <DashboardShell>
       <div className="mx-auto max-w-7xl space-y-8 p-5 sm:p-8">
-
         <WelcomeBanner />
 
         <StatsCards />
@@ -19,11 +18,10 @@ export default function Home() {
           <RecentActivity />
         </div>
 
-        <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5 text-xs text-slate-400">
+        <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5 text-xs text-slate-400 dark:border-slate-800 dark:text-slate-500">
           <span>© 2026 Vistaar. Local Roots. Global Reach.</span>
           <span>Powered by AI</span>
         </footer>
-
       </div>
     </DashboardShell>
   );

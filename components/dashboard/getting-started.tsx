@@ -42,20 +42,20 @@ export function GettingStarted() {
   return (
     <section
       id="getting-started"
-      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
+      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6"
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
             Getting started
           </h3>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Four steps to take your business global.
           </p>
         </div>
 
-        <span className="rounded-full bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-700">
+        <span className="rounded-full bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-700 dark:bg-amber-950 dark:text-amber-300">
           0 of 4 completed
         </span>
       </div>
@@ -67,32 +67,32 @@ export function GettingStarted() {
 
           return (
             <div key={step.number} className="flex gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E8F4F1] text-teal-700">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E8F4F1] text-teal-700 dark:bg-teal-950 dark:text-teal-300">
                 <Icon size={20} />
               </div>
 
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[10px] font-bold tracking-wider text-teal-700">
+                  <span className="text-[10px] font-bold tracking-wider text-teal-700 dark:text-teal-400">
                     STEP {step.number}
                   </span>
 
                   <span
                     className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${
                       isNext
-                        ? "bg-teal-50 text-teal-700"
-                        : "bg-slate-100 text-slate-500"
+                        ? "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300"
+                        : "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400"
                     }`}
                   >
                     {step.status}
                   </span>
                 </div>
 
-                <h4 className="mt-1 text-sm font-semibold text-slate-900">
+                <h4 className="mt-1 text-sm font-semibold text-slate-900 dark:text-slate-100">
                   {step.title}
                 </h4>
 
-                <p className="mt-1 text-xs leading-5 text-slate-500">
+                <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
                   {step.description}
                 </p>
               </div>
@@ -100,7 +100,7 @@ export function GettingStarted() {
               {isNext && (
                 <ArrowRight
                   size={18}
-                  className="mt-3 shrink-0 text-teal-700"
+                  className="mt-3 shrink-0 text-teal-700 dark:text-teal-400"
                 />
               )}
             </div>

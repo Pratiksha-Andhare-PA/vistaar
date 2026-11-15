@@ -29,9 +29,10 @@ const initialForm: FormValues = {
 };
 
 const inputClass =
-  "mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10";
+  "mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500";
 
-const labelClass = "text-sm font-semibold text-slate-700";
+const labelClass =
+  "text-sm font-semibold text-slate-700 dark:text-slate-200";
 
 export function BusinessForm() {
   const [form, setForm] = useState<FormValues>(initialForm);
@@ -85,7 +86,9 @@ export function BusinessForm() {
           : undefined;
 
         throw new Error(
-          firstFieldError || result.error || "Something went wrong"
+          firstFieldError ||
+            result.error ||
+            "Something went wrong"
         );
       }
 
@@ -107,13 +110,14 @@ export function BusinessForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
-      {/* Basic information */}
+      {/* Business information */}
       <section className="space-y-5">
         <div>
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
             Business information
           </h3>
-          <p className="mt-1 text-sm text-slate-500">
+
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Tell us about your business.
           </p>
         </div>
@@ -122,6 +126,7 @@ export function BusinessForm() {
           <label htmlFor="name" className={labelClass}>
             Business name <span className="text-red-500">*</span>
           </label>
+
           <input
             id="name"
             name="name"
@@ -140,6 +145,7 @@ export function BusinessForm() {
             <label htmlFor="businessType" className={labelClass}>
               Business type <span className="text-red-500">*</span>
             </label>
+
             <select
               id="businessType"
               value={form.businessType}
@@ -148,7 +154,9 @@ export function BusinessForm() {
               }
               className={inputClass}
             >
-              <option value="INDIVIDUAL">Individual artisan / creator</option>
+              <option value="INDIVIDUAL">
+                Individual artisan / creator
+              </option>
               <option value="REGISTERED_BUSINESS">
                 Registered business
               </option>
@@ -161,10 +169,13 @@ export function BusinessForm() {
             <label htmlFor="category" className={labelClass}>
               Business category <span className="text-red-500">*</span>
             </label>
+
             <select
               id="category"
               value={form.category}
-              onChange={(e) => updateField("category", e.target.value)}
+              onChange={(e) =>
+                updateField("category", e.target.value)
+              }
               className={inputClass}
             >
               <option value="HANDLOOM">Handloom and textiles</option>
@@ -182,6 +193,7 @@ export function BusinessForm() {
           <label htmlFor="description" className={labelClass}>
             About your business <span className="text-red-500">*</span>
           </label>
+
           <textarea
             id="description"
             value={form.description}
@@ -195,21 +207,23 @@ export function BusinessForm() {
             className={inputClass}
             required
           />
-          <p className="mt-1 text-right text-xs text-slate-400">
+
+          <p className="mt-1 text-right text-xs text-slate-400 dark:text-slate-500">
             {form.description.length}/2000 characters
           </p>
         </div>
       </section>
 
-      <div className="border-t border-slate-100" />
+      <div className="border-t border-slate-100 dark:border-slate-800" />
 
-      {/* Location */}
+      {/* Business location */}
       <section className="space-y-5">
         <div>
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
             Business location
           </h3>
-          <p className="mt-1 text-sm text-slate-500">
+
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Where does your business operate?
           </p>
         </div>
@@ -219,10 +233,13 @@ export function BusinessForm() {
             <label htmlFor="country" className={labelClass}>
               Country <span className="text-red-500">*</span>
             </label>
+
             <input
               id="country"
               value={form.country}
-              onChange={(e) => updateField("country", e.target.value)}
+              onChange={(e) =>
+                updateField("country", e.target.value)
+              }
               className={inputClass}
               required
             />
@@ -232,10 +249,13 @@ export function BusinessForm() {
             <label htmlFor="city" className={labelClass}>
               City <span className="text-red-500">*</span>
             </label>
+
             <input
               id="city"
               value={form.city}
-              onChange={(e) => updateField("city", e.target.value)}
+              onChange={(e) =>
+                updateField("city", e.target.value)
+              }
               placeholder="Enter your city"
               className={inputClass}
               required
@@ -244,15 +264,16 @@ export function BusinessForm() {
         </div>
       </section>
 
-      <div className="border-t border-slate-100" />
+      <div className="border-t border-slate-100 dark:border-slate-800" />
 
       {/* Contact information */}
       <section className="space-y-5">
         <div>
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
             Contact information
           </h3>
-          <p className="mt-1 text-sm text-slate-500">
+
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             How can customers or partners contact your business?
           </p>
         </div>
@@ -261,6 +282,7 @@ export function BusinessForm() {
           <label htmlFor="email" className={labelClass}>
             Business email <span className="text-red-500">*</span>
           </label>
+
           <input
             id="email"
             type="email"
@@ -277,6 +299,7 @@ export function BusinessForm() {
             <label htmlFor="phone" className={labelClass}>
               Phone number
             </label>
+
             <input
               id="phone"
               type="tel"
@@ -291,11 +314,14 @@ export function BusinessForm() {
             <label htmlFor="website" className={labelClass}>
               Website (optional)
             </label>
+
             <input
               id="website"
               type="url"
               value={form.website}
-              onChange={(e) => updateField("website", e.target.value)}
+              onChange={(e) =>
+                updateField("website", e.target.value)
+              }
               placeholder="https://example.com"
               className={inputClass}
             />
@@ -303,24 +329,27 @@ export function BusinessForm() {
         </div>
       </section>
 
-      {/* Messages */}
+      {/* Error message */}
       {error && (
         <div
           role="alert"
-          className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+          className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300"
         >
           {error}
         </div>
       )}
 
+      {/* Success message */}
       {success && (
         <div
           role="status"
-          className="flex items-start gap-3 rounded-xl border border-teal-200 bg-teal-50 p-4 text-sm text-teal-800"
+          className="flex items-start gap-3 rounded-xl border border-teal-200 bg-teal-50 p-4 text-sm text-teal-800 dark:border-teal-900 dark:bg-teal-950/40 dark:text-teal-300"
         >
           <CheckCircle2 size={20} className="mt-0.5 shrink-0" />
+
           <div>
             <p className="font-semibold">{success}</p>
+
             <p className="mt-1 text-xs">
               Your information has been saved in Vistaar.
             </p>
@@ -328,12 +357,12 @@ export function BusinessForm() {
         </div>
       )}
 
-      {/* Submit */}
+      {/* Submit button */}
       <div className="flex justify-end">
         <button
           type="submit"
           disabled={loading}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#102B3F] px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#102B3F] px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? (
             <>
