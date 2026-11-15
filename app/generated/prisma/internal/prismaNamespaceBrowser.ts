@@ -55,7 +55,8 @@ export const ModelName = {
   Product: 'Product',
   MarketResearch: 'MarketResearch',
   MarketResult: 'MarketResult',
-  MarketEvidence: 'MarketEvidence'
+  MarketEvidence: 'MarketEvidence',
+  AiUsage: 'AiUsage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -161,6 +162,23 @@ export const MarketEvidenceScalarFieldEnum = {
 } as const
 
 export type MarketEvidenceScalarFieldEnum = (typeof MarketEvidenceScalarFieldEnum)[keyof typeof MarketEvidenceScalarFieldEnum]
+
+
+export const AiUsageScalarFieldEnum = {
+  id: 'id',
+  researchId: 'researchId',
+  provider: 'provider',
+  model: 'model',
+  operation: 'operation',
+  inputTokens: 'inputTokens',
+  outputTokens: 'outputTokens',
+  cacheReadInputTokens: 'cacheReadInputTokens',
+  cacheCreationInputTokens: 'cacheCreationInputTokens',
+  estimatedCostUsd: 'estimatedCostUsd',
+  createdAt: 'createdAt'
+} as const
+
+export type AiUsageScalarFieldEnum = (typeof AiUsageScalarFieldEnum)[keyof typeof AiUsageScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -66,3 +66,8 @@ export type MarketResult = Prisma.MarketResultModel
  * 
  */
 export type MarketEvidence = Prisma.MarketEvidenceModel
+/**
+ * Model AiUsage
+ * 
+ */
+export type AiUsage = Prisma.AiUsageModel

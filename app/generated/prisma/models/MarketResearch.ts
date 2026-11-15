@@ -236,6 +236,7 @@ export type MarketResearchWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"MarketResearch"> | Date | string
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   results?: Prisma.MarketResultListRelationFilter
+  aiUsage?: Prisma.AiUsageListRelationFilter
 }
 
 export type MarketResearchOrderByWithRelationInput = {
@@ -253,6 +254,7 @@ export type MarketResearchOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   product?: Prisma.ProductOrderByWithRelationInput
   results?: Prisma.MarketResultOrderByRelationAggregateInput
+  aiUsage?: Prisma.AiUsageOrderByRelationAggregateInput
 }
 
 export type MarketResearchWhereUniqueInput = Prisma.AtLeast<{
@@ -273,6 +275,7 @@ export type MarketResearchWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"MarketResearch"> | Date | string
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   results?: Prisma.MarketResultListRelationFilter
+  aiUsage?: Prisma.AiUsageListRelationFilter
 }, "id">
 
 export type MarketResearchOrderByWithAggregationInput = {
@@ -325,6 +328,7 @@ export type MarketResearchCreateInput = {
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutMarketResearchesInput
   results?: Prisma.MarketResultCreateNestedManyWithoutResearchInput
+  aiUsage?: Prisma.AiUsageCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUncheckedCreateInput = {
@@ -341,6 +345,7 @@ export type MarketResearchUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   results?: Prisma.MarketResultUncheckedCreateNestedManyWithoutResearchInput
+  aiUsage?: Prisma.AiUsageUncheckedCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUpdateInput = {
@@ -357,6 +362,7 @@ export type MarketResearchUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutMarketResearchesNestedInput
   results?: Prisma.MarketResultUpdateManyWithoutResearchNestedInput
+  aiUsage?: Prisma.AiUsageUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchUncheckedUpdateInput = {
@@ -373,6 +379,7 @@ export type MarketResearchUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   results?: Prisma.MarketResultUncheckedUpdateManyWithoutResearchNestedInput
+  aiUsage?: Prisma.AiUsageUncheckedUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchCreateManyInput = {
@@ -485,6 +492,11 @@ export type MarketResearchScalarRelationFilter = {
   isNot?: Prisma.MarketResearchWhereInput
 }
 
+export type MarketResearchNullableScalarRelationFilter = {
+  is?: Prisma.MarketResearchWhereInput | null
+  isNot?: Prisma.MarketResearchWhereInput | null
+}
+
 export type MarketResearchCreateNestedManyWithoutProductInput = {
   create?: Prisma.XOR<Prisma.MarketResearchCreateWithoutProductInput, Prisma.MarketResearchUncheckedCreateWithoutProductInput> | Prisma.MarketResearchCreateWithoutProductInput[] | Prisma.MarketResearchUncheckedCreateWithoutProductInput[]
   connectOrCreate?: Prisma.MarketResearchCreateOrConnectWithoutProductInput | Prisma.MarketResearchCreateOrConnectWithoutProductInput[]
@@ -558,6 +570,22 @@ export type MarketResearchUpdateOneRequiredWithoutResultsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MarketResearchUpdateToOneWithWhereWithoutResultsInput, Prisma.MarketResearchUpdateWithoutResultsInput>, Prisma.MarketResearchUncheckedUpdateWithoutResultsInput>
 }
 
+export type MarketResearchCreateNestedOneWithoutAiUsageInput = {
+  create?: Prisma.XOR<Prisma.MarketResearchCreateWithoutAiUsageInput, Prisma.MarketResearchUncheckedCreateWithoutAiUsageInput>
+  connectOrCreate?: Prisma.MarketResearchCreateOrConnectWithoutAiUsageInput
+  connect?: Prisma.MarketResearchWhereUniqueInput
+}
+
+export type MarketResearchUpdateOneWithoutAiUsageNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketResearchCreateWithoutAiUsageInput, Prisma.MarketResearchUncheckedCreateWithoutAiUsageInput>
+  connectOrCreate?: Prisma.MarketResearchCreateOrConnectWithoutAiUsageInput
+  upsert?: Prisma.MarketResearchUpsertWithoutAiUsageInput
+  disconnect?: Prisma.MarketResearchWhereInput | boolean
+  delete?: Prisma.MarketResearchWhereInput | boolean
+  connect?: Prisma.MarketResearchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MarketResearchUpdateToOneWithWhereWithoutAiUsageInput, Prisma.MarketResearchUpdateWithoutAiUsageInput>, Prisma.MarketResearchUncheckedUpdateWithoutAiUsageInput>
+}
+
 export type MarketResearchCreateWithoutProductInput = {
   id?: string
   status?: $Enums.ResearchStatus
@@ -571,6 +599,7 @@ export type MarketResearchCreateWithoutProductInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   results?: Prisma.MarketResultCreateNestedManyWithoutResearchInput
+  aiUsage?: Prisma.AiUsageCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUncheckedCreateWithoutProductInput = {
@@ -586,6 +615,7 @@ export type MarketResearchUncheckedCreateWithoutProductInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   results?: Prisma.MarketResultUncheckedCreateNestedManyWithoutResearchInput
+  aiUsage?: Prisma.AiUsageUncheckedCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchCreateOrConnectWithoutProductInput = {
@@ -645,6 +675,7 @@ export type MarketResearchCreateWithoutResultsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutMarketResearchesInput
+  aiUsage?: Prisma.AiUsageCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUncheckedCreateWithoutResultsInput = {
@@ -660,6 +691,7 @@ export type MarketResearchUncheckedCreateWithoutResultsInput = {
   completedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  aiUsage?: Prisma.AiUsageUncheckedCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchCreateOrConnectWithoutResultsInput = {
@@ -691,6 +723,7 @@ export type MarketResearchUpdateWithoutResultsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutMarketResearchesNestedInput
+  aiUsage?: Prisma.AiUsageUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchUncheckedUpdateWithoutResultsInput = {
@@ -706,6 +739,87 @@ export type MarketResearchUncheckedUpdateWithoutResultsInput = {
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiUsage?: Prisma.AiUsageUncheckedUpdateManyWithoutResearchNestedInput
+}
+
+export type MarketResearchCreateWithoutAiUsageInput = {
+  id?: string
+  status?: $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
+  summary?: string | null
+  recommendedCountry?: string | null
+  recommendationReason?: string | null
+  modelUsed?: string | null
+  errorMessage?: string | null
+  completedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  product: Prisma.ProductCreateNestedOneWithoutMarketResearchesInput
+  results?: Prisma.MarketResultCreateNestedManyWithoutResearchInput
+}
+
+export type MarketResearchUncheckedCreateWithoutAiUsageInput = {
+  id?: string
+  productId: string
+  status?: $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
+  summary?: string | null
+  recommendedCountry?: string | null
+  recommendationReason?: string | null
+  modelUsed?: string | null
+  errorMessage?: string | null
+  completedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  results?: Prisma.MarketResultUncheckedCreateNestedManyWithoutResearchInput
+}
+
+export type MarketResearchCreateOrConnectWithoutAiUsageInput = {
+  where: Prisma.MarketResearchWhereUniqueInput
+  create: Prisma.XOR<Prisma.MarketResearchCreateWithoutAiUsageInput, Prisma.MarketResearchUncheckedCreateWithoutAiUsageInput>
+}
+
+export type MarketResearchUpsertWithoutAiUsageInput = {
+  update: Prisma.XOR<Prisma.MarketResearchUpdateWithoutAiUsageInput, Prisma.MarketResearchUncheckedUpdateWithoutAiUsageInput>
+  create: Prisma.XOR<Prisma.MarketResearchCreateWithoutAiUsageInput, Prisma.MarketResearchUncheckedCreateWithoutAiUsageInput>
+  where?: Prisma.MarketResearchWhereInput
+}
+
+export type MarketResearchUpdateToOneWithWhereWithoutAiUsageInput = {
+  where?: Prisma.MarketResearchWhereInput
+  data: Prisma.XOR<Prisma.MarketResearchUpdateWithoutAiUsageInput, Prisma.MarketResearchUncheckedUpdateWithoutAiUsageInput>
+}
+
+export type MarketResearchUpdateWithoutAiUsageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendedCountry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelUsed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  product?: Prisma.ProductUpdateOneRequiredWithoutMarketResearchesNestedInput
+  results?: Prisma.MarketResultUpdateManyWithoutResearchNestedInput
+}
+
+export type MarketResearchUncheckedUpdateWithoutAiUsageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  productId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendedCountry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelUsed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  results?: Prisma.MarketResultUncheckedUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchCreateManyProductInput = {
@@ -735,6 +849,7 @@ export type MarketResearchUpdateWithoutProductInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   results?: Prisma.MarketResultUpdateManyWithoutResearchNestedInput
+  aiUsage?: Prisma.AiUsageUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchUncheckedUpdateWithoutProductInput = {
@@ -750,6 +865,7 @@ export type MarketResearchUncheckedUpdateWithoutProductInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   results?: Prisma.MarketResultUncheckedUpdateManyWithoutResearchNestedInput
+  aiUsage?: Prisma.AiUsageUncheckedUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchUncheckedUpdateManyWithoutProductInput = {
@@ -773,10 +889,12 @@ export type MarketResearchUncheckedUpdateManyWithoutProductInput = {
 
 export type MarketResearchCountOutputType = {
   results: number
+  aiUsage: number
 }
 
 export type MarketResearchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   results?: boolean | MarketResearchCountOutputTypeCountResultsArgs
+  aiUsage?: boolean | MarketResearchCountOutputTypeCountAiUsageArgs
 }
 
 /**
@@ -796,6 +914,13 @@ export type MarketResearchCountOutputTypeCountResultsArgs<ExtArgs extends runtim
   where?: Prisma.MarketResultWhereInput
 }
 
+/**
+ * MarketResearchCountOutputType without action
+ */
+export type MarketResearchCountOutputTypeCountAiUsageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiUsageWhereInput
+}
+
 
 export type MarketResearchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -812,6 +937,7 @@ export type MarketResearchSelect<ExtArgs extends runtime.Types.Extensions.Intern
   updatedAt?: boolean
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   results?: boolean | Prisma.MarketResearch$resultsArgs<ExtArgs>
+  aiUsage?: boolean | Prisma.MarketResearch$aiUsageArgs<ExtArgs>
   _count?: boolean | Prisma.MarketResearchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["marketResearch"]>
 
@@ -866,6 +992,7 @@ export type MarketResearchOmit<ExtArgs extends runtime.Types.Extensions.Internal
 export type MarketResearchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   results?: boolean | Prisma.MarketResearch$resultsArgs<ExtArgs>
+  aiUsage?: boolean | Prisma.MarketResearch$aiUsageArgs<ExtArgs>
   _count?: boolean | Prisma.MarketResearchCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MarketResearchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -880,6 +1007,7 @@ export type $MarketResearchPayload<ExtArgs extends runtime.Types.Extensions.Inte
   objects: {
     product: Prisma.$ProductPayload<ExtArgs>
     results: Prisma.$MarketResultPayload<ExtArgs>[]
+    aiUsage: Prisma.$AiUsagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1290,6 +1418,7 @@ export interface Prisma__MarketResearchClient<T, Null = never, ExtArgs extends r
   readonly [Symbol.toStringTag]: "PrismaPromise"
   product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   results<T extends Prisma.MarketResearch$resultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResearch$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiUsage<T extends Prisma.MarketResearch$aiUsageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResearch$aiUsageArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiUsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1753,6 +1882,30 @@ export type MarketResearch$resultsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.MarketResultScalarFieldEnum | Prisma.MarketResultScalarFieldEnum[]
+}
+
+/**
+ * MarketResearch.aiUsage
+ */
+export type MarketResearch$aiUsageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiUsage
+   */
+  select?: Prisma.AiUsageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiUsage
+   */
+  omit?: Prisma.AiUsageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiUsageInclude<ExtArgs> | null
+  where?: Prisma.AiUsageWhereInput
+  orderBy?: Prisma.AiUsageOrderByWithRelationInput | Prisma.AiUsageOrderByWithRelationInput[]
+  cursor?: Prisma.AiUsageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiUsageScalarFieldEnum | Prisma.AiUsageScalarFieldEnum[]
 }
 
 /**

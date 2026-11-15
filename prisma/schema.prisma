@@ -33,13 +33,13 @@ enum ResearchStatus {
 }
 
 model Business {
-  id           String           @id @default(cuid())
+  id           String         @id @default(cuid())
   name         String
   businessType BusinessType
   category     BusinessCategory
   country      String
   city         String
-  description  String           @db.Text
+  description  String         @db.Text
   email        String
   phone        String?
   website      String?
@@ -86,6 +86,7 @@ model MarketResearch {
 
   product Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
   results MarketResult[]
+  aiUsage AiUsage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -137,4 +138,27 @@ model MarketEvidence {
   marketResult MarketResult @relation(fields: [marketResultId], references: [id], onDelete: Cascade)
 
   @@index([marketResultId])
+}
+
+model AiUsage {
+  id                       String   @id @default(cuid())
+  researchId               String?
+  provider                 String   @default("anthropic")
+  model                    String
+  operation                String
+
+  inputTokens              Int      @default(0)
+  outputTokens             Int      @default(0)
+  cacheReadInputTokens     Int      @default(0)
+  cacheCreationInputTokens Int      @default(0)
+
+  estimatedCostUsd         Decimal  @default(0) @db.Decimal(12, 8)
+
+  createdAt DateTime @default(now())
+
+  research MarketResearch? @relation(fields: [researchId], references: [id], onDelete: SetNull)
+
+  @@index([researchId])
+  @@index([model])
+  @@index([createdAt])
 }
