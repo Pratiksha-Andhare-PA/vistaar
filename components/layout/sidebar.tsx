@@ -27,7 +27,7 @@ type NavigationItem = {
 const navigation: NavigationItem[] = [
   { name: "Overview", href: "/", icon: LayoutDashboard },
   { name: "Business profile", href: "/onboarding", icon: Building2 },
-  { name: "My products", icon: Package },
+  { name: "My products", href: "/products", icon: Package },
   { name: "Market discovery", icon: Compass },
   { name: "Localization", icon: Languages },
   { name: "Global pricing", icon: Wallet },
