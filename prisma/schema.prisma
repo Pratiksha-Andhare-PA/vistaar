@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum BusinessType {
+  INDIVIDUAL
+  REGISTERED_BUSINESS
+  COOPERATIVE
+  ARTISAN_GROUP
+}
+
+enum BusinessCategory {
+  HANDLOOM
+  JEWELLERY
+  HANDICRAFTS
+  APPAREL
+  HOME_DECOR
+  ORGANIC_PRODUCTS
+  OTHER
+}
+
+model Business {
+  id           String           @id @default(cuid())
+  name         String
+  businessType BusinessType
+  category     BusinessCategory
+  country      String
+  city         String
+  description  String           @db.Text
+  email        String
+  phone        String?
+  website      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products Product[]
+
+  @@index([country])
+  @@index([category])
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  businessId  String
+  name        String
+  description String  @db.Text
+  price       Decimal @db.Decimal(12, 2)
+  currency    String  @default("INR")
+  imageUrl    String?
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([businessId])
+}
