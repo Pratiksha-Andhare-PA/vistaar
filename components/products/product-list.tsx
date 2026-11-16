@@ -120,7 +120,6 @@ export function ProductList() {
   // Load products whenever the selected business changes.
   useEffect(() => {
     if (!selectedBusinessId) {
-      setProducts([]);
       return;
     }
 
@@ -133,7 +132,7 @@ export function ProductList() {
       try {
         const response = await fetch(
           `/api/products?businessId=${encodeURIComponent(selectedBusinessId)}`,
-          { signal: controller.signal }
+          { signal: controller.signal },
         );
 
         const result = await response.json();
@@ -231,11 +230,11 @@ export function ProductList() {
         current.map((business) =>
           business.id === selectedBusinessId
             ? {
-                ...business,
-                _count: {
-                  products: (business._count?.products ?? 0) + 1,
-                },
-              }
+              ...business,
+              _count: {
+                products: (business._count?.products ?? 0) + 1,
+              },
+            }
             : business
         )
       );
@@ -357,8 +356,10 @@ export function ProductList() {
                 value={selectedBusinessId}
                 onChange={(event) => {
                   setSelectedBusinessId(event.target.value);
+                  setProducts([]);
                   setSearch("");
                   setSuccess("");
+                  setError("");
                 }}
                 className={inputClass}
               >

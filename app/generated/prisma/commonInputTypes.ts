@@ -267,6 +267,23 @@ export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalNullableFilter<$PrismaModel>
 }
 
+export type EnumBudgetReservationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.BudgetReservationStatus | Prisma.EnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBudgetReservationStatusFilter<$PrismaModel> | $Enums.BudgetReservationStatus
+}
+
+export type EnumBudgetReservationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BudgetReservationStatus | Prisma.EnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBudgetReservationStatusWithAggregatesFilter<$PrismaModel> | $Enums.BudgetReservationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBudgetReservationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBudgetReservationStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -531,6 +548,23 @@ export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedDecimalNullableFilter<$PrismaModel>
   _min?: Prisma.NestedDecimalNullableFilter<$PrismaModel>
   _max?: Prisma.NestedDecimalNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumBudgetReservationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.BudgetReservationStatus | Prisma.EnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBudgetReservationStatusFilter<$PrismaModel> | $Enums.BudgetReservationStatus
+}
+
+export type NestedEnumBudgetReservationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BudgetReservationStatus | Prisma.EnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BudgetReservationStatus[] | Prisma.ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBudgetReservationStatusWithAggregatesFilter<$PrismaModel> | $Enums.BudgetReservationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBudgetReservationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBudgetReservationStatusFilter<$PrismaModel>
 }
 
 

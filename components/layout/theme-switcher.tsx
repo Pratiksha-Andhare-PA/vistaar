@@ -1,26 +1,11 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Monitor, Moon, Sun } from "lucide-react";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div
-        aria-hidden="true"
-        className="h-10 w-[132px] rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
-      />
-    );
-  }
 
   const Icon =
     theme === "dark"

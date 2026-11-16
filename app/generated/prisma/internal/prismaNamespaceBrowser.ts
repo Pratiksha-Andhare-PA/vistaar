@@ -56,7 +56,9 @@ export const ModelName = {
   MarketResearch: 'MarketResearch',
   MarketResult: 'MarketResult',
   MarketEvidence: 'MarketEvidence',
-  AiUsage: 'AiUsage'
+  AiUsage: 'AiUsage',
+  AiBudget: 'AiBudget',
+  AiBudgetReservation: 'AiBudgetReservation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -111,6 +113,7 @@ export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeo
 export const MarketResearchScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
+  cacheKey: 'cacheKey',
   status: 'status',
   requestedCountries: 'requestedCountries',
   summary: 'summary',
@@ -179,6 +182,32 @@ export const AiUsageScalarFieldEnum = {
 } as const
 
 export type AiUsageScalarFieldEnum = (typeof AiUsageScalarFieldEnum)[keyof typeof AiUsageScalarFieldEnum]
+
+
+export const AiBudgetScalarFieldEnum = {
+  id: 'id',
+  totalBudgetUsd: 'totalBudgetUsd',
+  spentUsd: 'spentUsd',
+  reservedUsd: 'reservedUsd',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiBudgetScalarFieldEnum = (typeof AiBudgetScalarFieldEnum)[keyof typeof AiBudgetScalarFieldEnum]
+
+
+export const AiBudgetReservationScalarFieldEnum = {
+  id: 'id',
+  budgetId: 'budgetId',
+  researchId: 'researchId',
+  estimatedCostUsd: 'estimatedCostUsd',
+  actualCostUsd: 'actualCostUsd',
+  status: 'status',
+  createdAt: 'createdAt',
+  expiresAt: 'expiresAt',
+  settledAt: 'settledAt'
+} as const
+
+export type AiBudgetReservationScalarFieldEnum = (typeof AiBudgetReservationScalarFieldEnum)[keyof typeof AiBudgetReservationScalarFieldEnum]
 
 
 export const SortOrder = {

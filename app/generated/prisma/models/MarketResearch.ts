@@ -27,6 +27,7 @@ export type AggregateMarketResearch = {
 export type MarketResearchMinAggregateOutputType = {
   id: string | null
   productId: string | null
+  cacheKey: string | null
   status: $Enums.ResearchStatus | null
   summary: string | null
   recommendedCountry: string | null
@@ -41,6 +42,7 @@ export type MarketResearchMinAggregateOutputType = {
 export type MarketResearchMaxAggregateOutputType = {
   id: string | null
   productId: string | null
+  cacheKey: string | null
   status: $Enums.ResearchStatus | null
   summary: string | null
   recommendedCountry: string | null
@@ -55,6 +57,7 @@ export type MarketResearchMaxAggregateOutputType = {
 export type MarketResearchCountAggregateOutputType = {
   id: number
   productId: number
+  cacheKey: number
   status: number
   requestedCountries: number
   summary: number
@@ -72,6 +75,7 @@ export type MarketResearchCountAggregateOutputType = {
 export type MarketResearchMinAggregateInputType = {
   id?: true
   productId?: true
+  cacheKey?: true
   status?: true
   summary?: true
   recommendedCountry?: true
@@ -86,6 +90,7 @@ export type MarketResearchMinAggregateInputType = {
 export type MarketResearchMaxAggregateInputType = {
   id?: true
   productId?: true
+  cacheKey?: true
   status?: true
   summary?: true
   recommendedCountry?: true
@@ -100,6 +105,7 @@ export type MarketResearchMaxAggregateInputType = {
 export type MarketResearchCountAggregateInputType = {
   id?: true
   productId?: true
+  cacheKey?: true
   status?: true
   requestedCountries?: true
   summary?: true
@@ -188,6 +194,7 @@ export type MarketResearchGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 export type MarketResearchGroupByOutputType = {
   id: string
   productId: string
+  cacheKey: string | null
   status: $Enums.ResearchStatus
   requestedCountries: string[]
   summary: string | null
@@ -224,6 +231,7 @@ export type MarketResearchWhereInput = {
   NOT?: Prisma.MarketResearchWhereInput | Prisma.MarketResearchWhereInput[]
   id?: Prisma.StringFilter<"MarketResearch"> | string
   productId?: Prisma.StringFilter<"MarketResearch"> | string
+  cacheKey?: Prisma.StringNullableFilter<"MarketResearch"> | string | null
   status?: Prisma.EnumResearchStatusFilter<"MarketResearch"> | $Enums.ResearchStatus
   requestedCountries?: Prisma.StringNullableListFilter<"MarketResearch">
   summary?: Prisma.StringNullableFilter<"MarketResearch"> | string | null
@@ -237,11 +245,13 @@ export type MarketResearchWhereInput = {
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   results?: Prisma.MarketResultListRelationFilter
   aiUsage?: Prisma.AiUsageListRelationFilter
+  budgetReservations?: Prisma.AiBudgetReservationListRelationFilter
 }
 
 export type MarketResearchOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
+  cacheKey?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   requestedCountries?: Prisma.SortOrder
   summary?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -255,10 +265,12 @@ export type MarketResearchOrderByWithRelationInput = {
   product?: Prisma.ProductOrderByWithRelationInput
   results?: Prisma.MarketResultOrderByRelationAggregateInput
   aiUsage?: Prisma.AiUsageOrderByRelationAggregateInput
+  budgetReservations?: Prisma.AiBudgetReservationOrderByRelationAggregateInput
 }
 
 export type MarketResearchWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  cacheKey?: string
   AND?: Prisma.MarketResearchWhereInput | Prisma.MarketResearchWhereInput[]
   OR?: Prisma.MarketResearchWhereInput[]
   NOT?: Prisma.MarketResearchWhereInput | Prisma.MarketResearchWhereInput[]
@@ -276,11 +288,13 @@ export type MarketResearchWhereUniqueInput = Prisma.AtLeast<{
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   results?: Prisma.MarketResultListRelationFilter
   aiUsage?: Prisma.AiUsageListRelationFilter
-}, "id">
+  budgetReservations?: Prisma.AiBudgetReservationListRelationFilter
+}, "id" | "cacheKey">
 
 export type MarketResearchOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
+  cacheKey?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   requestedCountries?: Prisma.SortOrder
   summary?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -302,6 +316,7 @@ export type MarketResearchScalarWhereWithAggregatesInput = {
   NOT?: Prisma.MarketResearchScalarWhereWithAggregatesInput | Prisma.MarketResearchScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"MarketResearch"> | string
   productId?: Prisma.StringWithAggregatesFilter<"MarketResearch"> | string
+  cacheKey?: Prisma.StringNullableWithAggregatesFilter<"MarketResearch"> | string | null
   status?: Prisma.EnumResearchStatusWithAggregatesFilter<"MarketResearch"> | $Enums.ResearchStatus
   requestedCountries?: Prisma.StringNullableListFilter<"MarketResearch">
   summary?: Prisma.StringNullableWithAggregatesFilter<"MarketResearch"> | string | null
@@ -316,6 +331,7 @@ export type MarketResearchScalarWhereWithAggregatesInput = {
 
 export type MarketResearchCreateInput = {
   id?: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -329,11 +345,13 @@ export type MarketResearchCreateInput = {
   product: Prisma.ProductCreateNestedOneWithoutMarketResearchesInput
   results?: Prisma.MarketResultCreateNestedManyWithoutResearchInput
   aiUsage?: Prisma.AiUsageCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUncheckedCreateInput = {
   id?: string
   productId: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -346,10 +364,12 @@ export type MarketResearchUncheckedCreateInput = {
   updatedAt?: Date | string
   results?: Prisma.MarketResultUncheckedCreateNestedManyWithoutResearchInput
   aiUsage?: Prisma.AiUsageUncheckedCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -363,11 +383,13 @@ export type MarketResearchUpdateInput = {
   product?: Prisma.ProductUpdateOneRequiredWithoutMarketResearchesNestedInput
   results?: Prisma.MarketResultUpdateManyWithoutResearchNestedInput
   aiUsage?: Prisma.AiUsageUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -380,11 +402,13 @@ export type MarketResearchUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   results?: Prisma.MarketResultUncheckedUpdateManyWithoutResearchNestedInput
   aiUsage?: Prisma.AiUsageUncheckedUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchCreateManyInput = {
   id?: string
   productId: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -399,6 +423,7 @@ export type MarketResearchCreateManyInput = {
 
 export type MarketResearchUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -414,6 +439,7 @@ export type MarketResearchUpdateManyMutationInput = {
 export type MarketResearchUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -447,6 +473,7 @@ export type StringNullableListFilter<$PrismaModel = never> = {
 export type MarketResearchCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
+  cacheKey?: Prisma.SortOrder
   status?: Prisma.SortOrder
   requestedCountries?: Prisma.SortOrder
   summary?: Prisma.SortOrder
@@ -462,6 +489,7 @@ export type MarketResearchCountOrderByAggregateInput = {
 export type MarketResearchMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
+  cacheKey?: Prisma.SortOrder
   status?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   recommendedCountry?: Prisma.SortOrder
@@ -476,6 +504,7 @@ export type MarketResearchMaxOrderByAggregateInput = {
 export type MarketResearchMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
+  cacheKey?: Prisma.SortOrder
   status?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   recommendedCountry?: Prisma.SortOrder
@@ -586,8 +615,25 @@ export type MarketResearchUpdateOneWithoutAiUsageNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MarketResearchUpdateToOneWithWhereWithoutAiUsageInput, Prisma.MarketResearchUpdateWithoutAiUsageInput>, Prisma.MarketResearchUncheckedUpdateWithoutAiUsageInput>
 }
 
+export type MarketResearchCreateNestedOneWithoutBudgetReservationsInput = {
+  create?: Prisma.XOR<Prisma.MarketResearchCreateWithoutBudgetReservationsInput, Prisma.MarketResearchUncheckedCreateWithoutBudgetReservationsInput>
+  connectOrCreate?: Prisma.MarketResearchCreateOrConnectWithoutBudgetReservationsInput
+  connect?: Prisma.MarketResearchWhereUniqueInput
+}
+
+export type MarketResearchUpdateOneWithoutBudgetReservationsNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketResearchCreateWithoutBudgetReservationsInput, Prisma.MarketResearchUncheckedCreateWithoutBudgetReservationsInput>
+  connectOrCreate?: Prisma.MarketResearchCreateOrConnectWithoutBudgetReservationsInput
+  upsert?: Prisma.MarketResearchUpsertWithoutBudgetReservationsInput
+  disconnect?: Prisma.MarketResearchWhereInput | boolean
+  delete?: Prisma.MarketResearchWhereInput | boolean
+  connect?: Prisma.MarketResearchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MarketResearchUpdateToOneWithWhereWithoutBudgetReservationsInput, Prisma.MarketResearchUpdateWithoutBudgetReservationsInput>, Prisma.MarketResearchUncheckedUpdateWithoutBudgetReservationsInput>
+}
+
 export type MarketResearchCreateWithoutProductInput = {
   id?: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -600,10 +646,12 @@ export type MarketResearchCreateWithoutProductInput = {
   updatedAt?: Date | string
   results?: Prisma.MarketResultCreateNestedManyWithoutResearchInput
   aiUsage?: Prisma.AiUsageCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUncheckedCreateWithoutProductInput = {
   id?: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -616,6 +664,7 @@ export type MarketResearchUncheckedCreateWithoutProductInput = {
   updatedAt?: Date | string
   results?: Prisma.MarketResultUncheckedCreateNestedManyWithoutResearchInput
   aiUsage?: Prisma.AiUsageUncheckedCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchCreateOrConnectWithoutProductInput = {
@@ -650,6 +699,7 @@ export type MarketResearchScalarWhereInput = {
   NOT?: Prisma.MarketResearchScalarWhereInput | Prisma.MarketResearchScalarWhereInput[]
   id?: Prisma.StringFilter<"MarketResearch"> | string
   productId?: Prisma.StringFilter<"MarketResearch"> | string
+  cacheKey?: Prisma.StringNullableFilter<"MarketResearch"> | string | null
   status?: Prisma.EnumResearchStatusFilter<"MarketResearch"> | $Enums.ResearchStatus
   requestedCountries?: Prisma.StringNullableListFilter<"MarketResearch">
   summary?: Prisma.StringNullableFilter<"MarketResearch"> | string | null
@@ -664,6 +714,7 @@ export type MarketResearchScalarWhereInput = {
 
 export type MarketResearchCreateWithoutResultsInput = {
   id?: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -676,11 +727,13 @@ export type MarketResearchCreateWithoutResultsInput = {
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutMarketResearchesInput
   aiUsage?: Prisma.AiUsageCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUncheckedCreateWithoutResultsInput = {
   id?: string
   productId: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -692,6 +745,7 @@ export type MarketResearchUncheckedCreateWithoutResultsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   aiUsage?: Prisma.AiUsageUncheckedCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchCreateOrConnectWithoutResultsInput = {
@@ -712,6 +766,7 @@ export type MarketResearchUpdateToOneWithWhereWithoutResultsInput = {
 
 export type MarketResearchUpdateWithoutResultsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -724,11 +779,13 @@ export type MarketResearchUpdateWithoutResultsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutMarketResearchesNestedInput
   aiUsage?: Prisma.AiUsageUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchUncheckedUpdateWithoutResultsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -740,10 +797,12 @@ export type MarketResearchUncheckedUpdateWithoutResultsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiUsage?: Prisma.AiUsageUncheckedUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchCreateWithoutAiUsageInput = {
   id?: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -756,11 +815,13 @@ export type MarketResearchCreateWithoutAiUsageInput = {
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutMarketResearchesInput
   results?: Prisma.MarketResultCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchUncheckedCreateWithoutAiUsageInput = {
   id?: string
   productId: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -772,6 +833,7 @@ export type MarketResearchUncheckedCreateWithoutAiUsageInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   results?: Prisma.MarketResultUncheckedCreateNestedManyWithoutResearchInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedCreateNestedManyWithoutResearchInput
 }
 
 export type MarketResearchCreateOrConnectWithoutAiUsageInput = {
@@ -792,6 +854,7 @@ export type MarketResearchUpdateToOneWithWhereWithoutAiUsageInput = {
 
 export type MarketResearchUpdateWithoutAiUsageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -804,11 +867,13 @@ export type MarketResearchUpdateWithoutAiUsageInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutMarketResearchesNestedInput
   results?: Prisma.MarketResultUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUpdateManyWithoutResearchNestedInput
 }
 
 export type MarketResearchUncheckedUpdateWithoutAiUsageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -820,10 +885,12 @@ export type MarketResearchUncheckedUpdateWithoutAiUsageInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   results?: Prisma.MarketResultUncheckedUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedUpdateManyWithoutResearchNestedInput
 }
 
-export type MarketResearchCreateManyProductInput = {
+export type MarketResearchCreateWithoutBudgetReservationsInput = {
   id?: string
+  cacheKey?: string | null
   status?: $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
   summary?: string | null
@@ -834,10 +901,48 @@ export type MarketResearchCreateManyProductInput = {
   completedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  product: Prisma.ProductCreateNestedOneWithoutMarketResearchesInput
+  results?: Prisma.MarketResultCreateNestedManyWithoutResearchInput
+  aiUsage?: Prisma.AiUsageCreateNestedManyWithoutResearchInput
 }
 
-export type MarketResearchUpdateWithoutProductInput = {
+export type MarketResearchUncheckedCreateWithoutBudgetReservationsInput = {
+  id?: string
+  productId: string
+  cacheKey?: string | null
+  status?: $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
+  summary?: string | null
+  recommendedCountry?: string | null
+  recommendationReason?: string | null
+  modelUsed?: string | null
+  errorMessage?: string | null
+  completedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  results?: Prisma.MarketResultUncheckedCreateNestedManyWithoutResearchInput
+  aiUsage?: Prisma.AiUsageUncheckedCreateNestedManyWithoutResearchInput
+}
+
+export type MarketResearchCreateOrConnectWithoutBudgetReservationsInput = {
+  where: Prisma.MarketResearchWhereUniqueInput
+  create: Prisma.XOR<Prisma.MarketResearchCreateWithoutBudgetReservationsInput, Prisma.MarketResearchUncheckedCreateWithoutBudgetReservationsInput>
+}
+
+export type MarketResearchUpsertWithoutBudgetReservationsInput = {
+  update: Prisma.XOR<Prisma.MarketResearchUpdateWithoutBudgetReservationsInput, Prisma.MarketResearchUncheckedUpdateWithoutBudgetReservationsInput>
+  create: Prisma.XOR<Prisma.MarketResearchCreateWithoutBudgetReservationsInput, Prisma.MarketResearchUncheckedCreateWithoutBudgetReservationsInput>
+  where?: Prisma.MarketResearchWhereInput
+}
+
+export type MarketResearchUpdateToOneWithWhereWithoutBudgetReservationsInput = {
+  where?: Prisma.MarketResearchWhereInput
+  data: Prisma.XOR<Prisma.MarketResearchUpdateWithoutBudgetReservationsInput, Prisma.MarketResearchUncheckedUpdateWithoutBudgetReservationsInput>
+}
+
+export type MarketResearchUpdateWithoutBudgetReservationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -848,12 +953,15 @@ export type MarketResearchUpdateWithoutProductInput = {
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  product?: Prisma.ProductUpdateOneRequiredWithoutMarketResearchesNestedInput
   results?: Prisma.MarketResultUpdateManyWithoutResearchNestedInput
   aiUsage?: Prisma.AiUsageUpdateManyWithoutResearchNestedInput
 }
 
-export type MarketResearchUncheckedUpdateWithoutProductInput = {
+export type MarketResearchUncheckedUpdateWithoutBudgetReservationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  productId?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -868,8 +976,60 @@ export type MarketResearchUncheckedUpdateWithoutProductInput = {
   aiUsage?: Prisma.AiUsageUncheckedUpdateManyWithoutResearchNestedInput
 }
 
+export type MarketResearchCreateManyProductInput = {
+  id?: string
+  cacheKey?: string | null
+  status?: $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchCreaterequestedCountriesInput | string[]
+  summary?: string | null
+  recommendedCountry?: string | null
+  recommendationReason?: string | null
+  modelUsed?: string | null
+  errorMessage?: string | null
+  completedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type MarketResearchUpdateWithoutProductInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendedCountry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelUsed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  results?: Prisma.MarketResultUpdateManyWithoutResearchNestedInput
+  aiUsage?: Prisma.AiUsageUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUpdateManyWithoutResearchNestedInput
+}
+
+export type MarketResearchUncheckedUpdateWithoutProductInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
+  requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendedCountry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recommendationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modelUsed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  results?: Prisma.MarketResultUncheckedUpdateManyWithoutResearchNestedInput
+  aiUsage?: Prisma.AiUsageUncheckedUpdateManyWithoutResearchNestedInput
+  budgetReservations?: Prisma.AiBudgetReservationUncheckedUpdateManyWithoutResearchNestedInput
+}
+
 export type MarketResearchUncheckedUpdateManyWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  cacheKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumResearchStatusFieldUpdateOperationsInput | $Enums.ResearchStatus
   requestedCountries?: Prisma.MarketResearchUpdaterequestedCountriesInput | string[]
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -890,11 +1050,13 @@ export type MarketResearchUncheckedUpdateManyWithoutProductInput = {
 export type MarketResearchCountOutputType = {
   results: number
   aiUsage: number
+  budgetReservations: number
 }
 
 export type MarketResearchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   results?: boolean | MarketResearchCountOutputTypeCountResultsArgs
   aiUsage?: boolean | MarketResearchCountOutputTypeCountAiUsageArgs
+  budgetReservations?: boolean | MarketResearchCountOutputTypeCountBudgetReservationsArgs
 }
 
 /**
@@ -921,10 +1083,18 @@ export type MarketResearchCountOutputTypeCountAiUsageArgs<ExtArgs extends runtim
   where?: Prisma.AiUsageWhereInput
 }
 
+/**
+ * MarketResearchCountOutputType without action
+ */
+export type MarketResearchCountOutputTypeCountBudgetReservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiBudgetReservationWhereInput
+}
+
 
 export type MarketResearchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   productId?: boolean
+  cacheKey?: boolean
   status?: boolean
   requestedCountries?: boolean
   summary?: boolean
@@ -938,12 +1108,14 @@ export type MarketResearchSelect<ExtArgs extends runtime.Types.Extensions.Intern
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   results?: boolean | Prisma.MarketResearch$resultsArgs<ExtArgs>
   aiUsage?: boolean | Prisma.MarketResearch$aiUsageArgs<ExtArgs>
+  budgetReservations?: boolean | Prisma.MarketResearch$budgetReservationsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketResearchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["marketResearch"]>
 
 export type MarketResearchSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   productId?: boolean
+  cacheKey?: boolean
   status?: boolean
   requestedCountries?: boolean
   summary?: boolean
@@ -960,6 +1132,7 @@ export type MarketResearchSelectCreateManyAndReturn<ExtArgs extends runtime.Type
 export type MarketResearchSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   productId?: boolean
+  cacheKey?: boolean
   status?: boolean
   requestedCountries?: boolean
   summary?: boolean
@@ -976,6 +1149,7 @@ export type MarketResearchSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
 export type MarketResearchSelectScalar = {
   id?: boolean
   productId?: boolean
+  cacheKey?: boolean
   status?: boolean
   requestedCountries?: boolean
   summary?: boolean
@@ -988,11 +1162,12 @@ export type MarketResearchSelectScalar = {
   updatedAt?: boolean
 }
 
-export type MarketResearchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "status" | "requestedCountries" | "summary" | "recommendedCountry" | "recommendationReason" | "modelUsed" | "errorMessage" | "completedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["marketResearch"]>
+export type MarketResearchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "cacheKey" | "status" | "requestedCountries" | "summary" | "recommendedCountry" | "recommendationReason" | "modelUsed" | "errorMessage" | "completedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["marketResearch"]>
 export type MarketResearchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   results?: boolean | Prisma.MarketResearch$resultsArgs<ExtArgs>
   aiUsage?: boolean | Prisma.MarketResearch$aiUsageArgs<ExtArgs>
+  budgetReservations?: boolean | Prisma.MarketResearch$budgetReservationsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketResearchCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MarketResearchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1008,10 +1183,12 @@ export type $MarketResearchPayload<ExtArgs extends runtime.Types.Extensions.Inte
     product: Prisma.$ProductPayload<ExtArgs>
     results: Prisma.$MarketResultPayload<ExtArgs>[]
     aiUsage: Prisma.$AiUsagePayload<ExtArgs>[]
+    budgetReservations: Prisma.$AiBudgetReservationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     productId: string
+    cacheKey: string | null
     status: $Enums.ResearchStatus
     requestedCountries: string[]
     summary: string | null
@@ -1419,6 +1596,7 @@ export interface Prisma__MarketResearchClient<T, Null = never, ExtArgs extends r
   product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   results<T extends Prisma.MarketResearch$resultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResearch$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiUsage<T extends Prisma.MarketResearch$aiUsageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResearch$aiUsageArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiUsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  budgetReservations<T extends Prisma.MarketResearch$budgetReservationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResearch$budgetReservationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiBudgetReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1450,6 +1628,7 @@ export interface Prisma__MarketResearchClient<T, Null = never, ExtArgs extends r
 export interface MarketResearchFieldRefs {
   readonly id: Prisma.FieldRef<"MarketResearch", 'String'>
   readonly productId: Prisma.FieldRef<"MarketResearch", 'String'>
+  readonly cacheKey: Prisma.FieldRef<"MarketResearch", 'String'>
   readonly status: Prisma.FieldRef<"MarketResearch", 'ResearchStatus'>
   readonly requestedCountries: Prisma.FieldRef<"MarketResearch", 'String[]'>
   readonly summary: Prisma.FieldRef<"MarketResearch", 'String'>
@@ -1906,6 +2085,30 @@ export type MarketResearch$aiUsageArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.AiUsageScalarFieldEnum | Prisma.AiUsageScalarFieldEnum[]
+}
+
+/**
+ * MarketResearch.budgetReservations
+ */
+export type MarketResearch$budgetReservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiBudgetReservation
+   */
+  select?: Prisma.AiBudgetReservationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiBudgetReservation
+   */
+  omit?: Prisma.AiBudgetReservationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiBudgetReservationInclude<ExtArgs> | null
+  where?: Prisma.AiBudgetReservationWhereInput
+  orderBy?: Prisma.AiBudgetReservationOrderByWithRelationInput | Prisma.AiBudgetReservationOrderByWithRelationInput[]
+  cursor?: Prisma.AiBudgetReservationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiBudgetReservationScalarFieldEnum | Prisma.AiBudgetReservationScalarFieldEnum[]
 }
 
 /**

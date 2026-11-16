@@ -40,3 +40,12 @@ export const ResearchStatus = {
 } as const
 
 export type ResearchStatus = (typeof ResearchStatus)[keyof typeof ResearchStatus]
+
+
+export const BudgetReservationStatus = {
+  RESERVED: 'RESERVED',
+  SETTLED: 'SETTLED',
+  RELEASED: 'RELEASED'
+} as const
+
+export type BudgetReservationStatus = (typeof BudgetReservationStatus)[keyof typeof BudgetReservationStatus]
