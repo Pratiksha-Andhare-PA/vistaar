@@ -24,6 +24,19 @@ enum BusinessCategory {
   OTHER
 }
 
+enum ResearchStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum BudgetReservationStatus {
+  RESERVED
+  SETTLED
+  RELEASED
+}
+
 model Business {
   id           String           @id @default(cuid())
   name         String
@@ -56,8 +69,132 @@ model Product {
 
   business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
 
+  marketResearches MarketResearch[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([businessId])
+}
+
+model MarketResearch {
+  id                   String         @id @default(cuid())
+  productId            String
+  cacheKey             String?        @unique
+  status               ResearchStatus @default(PENDING)
+  requestedCountries   String[]
+  summary              String?        @db.Text
+  recommendedCountry   String?
+  recommendationReason String?        @db.Text
+  modelUsed            String?
+  errorMessage         String?        @db.Text
+  completedAt          DateTime?
+
+  product Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  results MarketResult[]
+  aiUsage AiUsage[]
+  budgetReservations AiBudgetReservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model MarketResult {
+  id                     String   @id @default(cuid())
+  researchId             String
+  country                String
+  countryCode            String
+  rank                   Int
+  opportunityScore       Int
+  scoreBreakdown         Json?
+  demandLevel            String
+  competitionLevel       String
+  targetCustomers        String   @db.Text
+  marketRationale        String   @db.Text
+  opportunities          String[]
+  risks                  String[]
+  culturalConsiderations String[]
+  suggestedPriceMin      Decimal? @db.Decimal(12, 2)
+  suggestedPriceMax      Decimal? @db.Decimal(12, 2)
+  suggestedCurrency      String?
+
+  research MarketResearch   @relation(fields: [researchId], references: [id], onDelete: Cascade)
+  evidence MarketEvidence[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([researchId, countryCode])
+  @@index([researchId])
+  @@index([opportunityScore])
+}
+
+model MarketEvidence {
+  id             String    @id @default(cuid())
+  marketResultId String
+  title          String
+  publisher      String?
+  url            String
+  claim          String    @db.Text
+  sourceType     String?
+  publishedAt    DateTime?
+  retrievedAt    DateTime  @default(now())
+
+  marketResult MarketResult @relation(fields: [marketResultId], references: [id], onDelete: Cascade)
+
+  @@index([marketResultId])
+}
+
+model AiUsage {
+  id         String  @id @default(cuid())
+  researchId String?
+  provider   String  @default("anthropic")
+  model      String
+  operation  String
+
+  inputTokens              Int @default(0)
+  outputTokens             Int @default(0)
+  cacheReadInputTokens     Int @default(0)
+  cacheCreationInputTokens Int @default(0)
+
+  estimatedCostUsd Decimal @default(0) @db.Decimal(12, 8)
+
+  createdAt DateTime @default(now())
+
+  research MarketResearch? @relation(fields: [researchId], references: [id], onDelete: SetNull)
+
+  @@index([researchId])
+  @@index([model])
+  @@index([createdAt])
+}
+
+model AiBudget {
+  id             String   @id @default("global")
+  totalBudgetUsd Decimal  @db.Decimal(12, 8)
+  spentUsd       Decimal  @default(0) @db.Decimal(12, 8)
+  reservedUsd    Decimal  @default(0) @db.Decimal(12, 8)
+  updatedAt      DateTime @updatedAt
+
+  reservations AiBudgetReservation[]
+}
+
+model AiBudgetReservation {
+  id               String                  @id @default(cuid())
+  budgetId         String                  @default("global")
+  researchId       String?
+  estimatedCostUsd Decimal                 @db.Decimal(12, 8)
+  actualCostUsd    Decimal?                @db.Decimal(12, 8)
+  status           BudgetReservationStatus @default(RESERVED)
+  createdAt        DateTime                @default(now())
+  expiresAt        DateTime
+  settledAt        DateTime?
+
+  budget   AiBudget        @relation(fields: [budgetId], references: [id])
+  research MarketResearch? @relation(fields: [researchId], references: [id], onDelete: SetNull)
+
+  @@index([status, expiresAt])
+  @@index([researchId])
 }

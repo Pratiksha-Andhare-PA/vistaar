@@ -52,7 +52,13 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Business: 'Business',
-  Product: 'Product'
+  Product: 'Product',
+  MarketResearch: 'MarketResearch',
+  MarketResult: 'MarketResult',
+  MarketEvidence: 'MarketEvidence',
+  AiUsage: 'AiUsage',
+  AiBudget: 'AiBudget',
+  AiBudgetReservation: 'AiBudgetReservation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -102,6 +108,106 @@ export const ProductScalarFieldEnum = {
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+export const MarketResearchScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  cacheKey: 'cacheKey',
+  status: 'status',
+  requestedCountries: 'requestedCountries',
+  summary: 'summary',
+  recommendedCountry: 'recommendedCountry',
+  recommendationReason: 'recommendationReason',
+  modelUsed: 'modelUsed',
+  errorMessage: 'errorMessage',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MarketResearchScalarFieldEnum = (typeof MarketResearchScalarFieldEnum)[keyof typeof MarketResearchScalarFieldEnum]
+
+
+export const MarketResultScalarFieldEnum = {
+  id: 'id',
+  researchId: 'researchId',
+  country: 'country',
+  countryCode: 'countryCode',
+  rank: 'rank',
+  opportunityScore: 'opportunityScore',
+  demandLevel: 'demandLevel',
+  competitionLevel: 'competitionLevel',
+  targetCustomers: 'targetCustomers',
+  marketRationale: 'marketRationale',
+  opportunities: 'opportunities',
+  risks: 'risks',
+  culturalConsiderations: 'culturalConsiderations',
+  suggestedPriceMin: 'suggestedPriceMin',
+  suggestedPriceMax: 'suggestedPriceMax',
+  suggestedCurrency: 'suggestedCurrency',
+  createdAt: 'createdAt'
+} as const
+
+export type MarketResultScalarFieldEnum = (typeof MarketResultScalarFieldEnum)[keyof typeof MarketResultScalarFieldEnum]
+
+
+export const MarketEvidenceScalarFieldEnum = {
+  id: 'id',
+  marketResultId: 'marketResultId',
+  title: 'title',
+  publisher: 'publisher',
+  url: 'url',
+  claim: 'claim',
+  sourceType: 'sourceType',
+  publishedAt: 'publishedAt',
+  retrievedAt: 'retrievedAt'
+} as const
+
+export type MarketEvidenceScalarFieldEnum = (typeof MarketEvidenceScalarFieldEnum)[keyof typeof MarketEvidenceScalarFieldEnum]
+
+
+export const AiUsageScalarFieldEnum = {
+  id: 'id',
+  researchId: 'researchId',
+  provider: 'provider',
+  model: 'model',
+  operation: 'operation',
+  inputTokens: 'inputTokens',
+  outputTokens: 'outputTokens',
+  cacheReadInputTokens: 'cacheReadInputTokens',
+  cacheCreationInputTokens: 'cacheCreationInputTokens',
+  estimatedCostUsd: 'estimatedCostUsd',
+  createdAt: 'createdAt'
+} as const
+
+export type AiUsageScalarFieldEnum = (typeof AiUsageScalarFieldEnum)[keyof typeof AiUsageScalarFieldEnum]
+
+
+export const AiBudgetScalarFieldEnum = {
+  id: 'id',
+  totalBudgetUsd: 'totalBudgetUsd',
+  spentUsd: 'spentUsd',
+  reservedUsd: 'reservedUsd',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiBudgetScalarFieldEnum = (typeof AiBudgetScalarFieldEnum)[keyof typeof AiBudgetScalarFieldEnum]
+
+
+export const AiBudgetReservationScalarFieldEnum = {
+  id: 'id',
+  budgetId: 'budgetId',
+  researchId: 'researchId',
+  estimatedCostUsd: 'estimatedCostUsd',
+  actualCostUsd: 'actualCostUsd',
+  status: 'status',
+  createdAt: 'createdAt',
+  expiresAt: 'expiresAt',
+  settledAt: 'settledAt'
+} as const
+
+export type AiBudgetReservationScalarFieldEnum = (typeof AiBudgetReservationScalarFieldEnum)[keyof typeof AiBudgetReservationScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -27,7 +27,7 @@ export default function OnboardingPage() {
           </h1>
 
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
-            Tell Vistaar about your business. We'll use this information
+            Tell Vistaar about your business. We&apos;ll use this information
             to identify relevant international markets and opportunities
             for your products.
           </p>

@@ -30,3 +30,22 @@ export const BusinessCategory = {
 } as const
 
 export type BusinessCategory = (typeof BusinessCategory)[keyof typeof BusinessCategory]
+
+
+export const ResearchStatus = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+} as const
+
+export type ResearchStatus = (typeof ResearchStatus)[keyof typeof ResearchStatus]
+
+
+export const BudgetReservationStatus = {
+  RESERVED: 'RESERVED',
+  SETTLED: 'SETTLED',
+  RELEASED: 'RELEASED'
+} as const
+
+export type BudgetReservationStatus = (typeof BudgetReservationStatus)[keyof typeof BudgetReservationStatus]

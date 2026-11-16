@@ -10,4 +10,10 @@
  */
 export type * from './models/Business'
 export type * from './models/Product'
+export type * from './models/MarketResearch'
+export type * from './models/MarketResult'
+export type * from './models/MarketEvidence'
+export type * from './models/AiUsage'
+export type * from './models/AiBudget'
+export type * from './models/AiBudgetReservation'
 export type * from './commonInputTypes'
