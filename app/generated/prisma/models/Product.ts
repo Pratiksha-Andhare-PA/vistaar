@@ -250,6 +250,7 @@ export type ProductWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   marketResearches?: Prisma.MarketResearchListRelationFilter
+  localizations?: Prisma.ProductLocalizationListRelationFilter
 }
 
 export type ProductOrderByWithRelationInput = {
@@ -264,6 +265,7 @@ export type ProductOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   business?: Prisma.BusinessOrderByWithRelationInput
   marketResearches?: Prisma.MarketResearchOrderByRelationAggregateInput
+  localizations?: Prisma.ProductLocalizationOrderByRelationAggregateInput
 }
 
 export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -281,6 +283,7 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   marketResearches?: Prisma.MarketResearchListRelationFilter
+  localizations?: Prisma.ProductLocalizationListRelationFilter
 }, "id">
 
 export type ProductOrderByWithAggregationInput = {
@@ -326,6 +329,7 @@ export type ProductCreateInput = {
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutProductsInput
   marketResearches?: Prisma.MarketResearchCreateNestedManyWithoutProductInput
+  localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateInput = {
@@ -339,6 +343,7 @@ export type ProductUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   marketResearches?: Prisma.MarketResearchUncheckedCreateNestedManyWithoutProductInput
+  localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductUpdateInput = {
@@ -352,6 +357,7 @@ export type ProductUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutProductsNestedInput
   marketResearches?: Prisma.MarketResearchUpdateManyWithoutProductNestedInput
+  localizations?: Prisma.ProductLocalizationUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateInput = {
@@ -365,6 +371,7 @@ export type ProductUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   marketResearches?: Prisma.MarketResearchUncheckedUpdateManyWithoutProductNestedInput
+  localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyInput = {
@@ -525,6 +532,20 @@ export type ProductUpdateOneRequiredWithoutMarketResearchesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutMarketResearchesInput, Prisma.ProductUpdateWithoutMarketResearchesInput>, Prisma.ProductUncheckedUpdateWithoutMarketResearchesInput>
 }
 
+export type ProductCreateNestedOneWithoutLocalizationsInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutLocalizationsInput, Prisma.ProductUncheckedCreateWithoutLocalizationsInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutLocalizationsInput
+  connect?: Prisma.ProductWhereUniqueInput
+}
+
+export type ProductUpdateOneRequiredWithoutLocalizationsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutLocalizationsInput, Prisma.ProductUncheckedCreateWithoutLocalizationsInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutLocalizationsInput
+  upsert?: Prisma.ProductUpsertWithoutLocalizationsInput
+  connect?: Prisma.ProductWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutLocalizationsInput, Prisma.ProductUpdateWithoutLocalizationsInput>, Prisma.ProductUncheckedUpdateWithoutLocalizationsInput>
+}
+
 export type ProductCreateWithoutBusinessInput = {
   id?: string
   name: string
@@ -535,6 +556,7 @@ export type ProductCreateWithoutBusinessInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   marketResearches?: Prisma.MarketResearchCreateNestedManyWithoutProductInput
+  localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutBusinessInput = {
@@ -547,6 +569,7 @@ export type ProductUncheckedCreateWithoutBusinessInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   marketResearches?: Prisma.MarketResearchUncheckedCreateNestedManyWithoutProductInput
+  localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutBusinessInput = {
@@ -600,6 +623,7 @@ export type ProductCreateWithoutMarketResearchesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutProductsInput
+  localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutMarketResearchesInput = {
@@ -612,6 +636,7 @@ export type ProductUncheckedCreateWithoutMarketResearchesInput = {
   imageUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutMarketResearchesInput = {
@@ -640,6 +665,7 @@ export type ProductUpdateWithoutMarketResearchesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutProductsNestedInput
+  localizations?: Prisma.ProductLocalizationUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutMarketResearchesInput = {
@@ -652,6 +678,75 @@ export type ProductUncheckedUpdateWithoutMarketResearchesInput = {
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutProductNestedInput
+}
+
+export type ProductCreateWithoutLocalizationsInput = {
+  id?: string
+  name: string
+  description: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: string
+  imageUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  business: Prisma.BusinessCreateNestedOneWithoutProductsInput
+  marketResearches?: Prisma.MarketResearchCreateNestedManyWithoutProductInput
+}
+
+export type ProductUncheckedCreateWithoutLocalizationsInput = {
+  id?: string
+  businessId: string
+  name: string
+  description: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: string
+  imageUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  marketResearches?: Prisma.MarketResearchUncheckedCreateNestedManyWithoutProductInput
+}
+
+export type ProductCreateOrConnectWithoutLocalizationsInput = {
+  where: Prisma.ProductWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProductCreateWithoutLocalizationsInput, Prisma.ProductUncheckedCreateWithoutLocalizationsInput>
+}
+
+export type ProductUpsertWithoutLocalizationsInput = {
+  update: Prisma.XOR<Prisma.ProductUpdateWithoutLocalizationsInput, Prisma.ProductUncheckedUpdateWithoutLocalizationsInput>
+  create: Prisma.XOR<Prisma.ProductCreateWithoutLocalizationsInput, Prisma.ProductUncheckedCreateWithoutLocalizationsInput>
+  where?: Prisma.ProductWhereInput
+}
+
+export type ProductUpdateToOneWithWhereWithoutLocalizationsInput = {
+  where?: Prisma.ProductWhereInput
+  data: Prisma.XOR<Prisma.ProductUpdateWithoutLocalizationsInput, Prisma.ProductUncheckedUpdateWithoutLocalizationsInput>
+}
+
+export type ProductUpdateWithoutLocalizationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  business?: Prisma.BusinessUpdateOneRequiredWithoutProductsNestedInput
+  marketResearches?: Prisma.MarketResearchUpdateManyWithoutProductNestedInput
+}
+
+export type ProductUncheckedUpdateWithoutLocalizationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  businessId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  marketResearches?: Prisma.MarketResearchUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyBusinessInput = {
@@ -675,6 +770,7 @@ export type ProductUpdateWithoutBusinessInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   marketResearches?: Prisma.MarketResearchUpdateManyWithoutProductNestedInput
+  localizations?: Prisma.ProductLocalizationUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutBusinessInput = {
@@ -687,6 +783,7 @@ export type ProductUncheckedUpdateWithoutBusinessInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   marketResearches?: Prisma.MarketResearchUncheckedUpdateManyWithoutProductNestedInput
+  localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateManyWithoutBusinessInput = {
@@ -707,10 +804,12 @@ export type ProductUncheckedUpdateManyWithoutBusinessInput = {
 
 export type ProductCountOutputType = {
   marketResearches: number
+  localizations: number
 }
 
 export type ProductCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   marketResearches?: boolean | ProductCountOutputTypeCountMarketResearchesArgs
+  localizations?: boolean | ProductCountOutputTypeCountLocalizationsArgs
 }
 
 /**
@@ -730,6 +829,13 @@ export type ProductCountOutputTypeCountMarketResearchesArgs<ExtArgs extends runt
   where?: Prisma.MarketResearchWhereInput
 }
 
+/**
+ * ProductCountOutputType without action
+ */
+export type ProductCountOutputTypeCountLocalizationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductLocalizationWhereInput
+}
+
 
 export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -743,6 +849,7 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   updatedAt?: boolean
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   marketResearches?: boolean | Prisma.Product$marketResearchesArgs<ExtArgs>
+  localizations?: boolean | Prisma.Product$localizationsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["product"]>
 
@@ -788,6 +895,7 @@ export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type ProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   marketResearches?: boolean | Prisma.Product$marketResearchesArgs<ExtArgs>
+  localizations?: boolean | Prisma.Product$localizationsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProductIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -802,6 +910,7 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     business: Prisma.$BusinessPayload<ExtArgs>
     marketResearches: Prisma.$MarketResearchPayload<ExtArgs>[]
+    localizations: Prisma.$ProductLocalizationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1209,6 +1318,7 @@ export interface Prisma__ProductClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   business<T extends Prisma.BusinessDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BusinessDefaultArgs<ExtArgs>>): Prisma.Prisma__BusinessClient<runtime.Types.Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   marketResearches<T extends Prisma.Product$marketResearchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$marketResearchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketResearchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  localizations<T extends Prisma.Product$localizationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$localizationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductLocalizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1669,6 +1779,30 @@ export type Product$marketResearchesArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.MarketResearchScalarFieldEnum | Prisma.MarketResearchScalarFieldEnum[]
+}
+
+/**
+ * Product.localizations
+ */
+export type Product$localizationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProductLocalization
+   */
+  select?: Prisma.ProductLocalizationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProductLocalization
+   */
+  omit?: Prisma.ProductLocalizationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductLocalizationInclude<ExtArgs> | null
+  where?: Prisma.ProductLocalizationWhereInput
+  orderBy?: Prisma.ProductLocalizationOrderByWithRelationInput | Prisma.ProductLocalizationOrderByWithRelationInput[]
+  cursor?: Prisma.ProductLocalizationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductLocalizationScalarFieldEnum | Prisma.ProductLocalizationScalarFieldEnum[]
 }
 
 /**

@@ -4,7 +4,7 @@ import "dotenv/config";
 import { prisma } from "../lib/database";
 import {
   reserveAiBudget,
-  settleAiBudgetReservation,
+  recordClaudeUsageAndSettle,
   releaseAiBudgetReservation,
 } from "../lib/ai-budget";
 import { calculateClaudeCostUsd } from "../lib/ai-pricing";
@@ -67,10 +67,13 @@ async function main() {
     simulatedUsage,
   );
 
-  await settleAiBudgetReservation(
-    reservation.id,
-    actualCost,
-  );
+  await recordClaudeUsageAndSettle({
+    reservationId: reservation.id,
+    researchId: research.id,
+    model: MODEL,
+    operation: "budget-test-simulated",
+    usage: simulatedUsage,
+  });
 
   console.log("\nSimulated actual cost:", actualCost);
   await showBudget("After settlement");

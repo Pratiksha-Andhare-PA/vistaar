@@ -42,16 +42,41 @@ export function estimateInputTokens(text: string): number {
   return Math.ceil(text.length / 2);
 }
 
+type AiOperationReference =
+  | {
+    researchId: string;
+    localizationId?: never;
+  }
+  | {
+    localizationId: string;
+    researchId?: never;
+  };
+
+function validateOperationReference(
+  input: AiOperationReference,
+) {
+  const hasResearchId = Boolean(input.researchId);
+  const hasLocalizationId = Boolean(input.localizationId);
+
+  if (hasResearchId === hasLocalizationId) {
+    throw new Error(
+      "An AI operation must reference exactly one research or localization record.",
+    );
+  }
+}
+
 /**
  * Reserve enough budget for the estimated prompt and
  * the maximum possible output before calling Claude.
  */
-export async function reserveAiBudget(input: {
-  researchId: string;
-  model: string;
-  promptText: string;
-  maxOutputTokens: number;
-}) {
+export async function reserveAiBudget(
+  input: AiOperationReference & {
+    model: string;
+    promptText: string;
+    maxOutputTokens: number;
+  },
+) {
+  validateOperationReference(input);
   if (
     !Number.isInteger(input.maxOutputTokens) ||
     input.maxOutputTokens <= 0
@@ -112,7 +137,9 @@ export async function reserveAiBudget(input: {
     const reservation = await tx.aiBudgetReservation.create({
       data: {
         budgetId: BUDGET_ID,
-        researchId: input.researchId,
+        ...(input.researchId
+          ? { researchId: input.researchId }
+          : { localizationId: input.localizationId }),
         estimatedCostUsd: reservationAmount,
         expiresAt,
       },
@@ -128,68 +155,6 @@ export async function reserveAiBudget(input: {
     });
 
     return reservation;
-  });
-}
-
-/**
- * Settle a reservation using the actual API usage.
- */
-export async function settleAiBudgetReservation(
-  reservationId: string,
-  actualCostUsd: number,
-) {
-  if (!Number.isFinite(actualCostUsd) || actualCostUsd < 0) {
-    throw new Error("Invalid actual Claude API cost.");
-  }
-
-  const actualCost = new Prisma.Decimal(
-    actualCostUsd.toFixed(8),
-  );
-
-  return prisma.$transaction(async (tx) => {
-    await tx.$queryRaw`
-      WITH lock_acquired AS MATERIALIZED (
-        SELECT pg_advisory_xact_lock(${BUDGET_LOCK_ID})
-      )
-      SELECT 1::int AS locked
-      FROM lock_acquired
-    `;
-
-    const reservation =
-      await tx.aiBudgetReservation.findUnique({
-        where: { id: reservationId },
-      });
-
-    if (!reservation) {
-      throw new Error("Budget reservation not found.");
-    }
-
-    if (reservation.status !== "RESERVED") {
-      throw new Error(
-        "This budget reservation has already been processed.",
-      );
-    }
-
-    await tx.aiBudget.update({
-      where: { id: reservation.budgetId },
-      data: {
-        reservedUsd: {
-          decrement: reservation.estimatedCostUsd,
-        },
-        spentUsd: {
-          increment: actualCost,
-        },
-      },
-    });
-
-    return tx.aiBudgetReservation.update({
-      where: { id: reservationId },
-      data: {
-        actualCostUsd: actualCost,
-        status: "SETTLED",
-        settledAt: new Date(),
-      },
-    });
   });
 }
 
@@ -243,18 +208,18 @@ export async function releaseAiBudgetReservation(
   });
 }
 
-export interface RecordClaudeUsageInput {
-  reservationId: string;
-  researchId: string;
-  model: string;
-  operation: string;
-  usage: {
-    inputTokens: number;
-    outputTokens: number;
-    cacheReadInputTokens: number;
-    cacheCreationInputTokens: number;
+export type RecordClaudeUsageInput =
+  AiOperationReference & {
+    reservationId: string;
+    model: string;
+    operation: string;
+    usage: {
+      inputTokens: number;
+      outputTokens: number;
+      cacheReadInputTokens: number;
+      cacheCreationInputTokens: number;
+    };
   };
-}
 
 /**
  * Atomically records actual Claude usage and settles
@@ -265,6 +230,8 @@ export interface RecordClaudeUsageInput {
 export async function recordClaudeUsageAndSettle(
   input: RecordClaudeUsageInput,
 ) {
+  validateOperationReference(input);
+
   const actualCostUsd = calculateClaudeCostUsd(
     input.model,
     input.usage,
@@ -299,25 +266,42 @@ export async function recordClaudeUsageAndSettle(
     }
 
     // Ensure this reservation belongs to the supplied research.
-    if (reservation.researchId !== input.researchId) {
+    if (
+      reservation.researchId !== (input.researchId ?? null) ||
+      reservation.localizationId !== (input.localizationId ?? null)
+    ) {
       throw new Error(
-        "Budget reservation does not belong to this market research record.",
+        "Budget reservation does not belong to this AI operation.",
       );
     }
 
-    const research = await tx.marketResearch.findUnique({
-      where: { id: input.researchId },
-      select: { id: true },
-    });
+    if (input.researchId) {
+      const research = await tx.marketResearch.findUnique({
+        where: { id: input.researchId },
+        select: { id: true },
+      });
 
-    if (!research) {
-      throw new Error("Market research record not found.");
+      if (!research) {
+        throw new Error("Market research record not found.");
+      }
+    } else if (input.localizationId) {
+      const localization =
+        await tx.productLocalization.findUnique({
+          where: { id: input.localizationId },
+          select: { id: true },
+        });
+
+      if (!localization) {
+        throw new Error("Product localization record not found.");
+      }
     }
 
     // Record the actual API usage.
     const usageRecord = await tx.aiUsage.create({
       data: {
-        researchId: input.researchId,
+        ...(input.researchId
+          ? { researchId: input.researchId }
+          : { localizationId: input.localizationId }),
         provider: "anthropic",
         model: input.model,
         operation: input.operation,

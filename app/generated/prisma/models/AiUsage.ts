@@ -48,6 +48,7 @@ export type AiUsageMinAggregateOutputType = {
   provider: string | null
   model: string | null
   operation: string | null
+  localizationId: string | null
   inputTokens: number | null
   outputTokens: number | null
   cacheReadInputTokens: number | null
@@ -62,6 +63,7 @@ export type AiUsageMaxAggregateOutputType = {
   provider: string | null
   model: string | null
   operation: string | null
+  localizationId: string | null
   inputTokens: number | null
   outputTokens: number | null
   cacheReadInputTokens: number | null
@@ -76,6 +78,7 @@ export type AiUsageCountAggregateOutputType = {
   provider: number
   model: number
   operation: number
+  localizationId: number
   inputTokens: number
   outputTokens: number
   cacheReadInputTokens: number
@@ -108,6 +111,7 @@ export type AiUsageMinAggregateInputType = {
   provider?: true
   model?: true
   operation?: true
+  localizationId?: true
   inputTokens?: true
   outputTokens?: true
   cacheReadInputTokens?: true
@@ -122,6 +126,7 @@ export type AiUsageMaxAggregateInputType = {
   provider?: true
   model?: true
   operation?: true
+  localizationId?: true
   inputTokens?: true
   outputTokens?: true
   cacheReadInputTokens?: true
@@ -136,6 +141,7 @@ export type AiUsageCountAggregateInputType = {
   provider?: true
   model?: true
   operation?: true
+  localizationId?: true
   inputTokens?: true
   outputTokens?: true
   cacheReadInputTokens?: true
@@ -237,6 +243,7 @@ export type AiUsageGroupByOutputType = {
   provider: string
   model: string
   operation: string
+  localizationId: string | null
   inputTokens: number
   outputTokens: number
   cacheReadInputTokens: number
@@ -274,6 +281,7 @@ export type AiUsageWhereInput = {
   provider?: Prisma.StringFilter<"AiUsage"> | string
   model?: Prisma.StringFilter<"AiUsage"> | string
   operation?: Prisma.StringFilter<"AiUsage"> | string
+  localizationId?: Prisma.StringNullableFilter<"AiUsage"> | string | null
   inputTokens?: Prisma.IntFilter<"AiUsage"> | number
   outputTokens?: Prisma.IntFilter<"AiUsage"> | number
   cacheReadInputTokens?: Prisma.IntFilter<"AiUsage"> | number
@@ -281,6 +289,7 @@ export type AiUsageWhereInput = {
   estimatedCostUsd?: Prisma.DecimalFilter<"AiUsage"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"AiUsage"> | Date | string
   research?: Prisma.XOR<Prisma.MarketResearchNullableScalarRelationFilter, Prisma.MarketResearchWhereInput> | null
+  localization?: Prisma.XOR<Prisma.ProductLocalizationNullableScalarRelationFilter, Prisma.ProductLocalizationWhereInput> | null
 }
 
 export type AiUsageOrderByWithRelationInput = {
@@ -289,6 +298,7 @@ export type AiUsageOrderByWithRelationInput = {
   provider?: Prisma.SortOrder
   model?: Prisma.SortOrder
   operation?: Prisma.SortOrder
+  localizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   inputTokens?: Prisma.SortOrder
   outputTokens?: Prisma.SortOrder
   cacheReadInputTokens?: Prisma.SortOrder
@@ -296,6 +306,7 @@ export type AiUsageOrderByWithRelationInput = {
   estimatedCostUsd?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   research?: Prisma.MarketResearchOrderByWithRelationInput
+  localization?: Prisma.ProductLocalizationOrderByWithRelationInput
 }
 
 export type AiUsageWhereUniqueInput = Prisma.AtLeast<{
@@ -307,6 +318,7 @@ export type AiUsageWhereUniqueInput = Prisma.AtLeast<{
   provider?: Prisma.StringFilter<"AiUsage"> | string
   model?: Prisma.StringFilter<"AiUsage"> | string
   operation?: Prisma.StringFilter<"AiUsage"> | string
+  localizationId?: Prisma.StringNullableFilter<"AiUsage"> | string | null
   inputTokens?: Prisma.IntFilter<"AiUsage"> | number
   outputTokens?: Prisma.IntFilter<"AiUsage"> | number
   cacheReadInputTokens?: Prisma.IntFilter<"AiUsage"> | number
@@ -314,6 +326,7 @@ export type AiUsageWhereUniqueInput = Prisma.AtLeast<{
   estimatedCostUsd?: Prisma.DecimalFilter<"AiUsage"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"AiUsage"> | Date | string
   research?: Prisma.XOR<Prisma.MarketResearchNullableScalarRelationFilter, Prisma.MarketResearchWhereInput> | null
+  localization?: Prisma.XOR<Prisma.ProductLocalizationNullableScalarRelationFilter, Prisma.ProductLocalizationWhereInput> | null
 }, "id">
 
 export type AiUsageOrderByWithAggregationInput = {
@@ -322,6 +335,7 @@ export type AiUsageOrderByWithAggregationInput = {
   provider?: Prisma.SortOrder
   model?: Prisma.SortOrder
   operation?: Prisma.SortOrder
+  localizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   inputTokens?: Prisma.SortOrder
   outputTokens?: Prisma.SortOrder
   cacheReadInputTokens?: Prisma.SortOrder
@@ -344,6 +358,7 @@ export type AiUsageScalarWhereWithAggregatesInput = {
   provider?: Prisma.StringWithAggregatesFilter<"AiUsage"> | string
   model?: Prisma.StringWithAggregatesFilter<"AiUsage"> | string
   operation?: Prisma.StringWithAggregatesFilter<"AiUsage"> | string
+  localizationId?: Prisma.StringNullableWithAggregatesFilter<"AiUsage"> | string | null
   inputTokens?: Prisma.IntWithAggregatesFilter<"AiUsage"> | number
   outputTokens?: Prisma.IntWithAggregatesFilter<"AiUsage"> | number
   cacheReadInputTokens?: Prisma.IntWithAggregatesFilter<"AiUsage"> | number
@@ -364,6 +379,7 @@ export type AiUsageCreateInput = {
   estimatedCostUsd?: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   research?: Prisma.MarketResearchCreateNestedOneWithoutAiUsageInput
+  localization?: Prisma.ProductLocalizationCreateNestedOneWithoutAiUsageInput
 }
 
 export type AiUsageUncheckedCreateInput = {
@@ -372,6 +388,7 @@ export type AiUsageUncheckedCreateInput = {
   provider?: string
   model: string
   operation: string
+  localizationId?: string | null
   inputTokens?: number
   outputTokens?: number
   cacheReadInputTokens?: number
@@ -392,6 +409,7 @@ export type AiUsageUpdateInput = {
   estimatedCostUsd?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   research?: Prisma.MarketResearchUpdateOneWithoutAiUsageNestedInput
+  localization?: Prisma.ProductLocalizationUpdateOneWithoutAiUsageNestedInput
 }
 
 export type AiUsageUncheckedUpdateInput = {
@@ -400,6 +418,7 @@ export type AiUsageUncheckedUpdateInput = {
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   operation?: Prisma.StringFieldUpdateOperationsInput | string
+  localizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inputTokens?: Prisma.IntFieldUpdateOperationsInput | number
   outputTokens?: Prisma.IntFieldUpdateOperationsInput | number
   cacheReadInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
@@ -414,6 +433,7 @@ export type AiUsageCreateManyInput = {
   provider?: string
   model: string
   operation: string
+  localizationId?: string | null
   inputTokens?: number
   outputTokens?: number
   cacheReadInputTokens?: number
@@ -441,6 +461,7 @@ export type AiUsageUncheckedUpdateManyInput = {
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   operation?: Prisma.StringFieldUpdateOperationsInput | string
+  localizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inputTokens?: Prisma.IntFieldUpdateOperationsInput | number
   outputTokens?: Prisma.IntFieldUpdateOperationsInput | number
   cacheReadInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
@@ -465,6 +486,7 @@ export type AiUsageCountOrderByAggregateInput = {
   provider?: Prisma.SortOrder
   model?: Prisma.SortOrder
   operation?: Prisma.SortOrder
+  localizationId?: Prisma.SortOrder
   inputTokens?: Prisma.SortOrder
   outputTokens?: Prisma.SortOrder
   cacheReadInputTokens?: Prisma.SortOrder
@@ -487,6 +509,7 @@ export type AiUsageMaxOrderByAggregateInput = {
   provider?: Prisma.SortOrder
   model?: Prisma.SortOrder
   operation?: Prisma.SortOrder
+  localizationId?: Prisma.SortOrder
   inputTokens?: Prisma.SortOrder
   outputTokens?: Prisma.SortOrder
   cacheReadInputTokens?: Prisma.SortOrder
@@ -501,6 +524,7 @@ export type AiUsageMinOrderByAggregateInput = {
   provider?: Prisma.SortOrder
   model?: Prisma.SortOrder
   operation?: Prisma.SortOrder
+  localizationId?: Prisma.SortOrder
   inputTokens?: Prisma.SortOrder
   outputTokens?: Prisma.SortOrder
   cacheReadInputTokens?: Prisma.SortOrder
@@ -559,6 +583,48 @@ export type AiUsageUncheckedUpdateManyWithoutResearchNestedInput = {
   deleteMany?: Prisma.AiUsageScalarWhereInput | Prisma.AiUsageScalarWhereInput[]
 }
 
+export type AiUsageCreateNestedManyWithoutLocalizationInput = {
+  create?: Prisma.XOR<Prisma.AiUsageCreateWithoutLocalizationInput, Prisma.AiUsageUncheckedCreateWithoutLocalizationInput> | Prisma.AiUsageCreateWithoutLocalizationInput[] | Prisma.AiUsageUncheckedCreateWithoutLocalizationInput[]
+  connectOrCreate?: Prisma.AiUsageCreateOrConnectWithoutLocalizationInput | Prisma.AiUsageCreateOrConnectWithoutLocalizationInput[]
+  createMany?: Prisma.AiUsageCreateManyLocalizationInputEnvelope
+  connect?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+}
+
+export type AiUsageUncheckedCreateNestedManyWithoutLocalizationInput = {
+  create?: Prisma.XOR<Prisma.AiUsageCreateWithoutLocalizationInput, Prisma.AiUsageUncheckedCreateWithoutLocalizationInput> | Prisma.AiUsageCreateWithoutLocalizationInput[] | Prisma.AiUsageUncheckedCreateWithoutLocalizationInput[]
+  connectOrCreate?: Prisma.AiUsageCreateOrConnectWithoutLocalizationInput | Prisma.AiUsageCreateOrConnectWithoutLocalizationInput[]
+  createMany?: Prisma.AiUsageCreateManyLocalizationInputEnvelope
+  connect?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+}
+
+export type AiUsageUpdateManyWithoutLocalizationNestedInput = {
+  create?: Prisma.XOR<Prisma.AiUsageCreateWithoutLocalizationInput, Prisma.AiUsageUncheckedCreateWithoutLocalizationInput> | Prisma.AiUsageCreateWithoutLocalizationInput[] | Prisma.AiUsageUncheckedCreateWithoutLocalizationInput[]
+  connectOrCreate?: Prisma.AiUsageCreateOrConnectWithoutLocalizationInput | Prisma.AiUsageCreateOrConnectWithoutLocalizationInput[]
+  upsert?: Prisma.AiUsageUpsertWithWhereUniqueWithoutLocalizationInput | Prisma.AiUsageUpsertWithWhereUniqueWithoutLocalizationInput[]
+  createMany?: Prisma.AiUsageCreateManyLocalizationInputEnvelope
+  set?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  disconnect?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  delete?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  connect?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  update?: Prisma.AiUsageUpdateWithWhereUniqueWithoutLocalizationInput | Prisma.AiUsageUpdateWithWhereUniqueWithoutLocalizationInput[]
+  updateMany?: Prisma.AiUsageUpdateManyWithWhereWithoutLocalizationInput | Prisma.AiUsageUpdateManyWithWhereWithoutLocalizationInput[]
+  deleteMany?: Prisma.AiUsageScalarWhereInput | Prisma.AiUsageScalarWhereInput[]
+}
+
+export type AiUsageUncheckedUpdateManyWithoutLocalizationNestedInput = {
+  create?: Prisma.XOR<Prisma.AiUsageCreateWithoutLocalizationInput, Prisma.AiUsageUncheckedCreateWithoutLocalizationInput> | Prisma.AiUsageCreateWithoutLocalizationInput[] | Prisma.AiUsageUncheckedCreateWithoutLocalizationInput[]
+  connectOrCreate?: Prisma.AiUsageCreateOrConnectWithoutLocalizationInput | Prisma.AiUsageCreateOrConnectWithoutLocalizationInput[]
+  upsert?: Prisma.AiUsageUpsertWithWhereUniqueWithoutLocalizationInput | Prisma.AiUsageUpsertWithWhereUniqueWithoutLocalizationInput[]
+  createMany?: Prisma.AiUsageCreateManyLocalizationInputEnvelope
+  set?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  disconnect?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  delete?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  connect?: Prisma.AiUsageWhereUniqueInput | Prisma.AiUsageWhereUniqueInput[]
+  update?: Prisma.AiUsageUpdateWithWhereUniqueWithoutLocalizationInput | Prisma.AiUsageUpdateWithWhereUniqueWithoutLocalizationInput[]
+  updateMany?: Prisma.AiUsageUpdateManyWithWhereWithoutLocalizationInput | Prisma.AiUsageUpdateManyWithWhereWithoutLocalizationInput[]
+  deleteMany?: Prisma.AiUsageScalarWhereInput | Prisma.AiUsageScalarWhereInput[]
+}
+
 export type AiUsageCreateWithoutResearchInput = {
   id?: string
   provider?: string
@@ -570,6 +636,7 @@ export type AiUsageCreateWithoutResearchInput = {
   cacheCreationInputTokens?: number
   estimatedCostUsd?: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  localization?: Prisma.ProductLocalizationCreateNestedOneWithoutAiUsageInput
 }
 
 export type AiUsageUncheckedCreateWithoutResearchInput = {
@@ -577,6 +644,7 @@ export type AiUsageUncheckedCreateWithoutResearchInput = {
   provider?: string
   model: string
   operation: string
+  localizationId?: string | null
   inputTokens?: number
   outputTokens?: number
   cacheReadInputTokens?: number
@@ -620,6 +688,7 @@ export type AiUsageScalarWhereInput = {
   provider?: Prisma.StringFilter<"AiUsage"> | string
   model?: Prisma.StringFilter<"AiUsage"> | string
   operation?: Prisma.StringFilter<"AiUsage"> | string
+  localizationId?: Prisma.StringNullableFilter<"AiUsage"> | string | null
   inputTokens?: Prisma.IntFilter<"AiUsage"> | number
   outputTokens?: Prisma.IntFilter<"AiUsage"> | number
   cacheReadInputTokens?: Prisma.IntFilter<"AiUsage"> | number
@@ -628,11 +697,66 @@ export type AiUsageScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"AiUsage"> | Date | string
 }
 
+export type AiUsageCreateWithoutLocalizationInput = {
+  id?: string
+  provider?: string
+  model: string
+  operation: string
+  inputTokens?: number
+  outputTokens?: number
+  cacheReadInputTokens?: number
+  cacheCreationInputTokens?: number
+  estimatedCostUsd?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  research?: Prisma.MarketResearchCreateNestedOneWithoutAiUsageInput
+}
+
+export type AiUsageUncheckedCreateWithoutLocalizationInput = {
+  id?: string
+  researchId?: string | null
+  provider?: string
+  model: string
+  operation: string
+  inputTokens?: number
+  outputTokens?: number
+  cacheReadInputTokens?: number
+  cacheCreationInputTokens?: number
+  estimatedCostUsd?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+}
+
+export type AiUsageCreateOrConnectWithoutLocalizationInput = {
+  where: Prisma.AiUsageWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiUsageCreateWithoutLocalizationInput, Prisma.AiUsageUncheckedCreateWithoutLocalizationInput>
+}
+
+export type AiUsageCreateManyLocalizationInputEnvelope = {
+  data: Prisma.AiUsageCreateManyLocalizationInput | Prisma.AiUsageCreateManyLocalizationInput[]
+  skipDuplicates?: boolean
+}
+
+export type AiUsageUpsertWithWhereUniqueWithoutLocalizationInput = {
+  where: Prisma.AiUsageWhereUniqueInput
+  update: Prisma.XOR<Prisma.AiUsageUpdateWithoutLocalizationInput, Prisma.AiUsageUncheckedUpdateWithoutLocalizationInput>
+  create: Prisma.XOR<Prisma.AiUsageCreateWithoutLocalizationInput, Prisma.AiUsageUncheckedCreateWithoutLocalizationInput>
+}
+
+export type AiUsageUpdateWithWhereUniqueWithoutLocalizationInput = {
+  where: Prisma.AiUsageWhereUniqueInput
+  data: Prisma.XOR<Prisma.AiUsageUpdateWithoutLocalizationInput, Prisma.AiUsageUncheckedUpdateWithoutLocalizationInput>
+}
+
+export type AiUsageUpdateManyWithWhereWithoutLocalizationInput = {
+  where: Prisma.AiUsageScalarWhereInput
+  data: Prisma.XOR<Prisma.AiUsageUpdateManyMutationInput, Prisma.AiUsageUncheckedUpdateManyWithoutLocalizationInput>
+}
+
 export type AiUsageCreateManyResearchInput = {
   id?: string
   provider?: string
   model: string
   operation: string
+  localizationId?: string | null
   inputTokens?: number
   outputTokens?: number
   cacheReadInputTokens?: number
@@ -652,10 +776,68 @@ export type AiUsageUpdateWithoutResearchInput = {
   cacheCreationInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
   estimatedCostUsd?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  localization?: Prisma.ProductLocalizationUpdateOneWithoutAiUsageNestedInput
 }
 
 export type AiUsageUncheckedUpdateWithoutResearchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  operation?: Prisma.StringFieldUpdateOperationsInput | string
+  localizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  outputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  cacheReadInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  cacheCreationInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  estimatedCostUsd?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AiUsageUncheckedUpdateManyWithoutResearchInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  operation?: Prisma.StringFieldUpdateOperationsInput | string
+  localizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  outputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  cacheReadInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  cacheCreationInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  estimatedCostUsd?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AiUsageCreateManyLocalizationInput = {
+  id?: string
+  researchId?: string | null
+  provider?: string
+  model: string
+  operation: string
+  inputTokens?: number
+  outputTokens?: number
+  cacheReadInputTokens?: number
+  cacheCreationInputTokens?: number
+  estimatedCostUsd?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+}
+
+export type AiUsageUpdateWithoutLocalizationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  model?: Prisma.StringFieldUpdateOperationsInput | string
+  operation?: Prisma.StringFieldUpdateOperationsInput | string
+  inputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  outputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  cacheReadInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  cacheCreationInputTokens?: Prisma.IntFieldUpdateOperationsInput | number
+  estimatedCostUsd?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  research?: Prisma.MarketResearchUpdateOneWithoutAiUsageNestedInput
+}
+
+export type AiUsageUncheckedUpdateWithoutLocalizationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  researchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   operation?: Prisma.StringFieldUpdateOperationsInput | string
@@ -667,8 +849,9 @@ export type AiUsageUncheckedUpdateWithoutResearchInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type AiUsageUncheckedUpdateManyWithoutResearchInput = {
+export type AiUsageUncheckedUpdateManyWithoutLocalizationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  researchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   model?: Prisma.StringFieldUpdateOperationsInput | string
   operation?: Prisma.StringFieldUpdateOperationsInput | string
@@ -688,6 +871,7 @@ export type AiUsageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   provider?: boolean
   model?: boolean
   operation?: boolean
+  localizationId?: boolean
   inputTokens?: boolean
   outputTokens?: boolean
   cacheReadInputTokens?: boolean
@@ -695,6 +879,7 @@ export type AiUsageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   estimatedCostUsd?: boolean
   createdAt?: boolean
   research?: boolean | Prisma.AiUsage$researchArgs<ExtArgs>
+  localization?: boolean | Prisma.AiUsage$localizationArgs<ExtArgs>
 }, ExtArgs["result"]["aiUsage"]>
 
 export type AiUsageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -703,6 +888,7 @@ export type AiUsageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   provider?: boolean
   model?: boolean
   operation?: boolean
+  localizationId?: boolean
   inputTokens?: boolean
   outputTokens?: boolean
   cacheReadInputTokens?: boolean
@@ -710,6 +896,7 @@ export type AiUsageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   estimatedCostUsd?: boolean
   createdAt?: boolean
   research?: boolean | Prisma.AiUsage$researchArgs<ExtArgs>
+  localization?: boolean | Prisma.AiUsage$localizationArgs<ExtArgs>
 }, ExtArgs["result"]["aiUsage"]>
 
 export type AiUsageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -718,6 +905,7 @@ export type AiUsageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   provider?: boolean
   model?: boolean
   operation?: boolean
+  localizationId?: boolean
   inputTokens?: boolean
   outputTokens?: boolean
   cacheReadInputTokens?: boolean
@@ -725,6 +913,7 @@ export type AiUsageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   estimatedCostUsd?: boolean
   createdAt?: boolean
   research?: boolean | Prisma.AiUsage$researchArgs<ExtArgs>
+  localization?: boolean | Prisma.AiUsage$localizationArgs<ExtArgs>
 }, ExtArgs["result"]["aiUsage"]>
 
 export type AiUsageSelectScalar = {
@@ -733,6 +922,7 @@ export type AiUsageSelectScalar = {
   provider?: boolean
   model?: boolean
   operation?: boolean
+  localizationId?: boolean
   inputTokens?: boolean
   outputTokens?: boolean
   cacheReadInputTokens?: boolean
@@ -741,21 +931,25 @@ export type AiUsageSelectScalar = {
   createdAt?: boolean
 }
 
-export type AiUsageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "researchId" | "provider" | "model" | "operation" | "inputTokens" | "outputTokens" | "cacheReadInputTokens" | "cacheCreationInputTokens" | "estimatedCostUsd" | "createdAt", ExtArgs["result"]["aiUsage"]>
+export type AiUsageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "researchId" | "provider" | "model" | "operation" | "localizationId" | "inputTokens" | "outputTokens" | "cacheReadInputTokens" | "cacheCreationInputTokens" | "estimatedCostUsd" | "createdAt", ExtArgs["result"]["aiUsage"]>
 export type AiUsageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   research?: boolean | Prisma.AiUsage$researchArgs<ExtArgs>
+  localization?: boolean | Prisma.AiUsage$localizationArgs<ExtArgs>
 }
 export type AiUsageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   research?: boolean | Prisma.AiUsage$researchArgs<ExtArgs>
+  localization?: boolean | Prisma.AiUsage$localizationArgs<ExtArgs>
 }
 export type AiUsageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   research?: boolean | Prisma.AiUsage$researchArgs<ExtArgs>
+  localization?: boolean | Prisma.AiUsage$localizationArgs<ExtArgs>
 }
 
 export type $AiUsagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AiUsage"
   objects: {
     research: Prisma.$MarketResearchPayload<ExtArgs> | null
+    localization: Prisma.$ProductLocalizationPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -763,6 +957,7 @@ export type $AiUsagePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     provider: string
     model: string
     operation: string
+    localizationId: string | null
     inputTokens: number
     outputTokens: number
     cacheReadInputTokens: number
@@ -1164,6 +1359,7 @@ readonly fields: AiUsageFieldRefs;
 export interface Prisma__AiUsageClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   research<T extends Prisma.AiUsage$researchArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiUsage$researchArgs<ExtArgs>>): Prisma.Prisma__MarketResearchClient<runtime.Types.Result.GetResult<Prisma.$MarketResearchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  localization<T extends Prisma.AiUsage$localizationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiUsage$localizationArgs<ExtArgs>>): Prisma.Prisma__ProductLocalizationClient<runtime.Types.Result.GetResult<Prisma.$ProductLocalizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1198,6 +1394,7 @@ export interface AiUsageFieldRefs {
   readonly provider: Prisma.FieldRef<"AiUsage", 'String'>
   readonly model: Prisma.FieldRef<"AiUsage", 'String'>
   readonly operation: Prisma.FieldRef<"AiUsage", 'String'>
+  readonly localizationId: Prisma.FieldRef<"AiUsage", 'String'>
   readonly inputTokens: Prisma.FieldRef<"AiUsage", 'Int'>
   readonly outputTokens: Prisma.FieldRef<"AiUsage", 'Int'>
   readonly cacheReadInputTokens: Prisma.FieldRef<"AiUsage", 'Int'>
@@ -1621,6 +1818,25 @@ export type AiUsage$researchArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   include?: Prisma.MarketResearchInclude<ExtArgs> | null
   where?: Prisma.MarketResearchWhereInput
+}
+
+/**
+ * AiUsage.localization
+ */
+export type AiUsage$localizationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProductLocalization
+   */
+  select?: Prisma.ProductLocalizationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProductLocalization
+   */
+  omit?: Prisma.ProductLocalizationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductLocalizationInclude<ExtArgs> | null
+  where?: Prisma.ProductLocalizationWhereInput
 }
 
 /**
