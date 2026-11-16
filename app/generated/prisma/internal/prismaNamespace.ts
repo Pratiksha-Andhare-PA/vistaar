@@ -405,7 +405,8 @@ export const ModelName = {
   ProductLocalization: 'ProductLocalization',
   AiUsage: 'AiUsage',
   AiBudget: 'AiBudget',
-  AiBudgetReservation: 'AiBudgetReservation'
+  AiBudgetReservation: 'AiBudgetReservation',
+  PricingScenario: 'PricingScenario'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -421,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "business" | "product" | "marketResearch" | "marketResult" | "marketEvidence" | "productLocalization" | "aiUsage" | "aiBudget" | "aiBudgetReservation"
+    modelProps: "business" | "product" | "marketResearch" | "marketResult" | "marketEvidence" | "productLocalization" | "aiUsage" | "aiBudget" | "aiBudgetReservation" | "pricingScenario"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1091,6 +1092,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PricingScenario: {
+      payload: Prisma.$PricingScenarioPayload<ExtArgs>
+      fields: Prisma.PricingScenarioFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PricingScenarioFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PricingScenarioFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>
+        }
+        findFirst: {
+          args: Prisma.PricingScenarioFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PricingScenarioFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>
+        }
+        findMany: {
+          args: Prisma.PricingScenarioFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>[]
+        }
+        create: {
+          args: Prisma.PricingScenarioCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>
+        }
+        createMany: {
+          args: Prisma.PricingScenarioCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PricingScenarioCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>[]
+        }
+        delete: {
+          args: Prisma.PricingScenarioDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>
+        }
+        update: {
+          args: Prisma.PricingScenarioUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>
+        }
+        deleteMany: {
+          args: Prisma.PricingScenarioDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PricingScenarioUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PricingScenarioUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>[]
+        }
+        upsert: {
+          args: Prisma.PricingScenarioUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PricingScenarioPayload>
+        }
+        aggregate: {
+          args: Prisma.PricingScenarioAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePricingScenario>
+        }
+        groupBy: {
+          args: Prisma.PricingScenarioGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PricingScenarioGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PricingScenarioCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PricingScenarioCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1292,6 +1367,25 @@ export const AiBudgetReservationScalarFieldEnum = {
 export type AiBudgetReservationScalarFieldEnum = (typeof AiBudgetReservationScalarFieldEnum)[keyof typeof AiBudgetReservationScalarFieldEnum]
 
 
+export const PricingScenarioScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  marketResultId: 'marketResultId',
+  title: 'title',
+  targetCurrency: 'targetCurrency',
+  exchangeRate: 'exchangeRate',
+  exchangeRateSource: 'exchangeRateSource',
+  exchangeRateDate: 'exchangeRateDate',
+  inputs: 'inputs',
+  result: 'result',
+  recommendedPrice: 'recommendedPrice',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PricingScenarioScalarFieldEnum = (typeof PricingScenarioScalarFieldEnum)[keyof typeof PricingScenarioScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1306,6 +1400,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -1638,6 +1739,7 @@ export type GlobalOmitConfig = {
   aiUsage?: Prisma.AiUsageOmit
   aiBudget?: Prisma.AiBudgetOmit
   aiBudgetReservation?: Prisma.AiBudgetReservationOmit
+  pricingScenario?: Prisma.PricingScenarioOmit
 }
 
 /* Types for Logging */

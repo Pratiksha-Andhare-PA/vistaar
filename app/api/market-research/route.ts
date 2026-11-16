@@ -114,6 +114,76 @@ function respondWithExistingResearch(
   );
 }
 
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const productId = searchParams.get("productId")?.trim();
+
+    if (!productId) {
+      return NextResponse.json(
+        { error: "Product ID is required." },
+        { status: 400 },
+      );
+    }
+
+    const product = await prisma.product.findUnique({
+      where: { id: productId },
+      select: { id: true },
+    });
+
+    if (!product) {
+      return NextResponse.json(
+        { error: "Product not found." },
+        { status: 404 },
+      );
+    }
+
+    const researches = await prisma.marketResearch.findMany({
+      where: {
+        productId,
+        status: "COMPLETED",
+      },
+      orderBy: {
+        completedAt: "desc",
+      },
+      select: {
+        id: true,
+        summary: true,
+        recommendedCountry: true,
+        recommendationReason: true,
+        completedAt: true,
+        results: {
+          orderBy: {
+            rank: "asc",
+          },
+          select: {
+            id: true,
+            country: true,
+            countryCode: true,
+            rank: true,
+            opportunityScore: true,
+            suggestedCurrency: true,
+            suggestedPriceMin: true,
+            suggestedPriceMax: true,
+          },
+        },
+      },
+    });
+
+    return NextResponse.json({
+      researches,
+    });
+  } catch (error) {
+    console.error("Fetch market research error:", error);
+
+    return NextResponse.json(
+      { error: "Unable to fetch market research." },
+      { status: 500 },
+    );
+  }
+}
+
 export async function POST(request: Request) {
   let body: unknown;
 

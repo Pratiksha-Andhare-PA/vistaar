@@ -13,12 +13,6 @@ export function ThemeSwitcher() {
         size={17}
         className="shrink-0 text-slate-600 dark:hidden"
         aria-hidden="true"
-        size={17}
-        className="shrink-0 text-slate-600 dark:hidden"
-      />
-      <Moon
-        size={17}
-        className="hidden shrink-0 text-slate-300 dark:block"
       />
 
       <Moon
