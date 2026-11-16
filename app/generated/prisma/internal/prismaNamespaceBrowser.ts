@@ -59,7 +59,8 @@ export const ModelName = {
   ProductLocalization: 'ProductLocalization',
   AiUsage: 'AiUsage',
   AiBudget: 'AiBudget',
-  AiBudgetReservation: 'AiBudgetReservation'
+  AiBudgetReservation: 'AiBudgetReservation',
+  PricingScenario: 'PricingScenario'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -240,6 +241,25 @@ export const AiBudgetReservationScalarFieldEnum = {
 export type AiBudgetReservationScalarFieldEnum = (typeof AiBudgetReservationScalarFieldEnum)[keyof typeof AiBudgetReservationScalarFieldEnum]
 
 
+export const PricingScenarioScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  marketResultId: 'marketResultId',
+  title: 'title',
+  targetCurrency: 'targetCurrency',
+  exchangeRate: 'exchangeRate',
+  exchangeRateSource: 'exchangeRateSource',
+  exchangeRateDate: 'exchangeRateDate',
+  inputs: 'inputs',
+  result: 'result',
+  recommendedPrice: 'recommendedPrice',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PricingScenarioScalarFieldEnum = (typeof PricingScenarioScalarFieldEnum)[keyof typeof PricingScenarioScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -254,6 +274,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

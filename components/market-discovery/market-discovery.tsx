@@ -212,10 +212,10 @@ function MarketComparisonTable({ markets }: { markets: Market[] }) {
             <tr>
               <th className="px-4 py-4 font-semibold">Market</th>
               <th className="px-4 py-4 font-semibold">Opportunity</th>
-              <th className="px-4 py-4 font-semibold">Demand</th>
-              <th className="px-4 py-4 font-semibold">Competition</th>
-              <th className="px-4 py-4 font-semibold">Demand</th>
-              <th className="px-4 py-4 font-semibold">Competition</th>
+              <th className="px-4 py-4 font-semibold">Demand level</th>
+              <th className="px-4 py-4 font-semibold">Competition level</th>
+              <th className="px-4 py-4 font-semibold">Demand pts</th>
+              <th className="px-4 py-4 font-semibold">Competition pts</th>
               <th className="px-4 py-4 font-semibold">Cultural fit</th>
               <th className="px-4 py-4 font-semibold">Export</th>
             </tr>
@@ -296,9 +296,11 @@ function MarketComparisonTable({ markets }: { markets: Market[] }) {
 function MarketCard({
   market,
   recommended,
+  productId,
 }: {
   market: Market;
   recommended: boolean;
+  productId: string;
 }) {
   const breakdown = market.scoreBreakdown;
 
@@ -460,6 +462,13 @@ function MarketCard({
         </div>
 
         <div className="rounded-xl bg-slate-50 p-3 dark:bg-slate-800/70">
+          <Link
+            href={`/global-pricing?productId=${encodeURIComponent(productId)}&marketResultId=${encodeURIComponent(market.id)}`}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#102B3F] px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400"
+          >
+            Calculate Global Price
+            <ArrowRight size={16} />
+          </Link>
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Suggested market price range
           </p>
@@ -957,6 +966,7 @@ export function MarketDiscovery() {
                     key={market.id}
                     market={market}
                     recommended={market.country === research.recommendedCountry}
+                    productId={productId}
                   />
                 ))}
               </div>

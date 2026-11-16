@@ -251,6 +251,7 @@ export type ProductWhereInput = {
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   marketResearches?: Prisma.MarketResearchListRelationFilter
   localizations?: Prisma.ProductLocalizationListRelationFilter
+  pricingScenarios?: Prisma.PricingScenarioListRelationFilter
 }
 
 export type ProductOrderByWithRelationInput = {
@@ -266,6 +267,7 @@ export type ProductOrderByWithRelationInput = {
   business?: Prisma.BusinessOrderByWithRelationInput
   marketResearches?: Prisma.MarketResearchOrderByRelationAggregateInput
   localizations?: Prisma.ProductLocalizationOrderByRelationAggregateInput
+  pricingScenarios?: Prisma.PricingScenarioOrderByRelationAggregateInput
 }
 
 export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -284,6 +286,7 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   business?: Prisma.XOR<Prisma.BusinessScalarRelationFilter, Prisma.BusinessWhereInput>
   marketResearches?: Prisma.MarketResearchListRelationFilter
   localizations?: Prisma.ProductLocalizationListRelationFilter
+  pricingScenarios?: Prisma.PricingScenarioListRelationFilter
 }, "id">
 
 export type ProductOrderByWithAggregationInput = {
@@ -330,6 +333,7 @@ export type ProductCreateInput = {
   business: Prisma.BusinessCreateNestedOneWithoutProductsInput
   marketResearches?: Prisma.MarketResearchCreateNestedManyWithoutProductInput
   localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateInput = {
@@ -344,6 +348,7 @@ export type ProductUncheckedCreateInput = {
   updatedAt?: Date | string
   marketResearches?: Prisma.MarketResearchUncheckedCreateNestedManyWithoutProductInput
   localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductUpdateInput = {
@@ -358,6 +363,7 @@ export type ProductUpdateInput = {
   business?: Prisma.BusinessUpdateOneRequiredWithoutProductsNestedInput
   marketResearches?: Prisma.MarketResearchUpdateManyWithoutProductNestedInput
   localizations?: Prisma.ProductLocalizationUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateInput = {
@@ -372,6 +378,7 @@ export type ProductUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   marketResearches?: Prisma.MarketResearchUncheckedUpdateManyWithoutProductNestedInput
   localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyInput = {
@@ -546,6 +553,20 @@ export type ProductUpdateOneRequiredWithoutLocalizationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutLocalizationsInput, Prisma.ProductUpdateWithoutLocalizationsInput>, Prisma.ProductUncheckedUpdateWithoutLocalizationsInput>
 }
 
+export type ProductCreateNestedOneWithoutPricingScenariosInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutPricingScenariosInput, Prisma.ProductUncheckedCreateWithoutPricingScenariosInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutPricingScenariosInput
+  connect?: Prisma.ProductWhereUniqueInput
+}
+
+export type ProductUpdateOneRequiredWithoutPricingScenariosNestedInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutPricingScenariosInput, Prisma.ProductUncheckedCreateWithoutPricingScenariosInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutPricingScenariosInput
+  upsert?: Prisma.ProductUpsertWithoutPricingScenariosInput
+  connect?: Prisma.ProductWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutPricingScenariosInput, Prisma.ProductUpdateWithoutPricingScenariosInput>, Prisma.ProductUncheckedUpdateWithoutPricingScenariosInput>
+}
+
 export type ProductCreateWithoutBusinessInput = {
   id?: string
   name: string
@@ -557,6 +578,7 @@ export type ProductCreateWithoutBusinessInput = {
   updatedAt?: Date | string
   marketResearches?: Prisma.MarketResearchCreateNestedManyWithoutProductInput
   localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutBusinessInput = {
@@ -570,6 +592,7 @@ export type ProductUncheckedCreateWithoutBusinessInput = {
   updatedAt?: Date | string
   marketResearches?: Prisma.MarketResearchUncheckedCreateNestedManyWithoutProductInput
   localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutBusinessInput = {
@@ -624,6 +647,7 @@ export type ProductCreateWithoutMarketResearchesInput = {
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutProductsInput
   localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutMarketResearchesInput = {
@@ -637,6 +661,7 @@ export type ProductUncheckedCreateWithoutMarketResearchesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutMarketResearchesInput = {
@@ -666,6 +691,7 @@ export type ProductUpdateWithoutMarketResearchesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutProductsNestedInput
   localizations?: Prisma.ProductLocalizationUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutMarketResearchesInput = {
@@ -679,6 +705,7 @@ export type ProductUncheckedUpdateWithoutMarketResearchesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutLocalizationsInput = {
@@ -692,6 +719,7 @@ export type ProductCreateWithoutLocalizationsInput = {
   updatedAt?: Date | string
   business: Prisma.BusinessCreateNestedOneWithoutProductsInput
   marketResearches?: Prisma.MarketResearchCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutLocalizationsInput = {
@@ -705,6 +733,7 @@ export type ProductUncheckedCreateWithoutLocalizationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   marketResearches?: Prisma.MarketResearchUncheckedCreateNestedManyWithoutProductInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutLocalizationsInput = {
@@ -734,6 +763,7 @@ export type ProductUpdateWithoutLocalizationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   business?: Prisma.BusinessUpdateOneRequiredWithoutProductsNestedInput
   marketResearches?: Prisma.MarketResearchUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutLocalizationsInput = {
@@ -747,6 +777,79 @@ export type ProductUncheckedUpdateWithoutLocalizationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   marketResearches?: Prisma.MarketResearchUncheckedUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutProductNestedInput
+}
+
+export type ProductCreateWithoutPricingScenariosInput = {
+  id?: string
+  name: string
+  description: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: string
+  imageUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  business: Prisma.BusinessCreateNestedOneWithoutProductsInput
+  marketResearches?: Prisma.MarketResearchCreateNestedManyWithoutProductInput
+  localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutProductInput
+}
+
+export type ProductUncheckedCreateWithoutPricingScenariosInput = {
+  id?: string
+  businessId: string
+  name: string
+  description: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: string
+  imageUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  marketResearches?: Prisma.MarketResearchUncheckedCreateNestedManyWithoutProductInput
+  localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutProductInput
+}
+
+export type ProductCreateOrConnectWithoutPricingScenariosInput = {
+  where: Prisma.ProductWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProductCreateWithoutPricingScenariosInput, Prisma.ProductUncheckedCreateWithoutPricingScenariosInput>
+}
+
+export type ProductUpsertWithoutPricingScenariosInput = {
+  update: Prisma.XOR<Prisma.ProductUpdateWithoutPricingScenariosInput, Prisma.ProductUncheckedUpdateWithoutPricingScenariosInput>
+  create: Prisma.XOR<Prisma.ProductCreateWithoutPricingScenariosInput, Prisma.ProductUncheckedCreateWithoutPricingScenariosInput>
+  where?: Prisma.ProductWhereInput
+}
+
+export type ProductUpdateToOneWithWhereWithoutPricingScenariosInput = {
+  where?: Prisma.ProductWhereInput
+  data: Prisma.XOR<Prisma.ProductUpdateWithoutPricingScenariosInput, Prisma.ProductUncheckedUpdateWithoutPricingScenariosInput>
+}
+
+export type ProductUpdateWithoutPricingScenariosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  business?: Prisma.BusinessUpdateOneRequiredWithoutProductsNestedInput
+  marketResearches?: Prisma.MarketResearchUpdateManyWithoutProductNestedInput
+  localizations?: Prisma.ProductLocalizationUpdateManyWithoutProductNestedInput
+}
+
+export type ProductUncheckedUpdateWithoutPricingScenariosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  businessId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  marketResearches?: Prisma.MarketResearchUncheckedUpdateManyWithoutProductNestedInput
+  localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyBusinessInput = {
@@ -771,6 +874,7 @@ export type ProductUpdateWithoutBusinessInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   marketResearches?: Prisma.MarketResearchUpdateManyWithoutProductNestedInput
   localizations?: Prisma.ProductLocalizationUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutBusinessInput = {
@@ -784,6 +888,7 @@ export type ProductUncheckedUpdateWithoutBusinessInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   marketResearches?: Prisma.MarketResearchUncheckedUpdateManyWithoutProductNestedInput
   localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutProductNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateManyWithoutBusinessInput = {
@@ -805,11 +910,13 @@ export type ProductUncheckedUpdateManyWithoutBusinessInput = {
 export type ProductCountOutputType = {
   marketResearches: number
   localizations: number
+  pricingScenarios: number
 }
 
 export type ProductCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   marketResearches?: boolean | ProductCountOutputTypeCountMarketResearchesArgs
   localizations?: boolean | ProductCountOutputTypeCountLocalizationsArgs
+  pricingScenarios?: boolean | ProductCountOutputTypeCountPricingScenariosArgs
 }
 
 /**
@@ -836,6 +943,13 @@ export type ProductCountOutputTypeCountLocalizationsArgs<ExtArgs extends runtime
   where?: Prisma.ProductLocalizationWhereInput
 }
 
+/**
+ * ProductCountOutputType without action
+ */
+export type ProductCountOutputTypeCountPricingScenariosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PricingScenarioWhereInput
+}
+
 
 export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -850,6 +964,7 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   marketResearches?: boolean | Prisma.Product$marketResearchesArgs<ExtArgs>
   localizations?: boolean | Prisma.Product$localizationsArgs<ExtArgs>
+  pricingScenarios?: boolean | Prisma.Product$pricingScenariosArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["product"]>
 
@@ -896,6 +1011,7 @@ export type ProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   business?: boolean | Prisma.BusinessDefaultArgs<ExtArgs>
   marketResearches?: boolean | Prisma.Product$marketResearchesArgs<ExtArgs>
   localizations?: boolean | Prisma.Product$localizationsArgs<ExtArgs>
+  pricingScenarios?: boolean | Prisma.Product$pricingScenariosArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProductIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -911,6 +1027,7 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     business: Prisma.$BusinessPayload<ExtArgs>
     marketResearches: Prisma.$MarketResearchPayload<ExtArgs>[]
     localizations: Prisma.$ProductLocalizationPayload<ExtArgs>[]
+    pricingScenarios: Prisma.$PricingScenarioPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1319,6 +1436,7 @@ export interface Prisma__ProductClient<T, Null = never, ExtArgs extends runtime.
   business<T extends Prisma.BusinessDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BusinessDefaultArgs<ExtArgs>>): Prisma.Prisma__BusinessClient<runtime.Types.Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   marketResearches<T extends Prisma.Product$marketResearchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$marketResearchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketResearchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   localizations<T extends Prisma.Product$localizationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$localizationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductLocalizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pricingScenarios<T extends Prisma.Product$pricingScenariosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$pricingScenariosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PricingScenarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1803,6 +1921,30 @@ export type Product$localizationsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.ProductLocalizationScalarFieldEnum | Prisma.ProductLocalizationScalarFieldEnum[]
+}
+
+/**
+ * Product.pricingScenarios
+ */
+export type Product$pricingScenariosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PricingScenario
+   */
+  select?: Prisma.PricingScenarioSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PricingScenario
+   */
+  omit?: Prisma.PricingScenarioOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PricingScenarioInclude<ExtArgs> | null
+  where?: Prisma.PricingScenarioWhereInput
+  orderBy?: Prisma.PricingScenarioOrderByWithRelationInput | Prisma.PricingScenarioOrderByWithRelationInput[]
+  cursor?: Prisma.PricingScenarioWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PricingScenarioScalarFieldEnum | Prisma.PricingScenarioScalarFieldEnum[]
 }
 
 /**

@@ -30,7 +30,7 @@ const navigation: NavigationItem[] = [
   { name: "My products", href: "/products", icon: Package },
   { name: "Market discovery", href: "/market-discovery", icon: Compass },
   { name: "Localization", href: "/localization", icon: Languages },
-  { name: "Global pricing", icon: Wallet },
+  { name: "Global pricing", href: "/global-pricing", icon: Wallet },
   { name: "Export readiness", icon: FileCheck2 },
   { name: "My storefronts", icon: Store },
 ];
