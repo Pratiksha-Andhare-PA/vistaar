@@ -56,6 +56,7 @@ export const ModelName = {
   MarketResearch: 'MarketResearch',
   MarketResult: 'MarketResult',
   MarketEvidence: 'MarketEvidence',
+  ProductLocalization: 'ProductLocalization',
   AiUsage: 'AiUsage',
   AiBudget: 'AiBudget',
   AiBudgetReservation: 'AiBudgetReservation'
@@ -136,6 +137,7 @@ export const MarketResultScalarFieldEnum = {
   countryCode: 'countryCode',
   rank: 'rank',
   opportunityScore: 'opportunityScore',
+  scoreBreakdown: 'scoreBreakdown',
   demandLevel: 'demandLevel',
   competitionLevel: 'competitionLevel',
   targetCustomers: 'targetCustomers',
@@ -167,12 +169,39 @@ export const MarketEvidenceScalarFieldEnum = {
 export type MarketEvidenceScalarFieldEnum = (typeof MarketEvidenceScalarFieldEnum)[keyof typeof MarketEvidenceScalarFieldEnum]
 
 
+export const ProductLocalizationScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  marketResultId: 'marketResultId',
+  cacheKey: 'cacheKey',
+  status: 'status',
+  country: 'country',
+  countryCode: 'countryCode',
+  locale: 'locale',
+  localizedTitle: 'localizedTitle',
+  localizedDescription: 'localizedDescription',
+  culturalGuidance: 'culturalGuidance',
+  seoKeywords: 'seoKeywords',
+  marketingMessages: 'marketingMessages',
+  faqs: 'faqs',
+  modelUsed: 'modelUsed',
+  promptVersion: 'promptVersion',
+  errorMessage: 'errorMessage',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProductLocalizationScalarFieldEnum = (typeof ProductLocalizationScalarFieldEnum)[keyof typeof ProductLocalizationScalarFieldEnum]
+
+
 export const AiUsageScalarFieldEnum = {
   id: 'id',
   researchId: 'researchId',
   provider: 'provider',
   model: 'model',
   operation: 'operation',
+  localizationId: 'localizationId',
   inputTokens: 'inputTokens',
   outputTokens: 'outputTokens',
   cacheReadInputTokens: 'cacheReadInputTokens',
@@ -199,6 +228,7 @@ export const AiBudgetReservationScalarFieldEnum = {
   id: 'id',
   budgetId: 'budgetId',
   researchId: 'researchId',
+  localizationId: 'localizationId',
   estimatedCostUsd: 'estimatedCostUsd',
   actualCostUsd: 'actualCostUsd',
   status: 'status',
@@ -218,6 +248,14 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -232,4 +270,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

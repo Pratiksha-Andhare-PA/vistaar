@@ -29,7 +29,7 @@ const navigation: NavigationItem[] = [
   { name: "Business profile", href: "/onboarding", icon: Building2 },
   { name: "My products", href: "/products", icon: Package },
   { name: "Market discovery", href: "/market-discovery", icon: Compass },
-  { name: "Localization", icon: Languages },
+  { name: "Localization", href: "/localization", icon: Languages },
   { name: "Global pricing", icon: Wallet },
   { name: "Export readiness", icon: FileCheck2 },
   { name: "My storefronts", icon: Store },
