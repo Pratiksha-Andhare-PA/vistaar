@@ -65,6 +65,12 @@ enum ExportAssessmentStatus {
   COMPLETED
 }
 
+enum StorefrontStatus {
+  DRAFT
+  APPROVED
+  PUBLISHED
+}
+
 model Business {
   id           String           @id @default(cuid())
   name         String
@@ -102,6 +108,7 @@ model Product {
   localizations              ProductLocalization[]
   pricingScenarios           PricingScenario[]
   exportReadinessAssessments ExportReadinessAssessment[]
+  storefronts                Storefront[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -159,6 +166,7 @@ model MarketResult {
   localizations              ProductLocalization[]
   pricingScenarios           PricingScenario[]
   exportReadinessAssessments ExportReadinessAssessment[]
+  storefronts                Storefront[]
 
   createdAt DateTime @default(now())
 
@@ -211,6 +219,7 @@ model ProductLocalization {
 
   aiUsage            AiUsage[]
   budgetReservations AiBudgetReservation[]
+  storefronts        Storefront[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -299,6 +308,8 @@ model PricingScenario {
 
   product      Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
   marketResult MarketResult @relation(fields: [marketResultId], references: [id], onDelete: Cascade)
+
+  storefronts Storefront[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -398,4 +409,58 @@ model ExportReadinessItem {
   @@unique([assessmentId, requirementId])
   @@index([assessmentId, category])
   @@index([status])
+}
+
+model Storefront {
+  id     String           @id @default(cuid())
+  slug   String           @unique
+  status StorefrontStatus @default(DRAFT)
+
+  productId         String
+  marketResultId    String
+  localizationId    String
+  pricingScenarioId String
+
+  // Destination and language
+  locale      String
+  country     String
+  countryCode String
+
+  // Snapshot of the product and localized content
+  productName          String
+  localizedTitle       String
+  localizedDescription String  @db.Text
+  imageUrl             String?
+
+  // Snapshot of the seller
+  businessName        String
+  businessDescription String @db.Text
+  businessCity        String
+  businessCountry     String
+
+  // Snapshot of the saved international price
+  currency String
+  price    Decimal @db.Decimal(12, 2)
+
+  // Reused localization content
+  seoKeywords       String[]
+  culturalGuidance  String[]
+  marketingMessages Json?
+  faqs              Json?
+
+  approvedAt    DateTime?
+  publishedAt   DateTime?
+  unpublishedAt DateTime?
+
+  product         Product             @relation(fields: [productId], references: [id], onDelete: Cascade)
+  marketResult    MarketResult        @relation(fields: [marketResultId], references: [id], onDelete: Cascade)
+  localization    ProductLocalization @relation(fields: [localizationId], references: [id], onDelete: Restrict)
+  pricingScenario PricingScenario     @relation(fields: [pricingScenarioId], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([productId, marketResultId, locale])
+  @@index([status])
+  @@index([createdAt])
 }
