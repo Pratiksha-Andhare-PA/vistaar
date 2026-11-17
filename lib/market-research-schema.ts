@@ -15,9 +15,9 @@ export const marketAnalysisSchema = z.object({
   targetCustomers: z.string().min(20),
   marketRationale: z.string().min(30),
 
-  opportunities: z.array(z.string().min(5)).min(2).max(5),
-  risks: z.array(z.string().min(5)).min(2).max(5),
-  culturalConsiderations: z.array(z.string().min(5)).min(2).max(5),
+  opportunities: z.array(z.string().min(5)).length(2),
+  risks: z.array(z.string().min(5)).length(2),
+  culturalConsiderations: z.array(z.string().min(5)).length(2),
 
   suggestedPriceMin: z.number().positive().nullable(),
   suggestedPriceMax: z.number().positive().nullable(),

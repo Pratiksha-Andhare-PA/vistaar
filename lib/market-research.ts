@@ -26,33 +26,37 @@ export interface ClaudeUsage {
 
 export const MAX_OUTPUT_TOKENS = 2500;
 
+
 const SYSTEM_PROMPT = `
 You are an international market research assistant helping Indian
 artisans and small businesses evaluate export opportunities.
 
-Your task is to assess the suitability of a product for the requested
-international markets.
+Produce preliminary AI-generated assessments, not verified market research.
 
-IMPORTANT RULES:
-- Treat your output as preliminary AI-generated assessments, not verified market research.
-- Never invent statistics, market sizes, growth rates, citations, URLs,
-  government regulations, or named research sources.
-- Clearly distinguish reasonable hypotheses from established facts.
-- Do not claim that demand is proven without reliable evidence.
-- Consider product characteristics, likely customer segments,
-  competition, cultural fit, and practical export risks.
-- Assess culturalFit based on local preferences, traditions,
-  aesthetics, and purchasing habits.
-- Assess exportPracticality based on likely logistics, regulatory
-  complexity, and accessibility of the target market.
-- For culturalFit and exportPracticality, return exactly LOW, MEDIUM, or HIGH.
-- Do not assume every product is suitable for every market.
-- Provide useful, specific explanations rather than generic advice.
-- Return exactly one market result for each requested country.
-- Preserve the supplied country codes.
-- Do not invent local prices. Set all suggested price fields to null.
-- Return concise, actionable content.
+RULES:
+- Never invent statistics, market sizes, growth rates, citations,
+  URLs, regulations, or named research sources.
+- Distinguish reasonable hypotheses from established facts.
+- Assess product characteristics, likely customers, competition,
+  cultural fit, and export practicality.
+- Use LOW, MEDIUM, or HIGH for demandLevel, competitionLevel,
+  culturalFit, and exportPracticality.
+- Return exactly one result per requested country.
+- Preserve each supplied country code exactly.
+- Set suggestedPriceMin, suggestedPriceMax, and suggestedCurrency to null.
+- Keep all explanations concise and specific.
+
+OUTPUT REQUIREMENTS:
+- Summary: 30-60 words.
+- targetCustomers: 20-35 words.
+- marketRationale: 30-50 words.
+- opportunities: exactly 2 concise items.
+- risks: exactly 2 concise items.
+- culturalConsiderations: exactly 2 concise items.
+- Each array item must contain at least 5 characters.
+- Do not repeat the same information across fields.
 `;
+
 
 const marketResearchTool = {
   name: "submit_market_research",
@@ -61,14 +65,19 @@ const marketResearchTool = {
   input_schema: {
     type: "object" as const,
     properties: {
-      summary: { type: "string" },
+      summary: { type: "string", minLength: 30 },
       markets: {
         type: "array",
+        minItems: 1,
+        maxItems: 5,
         items: {
           type: "object",
           properties: {
-            country: { type: "string" },
-            countryCode: { type: "string" },
+            country: { type: "string", minLength: 1 },
+            countryCode: {
+              type: "string",
+              pattern: "^[A-Z]{2}$",
+            },
             demandLevel: {
               type: "string",
               enum: ["LOW", "MEDIUM", "HIGH"],
@@ -77,19 +86,25 @@ const marketResearchTool = {
               type: "string",
               enum: ["LOW", "MEDIUM", "HIGH"],
             },
-            targetCustomers: { type: "string" },
-            marketRationale: { type: "string" },
+            targetCustomers: { type: "string", minLength: 20 },
+            marketRationale: { type: "string", minLength: 30 },
             opportunities: {
               type: "array",
-              items: { type: "string" },
+              minItems: 2,
+              maxItems: 2,
+              items: { type: "string", minLength: 5 },
             },
             risks: {
               type: "array",
-              items: { type: "string" },
+              minItems: 2,
+              maxItems: 2,
+              items: { type: "string", minLength: 5 },
             },
             culturalConsiderations: {
               type: "array",
-              items: { type: "string" },
+              minItems: 2,
+              maxItems: 2,
+              items: { type: "string", minLength: 5 },
             },
             suggestedPriceMin: {
               type: ["number", "null"],
@@ -175,6 +190,7 @@ export async function generateMarketResearch(
   rawResult: unknown | null;
   usage: ClaudeUsage;
   model: string;
+  stopReason: string | null;
 }> {
   if (input.countries.length === 0 || input.countries.length > 5) {
     throw new Error("Select between 1 and 5 target countries.");
@@ -209,6 +225,7 @@ export async function generateMarketResearch(
         ? toolResult.input
         : null,
     model: response.model,
+    stopReason: response.stop_reason,
     usage: {
       inputTokens: response.usage.input_tokens,
       outputTokens: response.usage.output_tokens,
