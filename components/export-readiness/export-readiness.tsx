@@ -39,6 +39,7 @@ type ChecklistItem = {
     priority: "REQUIRED" | "RECOMMENDED" | "INFORMATIONAL";
     sourceName: string | null;
     sourceUrl: string | null;
+    sourceCheckedAt: string | null;
     status: "PENDING" | "COMPLETED" | "NOT_APPLICABLE";
     notes: string | null;
 };
@@ -616,20 +617,35 @@ export function ExportReadiness() {
                                         <div key={item.id} className="p-5">
                                             <div className="flex flex-col justify-between gap-3 sm:flex-row">
                                                 <div className="flex items-start gap-3">
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={item.status === "COMPLETED"}
-                                                        disabled={updatingItem === item.id}
-                                                        onChange={(event) =>
-                                                            updateItem(item.id, {
-                                                                status: event.target.checked
-                                                                    ? "COMPLETED"
-                                                                    : "PENDING",
-                                                            })
+                                                    <div
+                                                        className={`mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${item.status === "COMPLETED"
+                                                                ? "bg-teal-100 text-teal-700 dark:bg-teal-900/50 dark:text-teal-300"
+                                                                : item.status === "NOT_APPLICABLE"
+                                                                    ? "bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                                                                    : "border-2 border-slate-300 dark:border-slate-600"
+                                                            }`}
+                                                        aria-label={
+                                                            item.status === "COMPLETED"
+                                                                ? "Completed"
+                                                                : item.status === "NOT_APPLICABLE"
+                                                                    ? "Not applicable"
+                                                                    : "Pending"
                                                         }
-                                                        className="mt-1 h-4 w-4 accent-teal-600"
-                                                        aria-label={`Mark ${item.title} completed`}
-                                                    />
+                                                        title={
+                                                            item.status === "COMPLETED"
+                                                                ? "Completed"
+                                                                : item.status === "NOT_APPLICABLE"
+                                                                    ? "Not applicable"
+                                                                    : "Pending"
+                                                        }
+                                                    >
+                                                        {item.status === "COMPLETED" && (
+                                                            <CheckCircle2 size={14} />
+                                                        )}
+                                                        {item.status === "NOT_APPLICABLE" && (
+                                                            <span className="text-xs font-bold">—</span>
+                                                        )}
+                                                    </div>
 
                                                     <div>
                                                         <h4 className="font-semibold text-slate-900 dark:text-white">
@@ -659,6 +675,17 @@ export function ExportReadiness() {
                                                         {item.sourceName || "Official source"}
                                                         <ExternalLink size={13} />
                                                     </a>
+                                                )}
+
+                                                {item.sourceCheckedAt && (
+                                                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                                                        Source checked:{" "}
+                                                        {new Date(item.sourceCheckedAt).toLocaleDateString("en-IN", {
+                                                            day: "numeric",
+                                                            month: "short",
+                                                            year: "numeric",
+                                                        })}
+                                                    </span>
                                                 )}
 
                                                 <select

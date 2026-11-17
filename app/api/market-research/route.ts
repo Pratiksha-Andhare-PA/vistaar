@@ -361,6 +361,7 @@ export async function POST(request: Request) {
 
     const generated = await generateMarketResearch(input);
 
+
     // 10. Record actual usage and settle the reservation.
     await recordClaudeUsageAndSettle({
       reservationId,
