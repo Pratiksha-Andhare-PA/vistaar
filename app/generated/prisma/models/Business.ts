@@ -239,6 +239,7 @@ export type BusinessWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   products?: Prisma.ProductListRelationFilter
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentListRelationFilter
 }
 
 export type BusinessOrderByWithRelationInput = {
@@ -255,6 +256,7 @@ export type BusinessOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   products?: Prisma.ProductOrderByRelationAggregateInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentOrderByRelationAggregateInput
 }
 
 export type BusinessWhereUniqueInput = Prisma.AtLeast<{
@@ -274,6 +276,7 @@ export type BusinessWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Business"> | Date | string
   products?: Prisma.ProductListRelationFilter
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentListRelationFilter
 }, "id">
 
 export type BusinessOrderByWithAggregationInput = {
@@ -326,6 +329,7 @@ export type BusinessCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   products?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentCreateNestedManyWithoutBusinessInput
 }
 
 export type BusinessUncheckedCreateInput = {
@@ -342,6 +346,7 @@ export type BusinessUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   products?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedCreateNestedManyWithoutBusinessInput
 }
 
 export type BusinessUpdateInput = {
@@ -358,6 +363,7 @@ export type BusinessUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   products?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUpdateManyWithoutBusinessNestedInput
 }
 
 export type BusinessUncheckedUpdateInput = {
@@ -374,6 +380,7 @@ export type BusinessUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   products?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedUpdateManyWithoutBusinessNestedInput
 }
 
 export type BusinessCreateManyInput = {
@@ -505,6 +512,20 @@ export type BusinessUpdateOneRequiredWithoutProductsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BusinessUpdateToOneWithWhereWithoutProductsInput, Prisma.BusinessUpdateWithoutProductsInput>, Prisma.BusinessUncheckedUpdateWithoutProductsInput>
 }
 
+export type BusinessCreateNestedOneWithoutExportReadinessAssessmentsInput = {
+  create?: Prisma.XOR<Prisma.BusinessCreateWithoutExportReadinessAssessmentsInput, Prisma.BusinessUncheckedCreateWithoutExportReadinessAssessmentsInput>
+  connectOrCreate?: Prisma.BusinessCreateOrConnectWithoutExportReadinessAssessmentsInput
+  connect?: Prisma.BusinessWhereUniqueInput
+}
+
+export type BusinessUpdateOneRequiredWithoutExportReadinessAssessmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.BusinessCreateWithoutExportReadinessAssessmentsInput, Prisma.BusinessUncheckedCreateWithoutExportReadinessAssessmentsInput>
+  connectOrCreate?: Prisma.BusinessCreateOrConnectWithoutExportReadinessAssessmentsInput
+  upsert?: Prisma.BusinessUpsertWithoutExportReadinessAssessmentsInput
+  connect?: Prisma.BusinessWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BusinessUpdateToOneWithWhereWithoutExportReadinessAssessmentsInput, Prisma.BusinessUpdateWithoutExportReadinessAssessmentsInput>, Prisma.BusinessUncheckedUpdateWithoutExportReadinessAssessmentsInput>
+}
+
 export type BusinessCreateWithoutProductsInput = {
   id?: string
   name: string
@@ -518,6 +539,7 @@ export type BusinessCreateWithoutProductsInput = {
   website?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentCreateNestedManyWithoutBusinessInput
 }
 
 export type BusinessUncheckedCreateWithoutProductsInput = {
@@ -533,6 +555,7 @@ export type BusinessUncheckedCreateWithoutProductsInput = {
   website?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedCreateNestedManyWithoutBusinessInput
 }
 
 export type BusinessCreateOrConnectWithoutProductsInput = {
@@ -564,6 +587,7 @@ export type BusinessUpdateWithoutProductsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUpdateManyWithoutBusinessNestedInput
 }
 
 export type BusinessUncheckedUpdateWithoutProductsInput = {
@@ -579,6 +603,87 @@ export type BusinessUncheckedUpdateWithoutProductsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedUpdateManyWithoutBusinessNestedInput
+}
+
+export type BusinessCreateWithoutExportReadinessAssessmentsInput = {
+  id?: string
+  name: string
+  businessType: $Enums.BusinessType
+  category: $Enums.BusinessCategory
+  country: string
+  city: string
+  description: string
+  email: string
+  phone?: string | null
+  website?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  products?: Prisma.ProductCreateNestedManyWithoutBusinessInput
+}
+
+export type BusinessUncheckedCreateWithoutExportReadinessAssessmentsInput = {
+  id?: string
+  name: string
+  businessType: $Enums.BusinessType
+  category: $Enums.BusinessCategory
+  country: string
+  city: string
+  description: string
+  email: string
+  phone?: string | null
+  website?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutBusinessInput
+}
+
+export type BusinessCreateOrConnectWithoutExportReadinessAssessmentsInput = {
+  where: Prisma.BusinessWhereUniqueInput
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutExportReadinessAssessmentsInput, Prisma.BusinessUncheckedCreateWithoutExportReadinessAssessmentsInput>
+}
+
+export type BusinessUpsertWithoutExportReadinessAssessmentsInput = {
+  update: Prisma.XOR<Prisma.BusinessUpdateWithoutExportReadinessAssessmentsInput, Prisma.BusinessUncheckedUpdateWithoutExportReadinessAssessmentsInput>
+  create: Prisma.XOR<Prisma.BusinessCreateWithoutExportReadinessAssessmentsInput, Prisma.BusinessUncheckedCreateWithoutExportReadinessAssessmentsInput>
+  where?: Prisma.BusinessWhereInput
+}
+
+export type BusinessUpdateToOneWithWhereWithoutExportReadinessAssessmentsInput = {
+  where?: Prisma.BusinessWhereInput
+  data: Prisma.XOR<Prisma.BusinessUpdateWithoutExportReadinessAssessmentsInput, Prisma.BusinessUncheckedUpdateWithoutExportReadinessAssessmentsInput>
+}
+
+export type BusinessUpdateWithoutExportReadinessAssessmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  businessType?: Prisma.EnumBusinessTypeFieldUpdateOperationsInput | $Enums.BusinessType
+  category?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  products?: Prisma.ProductUpdateManyWithoutBusinessNestedInput
+}
+
+export type BusinessUncheckedUpdateWithoutExportReadinessAssessmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  businessType?: Prisma.EnumBusinessTypeFieldUpdateOperationsInput | $Enums.BusinessType
+  category?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  products?: Prisma.ProductUncheckedUpdateManyWithoutBusinessNestedInput
 }
 
 
@@ -588,10 +693,12 @@ export type BusinessUncheckedUpdateWithoutProductsInput = {
 
 export type BusinessCountOutputType = {
   products: number
+  exportReadinessAssessments: number
 }
 
 export type BusinessCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   products?: boolean | BusinessCountOutputTypeCountProductsArgs
+  exportReadinessAssessments?: boolean | BusinessCountOutputTypeCountExportReadinessAssessmentsArgs
 }
 
 /**
@@ -611,6 +718,13 @@ export type BusinessCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.ProductWhereInput
 }
 
+/**
+ * BusinessCountOutputType without action
+ */
+export type BusinessCountOutputTypeCountExportReadinessAssessmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ExportReadinessAssessmentWhereInput
+}
+
 
 export type BusinessSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -626,6 +740,7 @@ export type BusinessSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   products?: boolean | Prisma.Business$productsArgs<ExtArgs>
+  exportReadinessAssessments?: boolean | Prisma.Business$exportReadinessAssessmentsArgs<ExtArgs>
   _count?: boolean | Prisma.BusinessCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["business"]>
 
@@ -677,6 +792,7 @@ export type BusinessSelectScalar = {
 export type BusinessOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "businessType" | "category" | "country" | "city" | "description" | "email" | "phone" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["business"]>
 export type BusinessInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   products?: boolean | Prisma.Business$productsArgs<ExtArgs>
+  exportReadinessAssessments?: boolean | Prisma.Business$exportReadinessAssessmentsArgs<ExtArgs>
   _count?: boolean | Prisma.BusinessCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BusinessIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -686,6 +802,7 @@ export type $BusinessPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   name: "Business"
   objects: {
     products: Prisma.$ProductPayload<ExtArgs>[]
+    exportReadinessAssessments: Prisma.$ExportReadinessAssessmentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1095,6 +1212,7 @@ readonly fields: BusinessFieldRefs;
 export interface Prisma__BusinessClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   products<T extends Prisma.Business$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Business$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  exportReadinessAssessments<T extends Prisma.Business$exportReadinessAssessmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Business$exportReadinessAssessmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExportReadinessAssessmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1550,6 +1668,30 @@ export type Business$productsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.ProductScalarFieldEnum | Prisma.ProductScalarFieldEnum[]
+}
+
+/**
+ * Business.exportReadinessAssessments
+ */
+export type Business$exportReadinessAssessmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ExportReadinessAssessment
+   */
+  select?: Prisma.ExportReadinessAssessmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ExportReadinessAssessment
+   */
+  omit?: Prisma.ExportReadinessAssessmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExportReadinessAssessmentInclude<ExtArgs> | null
+  where?: Prisma.ExportReadinessAssessmentWhereInput
+  orderBy?: Prisma.ExportReadinessAssessmentOrderByWithRelationInput | Prisma.ExportReadinessAssessmentOrderByWithRelationInput[]
+  cursor?: Prisma.ExportReadinessAssessmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ExportReadinessAssessmentScalarFieldEnum | Prisma.ExportReadinessAssessmentScalarFieldEnum[]
 }
 
 /**

@@ -37,6 +37,34 @@ enum BudgetReservationStatus {
   RELEASED
 }
 
+enum ExportRequirementCategory {
+  BUSINESS_REGISTRATION
+  EXPORT_REGISTRATION
+  PRODUCT_CLASSIFICATION
+  PRODUCT_COMPLIANCE
+  DOCUMENTATION
+  CUSTOMS
+  PACKAGING_LABELING
+  SHIPPING
+}
+
+enum ExportRequirementPriority {
+  REQUIRED
+  RECOMMENDED
+  INFORMATIONAL
+}
+
+enum ExportChecklistStatus {
+  PENDING
+  COMPLETED
+  NOT_APPLICABLE
+}
+
+enum ExportAssessmentStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
 model Business {
   id           String           @id @default(cuid())
   name         String
@@ -52,7 +80,8 @@ model Business {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  products Product[]
+  products                   Product[]
+  exportReadinessAssessments ExportReadinessAssessment[]
 
   @@index([country])
   @@index([category])
@@ -69,9 +98,10 @@ model Product {
 
   business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
 
-  marketResearches MarketResearch[]
-  localizations    ProductLocalization[]
-  pricingScenarios PricingScenario[]
+  marketResearches           MarketResearch[]
+  localizations              ProductLocalization[]
+  pricingScenarios           PricingScenario[]
+  exportReadinessAssessments ExportReadinessAssessment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -124,10 +154,11 @@ model MarketResult {
   suggestedPriceMax      Decimal? @db.Decimal(12, 2)
   suggestedCurrency      String?
 
-  research         MarketResearch        @relation(fields: [researchId], references: [id], onDelete: Cascade)
-  evidence         MarketEvidence[]
-  localizations    ProductLocalization[]
-  pricingScenarios PricingScenario[]
+  research                   MarketResearch              @relation(fields: [researchId], references: [id], onDelete: Cascade)
+  evidence                   MarketEvidence[]
+  localizations              ProductLocalization[]
+  pricingScenarios           PricingScenario[]
+  exportReadinessAssessments ExportReadinessAssessment[]
 
   createdAt DateTime @default(now())
 
@@ -275,4 +306,96 @@ model PricingScenario {
   @@index([productId])
   @@index([marketResultId])
   @@index([createdAt])
+}
+
+model ExportRequirement {
+  id          String @id @default(cuid())
+  title       String
+  description String @db.Text
+
+  category ExportRequirementCategory
+  priority ExportRequirementPriority
+
+  countryCode       String
+  originCountryCode String @default("IN")
+
+  // Uses the existing business category enum.
+  productCategory BusinessCategory?
+
+  applicability String? @db.Text
+
+  sourceName      String
+  sourceUrl       String   @db.Text
+  sourceCheckedAt DateTime
+
+  isActive Boolean @default(true)
+
+  items ExportReadinessItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([countryCode, productCategory, isActive])
+  @@index([category])
+}
+
+model ExportReadinessAssessment {
+  id String @id @default(cuid())
+
+  businessId     String
+  productId      String
+  marketResultId String
+
+  status ExportAssessmentStatus @default(IN_PROGRESS)
+
+  totalItems     Int @default(0)
+  completedItems Int @default(0)
+
+  business     Business     @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  product      Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  marketResult MarketResult @relation(fields: [marketResultId], references: [id], onDelete: Cascade)
+
+  items ExportReadinessItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([productId, marketResultId])
+  @@index([businessId])
+  @@index([marketResultId])
+}
+
+model ExportReadinessItem {
+  id String @id @default(cuid())
+
+  assessmentId  String
+  requirementId String?
+
+  // Snapshot of the requirement at assessment creation.
+  title       String
+  description String @db.Text
+
+  category ExportRequirementCategory
+  priority ExportRequirementPriority
+
+  sourceName      String?
+  sourceUrl       String?   @db.Text
+  sourceCheckedAt DateTime?
+
+  status ExportChecklistStatus @default(PENDING)
+
+  completedAt DateTime?
+  notes       String?   @db.Text
+
+  sortOrder Int @default(0)
+
+  assessment  ExportReadinessAssessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  requirement ExportRequirement?        @relation(fields: [requirementId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([assessmentId, requirementId])
+  @@index([assessmentId, category])
+  @@index([status])
 }

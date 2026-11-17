@@ -49,3 +49,43 @@ export const BudgetReservationStatus = {
 } as const
 
 export type BudgetReservationStatus = (typeof BudgetReservationStatus)[keyof typeof BudgetReservationStatus]
+
+
+export const ExportRequirementCategory = {
+  BUSINESS_REGISTRATION: 'BUSINESS_REGISTRATION',
+  EXPORT_REGISTRATION: 'EXPORT_REGISTRATION',
+  PRODUCT_CLASSIFICATION: 'PRODUCT_CLASSIFICATION',
+  PRODUCT_COMPLIANCE: 'PRODUCT_COMPLIANCE',
+  DOCUMENTATION: 'DOCUMENTATION',
+  CUSTOMS: 'CUSTOMS',
+  PACKAGING_LABELING: 'PACKAGING_LABELING',
+  SHIPPING: 'SHIPPING'
+} as const
+
+export type ExportRequirementCategory = (typeof ExportRequirementCategory)[keyof typeof ExportRequirementCategory]
+
+
+export const ExportRequirementPriority = {
+  REQUIRED: 'REQUIRED',
+  RECOMMENDED: 'RECOMMENDED',
+  INFORMATIONAL: 'INFORMATIONAL'
+} as const
+
+export type ExportRequirementPriority = (typeof ExportRequirementPriority)[keyof typeof ExportRequirementPriority]
+
+
+export const ExportChecklistStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  NOT_APPLICABLE: 'NOT_APPLICABLE'
+} as const
+
+export type ExportChecklistStatus = (typeof ExportChecklistStatus)[keyof typeof ExportChecklistStatus]
+
+
+export const ExportAssessmentStatus = {
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED'
+} as const
+
+export type ExportAssessmentStatus = (typeof ExportAssessmentStatus)[keyof typeof ExportAssessmentStatus]

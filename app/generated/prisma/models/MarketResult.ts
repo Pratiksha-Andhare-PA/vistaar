@@ -320,6 +320,7 @@ export type MarketResultWhereInput = {
   evidence?: Prisma.MarketEvidenceListRelationFilter
   localizations?: Prisma.ProductLocalizationListRelationFilter
   pricingScenarios?: Prisma.PricingScenarioListRelationFilter
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentListRelationFilter
 }
 
 export type MarketResultOrderByWithRelationInput = {
@@ -345,6 +346,7 @@ export type MarketResultOrderByWithRelationInput = {
   evidence?: Prisma.MarketEvidenceOrderByRelationAggregateInput
   localizations?: Prisma.ProductLocalizationOrderByRelationAggregateInput
   pricingScenarios?: Prisma.PricingScenarioOrderByRelationAggregateInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentOrderByRelationAggregateInput
 }
 
 export type MarketResultWhereUniqueInput = Prisma.AtLeast<{
@@ -374,6 +376,7 @@ export type MarketResultWhereUniqueInput = Prisma.AtLeast<{
   evidence?: Prisma.MarketEvidenceListRelationFilter
   localizations?: Prisma.ProductLocalizationListRelationFilter
   pricingScenarios?: Prisma.PricingScenarioListRelationFilter
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentListRelationFilter
 }, "id" | "researchId_countryCode">
 
 export type MarketResultOrderByWithAggregationInput = {
@@ -448,6 +451,7 @@ export type MarketResultCreateInput = {
   evidence?: Prisma.MarketEvidenceCreateNestedManyWithoutMarketResultInput
   localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultUncheckedCreateInput = {
@@ -472,6 +476,7 @@ export type MarketResultUncheckedCreateInput = {
   evidence?: Prisma.MarketEvidenceUncheckedCreateNestedManyWithoutMarketResultInput
   localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultUpdateInput = {
@@ -496,6 +501,7 @@ export type MarketResultUpdateInput = {
   evidence?: Prisma.MarketEvidenceUpdateManyWithoutMarketResultNestedInput
   localizations?: Prisma.ProductLocalizationUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultUncheckedUpdateInput = {
@@ -520,6 +526,7 @@ export type MarketResultUncheckedUpdateInput = {
   evidence?: Prisma.MarketEvidenceUncheckedUpdateManyWithoutMarketResultNestedInput
   localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultCreateManyInput = {
@@ -800,6 +807,20 @@ export type MarketResultUpdateOneRequiredWithoutPricingScenariosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MarketResultUpdateToOneWithWhereWithoutPricingScenariosInput, Prisma.MarketResultUpdateWithoutPricingScenariosInput>, Prisma.MarketResultUncheckedUpdateWithoutPricingScenariosInput>
 }
 
+export type MarketResultCreateNestedOneWithoutExportReadinessAssessmentsInput = {
+  create?: Prisma.XOR<Prisma.MarketResultCreateWithoutExportReadinessAssessmentsInput, Prisma.MarketResultUncheckedCreateWithoutExportReadinessAssessmentsInput>
+  connectOrCreate?: Prisma.MarketResultCreateOrConnectWithoutExportReadinessAssessmentsInput
+  connect?: Prisma.MarketResultWhereUniqueInput
+}
+
+export type MarketResultUpdateOneRequiredWithoutExportReadinessAssessmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketResultCreateWithoutExportReadinessAssessmentsInput, Prisma.MarketResultUncheckedCreateWithoutExportReadinessAssessmentsInput>
+  connectOrCreate?: Prisma.MarketResultCreateOrConnectWithoutExportReadinessAssessmentsInput
+  upsert?: Prisma.MarketResultUpsertWithoutExportReadinessAssessmentsInput
+  connect?: Prisma.MarketResultWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MarketResultUpdateToOneWithWhereWithoutExportReadinessAssessmentsInput, Prisma.MarketResultUpdateWithoutExportReadinessAssessmentsInput>, Prisma.MarketResultUncheckedUpdateWithoutExportReadinessAssessmentsInput>
+}
+
 export type MarketResultCreateWithoutResearchInput = {
   id?: string
   country: string
@@ -821,6 +842,7 @@ export type MarketResultCreateWithoutResearchInput = {
   evidence?: Prisma.MarketEvidenceCreateNestedManyWithoutMarketResultInput
   localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultUncheckedCreateWithoutResearchInput = {
@@ -844,6 +866,7 @@ export type MarketResultUncheckedCreateWithoutResearchInput = {
   evidence?: Prisma.MarketEvidenceUncheckedCreateNestedManyWithoutMarketResultInput
   localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultCreateOrConnectWithoutResearchInput = {
@@ -917,6 +940,7 @@ export type MarketResultCreateWithoutEvidenceInput = {
   research: Prisma.MarketResearchCreateNestedOneWithoutResultsInput
   localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultUncheckedCreateWithoutEvidenceInput = {
@@ -940,6 +964,7 @@ export type MarketResultUncheckedCreateWithoutEvidenceInput = {
   createdAt?: Date | string
   localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultCreateOrConnectWithoutEvidenceInput = {
@@ -979,6 +1004,7 @@ export type MarketResultUpdateWithoutEvidenceInput = {
   research?: Prisma.MarketResearchUpdateOneRequiredWithoutResultsNestedInput
   localizations?: Prisma.ProductLocalizationUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultUncheckedUpdateWithoutEvidenceInput = {
@@ -1002,6 +1028,7 @@ export type MarketResultUncheckedUpdateWithoutEvidenceInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultCreateWithoutLocalizationsInput = {
@@ -1025,6 +1052,7 @@ export type MarketResultCreateWithoutLocalizationsInput = {
   research: Prisma.MarketResearchCreateNestedOneWithoutResultsInput
   evidence?: Prisma.MarketEvidenceCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultUncheckedCreateWithoutLocalizationsInput = {
@@ -1048,6 +1076,7 @@ export type MarketResultUncheckedCreateWithoutLocalizationsInput = {
   createdAt?: Date | string
   evidence?: Prisma.MarketEvidenceUncheckedCreateNestedManyWithoutMarketResultInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultCreateOrConnectWithoutLocalizationsInput = {
@@ -1087,6 +1116,7 @@ export type MarketResultUpdateWithoutLocalizationsInput = {
   research?: Prisma.MarketResearchUpdateOneRequiredWithoutResultsNestedInput
   evidence?: Prisma.MarketEvidenceUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultUncheckedUpdateWithoutLocalizationsInput = {
@@ -1110,6 +1140,7 @@ export type MarketResultUncheckedUpdateWithoutLocalizationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   evidence?: Prisma.MarketEvidenceUncheckedUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultCreateWithoutPricingScenariosInput = {
@@ -1133,6 +1164,7 @@ export type MarketResultCreateWithoutPricingScenariosInput = {
   research: Prisma.MarketResearchCreateNestedOneWithoutResultsInput
   evidence?: Prisma.MarketEvidenceCreateNestedManyWithoutMarketResultInput
   localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultUncheckedCreateWithoutPricingScenariosInput = {
@@ -1156,6 +1188,7 @@ export type MarketResultUncheckedCreateWithoutPricingScenariosInput = {
   createdAt?: Date | string
   evidence?: Prisma.MarketEvidenceUncheckedCreateNestedManyWithoutMarketResultInput
   localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutMarketResultInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedCreateNestedManyWithoutMarketResultInput
 }
 
 export type MarketResultCreateOrConnectWithoutPricingScenariosInput = {
@@ -1195,6 +1228,7 @@ export type MarketResultUpdateWithoutPricingScenariosInput = {
   research?: Prisma.MarketResearchUpdateOneRequiredWithoutResultsNestedInput
   evidence?: Prisma.MarketEvidenceUpdateManyWithoutMarketResultNestedInput
   localizations?: Prisma.ProductLocalizationUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultUncheckedUpdateWithoutPricingScenariosInput = {
@@ -1218,6 +1252,119 @@ export type MarketResultUncheckedUpdateWithoutPricingScenariosInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   evidence?: Prisma.MarketEvidenceUncheckedUpdateManyWithoutMarketResultNestedInput
   localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedUpdateManyWithoutMarketResultNestedInput
+}
+
+export type MarketResultCreateWithoutExportReadinessAssessmentsInput = {
+  id?: string
+  country: string
+  countryCode: string
+  rank: number
+  opportunityScore: number
+  scoreBreakdown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  demandLevel: string
+  competitionLevel: string
+  targetCustomers: string
+  marketRationale: string
+  opportunities?: Prisma.MarketResultCreateopportunitiesInput | string[]
+  risks?: Prisma.MarketResultCreaterisksInput | string[]
+  culturalConsiderations?: Prisma.MarketResultCreateculturalConsiderationsInput | string[]
+  suggestedPriceMin?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedPriceMax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedCurrency?: string | null
+  createdAt?: Date | string
+  research: Prisma.MarketResearchCreateNestedOneWithoutResultsInput
+  evidence?: Prisma.MarketEvidenceCreateNestedManyWithoutMarketResultInput
+  localizations?: Prisma.ProductLocalizationCreateNestedManyWithoutMarketResultInput
+  pricingScenarios?: Prisma.PricingScenarioCreateNestedManyWithoutMarketResultInput
+}
+
+export type MarketResultUncheckedCreateWithoutExportReadinessAssessmentsInput = {
+  id?: string
+  researchId: string
+  country: string
+  countryCode: string
+  rank: number
+  opportunityScore: number
+  scoreBreakdown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  demandLevel: string
+  competitionLevel: string
+  targetCustomers: string
+  marketRationale: string
+  opportunities?: Prisma.MarketResultCreateopportunitiesInput | string[]
+  risks?: Prisma.MarketResultCreaterisksInput | string[]
+  culturalConsiderations?: Prisma.MarketResultCreateculturalConsiderationsInput | string[]
+  suggestedPriceMin?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedPriceMax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedCurrency?: string | null
+  createdAt?: Date | string
+  evidence?: Prisma.MarketEvidenceUncheckedCreateNestedManyWithoutMarketResultInput
+  localizations?: Prisma.ProductLocalizationUncheckedCreateNestedManyWithoutMarketResultInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedCreateNestedManyWithoutMarketResultInput
+}
+
+export type MarketResultCreateOrConnectWithoutExportReadinessAssessmentsInput = {
+  where: Prisma.MarketResultWhereUniqueInput
+  create: Prisma.XOR<Prisma.MarketResultCreateWithoutExportReadinessAssessmentsInput, Prisma.MarketResultUncheckedCreateWithoutExportReadinessAssessmentsInput>
+}
+
+export type MarketResultUpsertWithoutExportReadinessAssessmentsInput = {
+  update: Prisma.XOR<Prisma.MarketResultUpdateWithoutExportReadinessAssessmentsInput, Prisma.MarketResultUncheckedUpdateWithoutExportReadinessAssessmentsInput>
+  create: Prisma.XOR<Prisma.MarketResultCreateWithoutExportReadinessAssessmentsInput, Prisma.MarketResultUncheckedCreateWithoutExportReadinessAssessmentsInput>
+  where?: Prisma.MarketResultWhereInput
+}
+
+export type MarketResultUpdateToOneWithWhereWithoutExportReadinessAssessmentsInput = {
+  where?: Prisma.MarketResultWhereInput
+  data: Prisma.XOR<Prisma.MarketResultUpdateWithoutExportReadinessAssessmentsInput, Prisma.MarketResultUncheckedUpdateWithoutExportReadinessAssessmentsInput>
+}
+
+export type MarketResultUpdateWithoutExportReadinessAssessmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  countryCode?: Prisma.StringFieldUpdateOperationsInput | string
+  rank?: Prisma.IntFieldUpdateOperationsInput | number
+  opportunityScore?: Prisma.IntFieldUpdateOperationsInput | number
+  scoreBreakdown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  demandLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  competitionLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  targetCustomers?: Prisma.StringFieldUpdateOperationsInput | string
+  marketRationale?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunities?: Prisma.MarketResultUpdateopportunitiesInput | string[]
+  risks?: Prisma.MarketResultUpdaterisksInput | string[]
+  culturalConsiderations?: Prisma.MarketResultUpdateculturalConsiderationsInput | string[]
+  suggestedPriceMin?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedPriceMax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  research?: Prisma.MarketResearchUpdateOneRequiredWithoutResultsNestedInput
+  evidence?: Prisma.MarketEvidenceUpdateManyWithoutMarketResultNestedInput
+  localizations?: Prisma.ProductLocalizationUpdateManyWithoutMarketResultNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutMarketResultNestedInput
+}
+
+export type MarketResultUncheckedUpdateWithoutExportReadinessAssessmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  researchId?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  countryCode?: Prisma.StringFieldUpdateOperationsInput | string
+  rank?: Prisma.IntFieldUpdateOperationsInput | number
+  opportunityScore?: Prisma.IntFieldUpdateOperationsInput | number
+  scoreBreakdown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  demandLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  competitionLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  targetCustomers?: Prisma.StringFieldUpdateOperationsInput | string
+  marketRationale?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunities?: Prisma.MarketResultUpdateopportunitiesInput | string[]
+  risks?: Prisma.MarketResultUpdaterisksInput | string[]
+  culturalConsiderations?: Prisma.MarketResultUpdateculturalConsiderationsInput | string[]
+  suggestedPriceMin?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedPriceMax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  suggestedCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  evidence?: Prisma.MarketEvidenceUncheckedUpdateManyWithoutMarketResultNestedInput
+  localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutMarketResultNestedInput
+  pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultCreateManyResearchInput = {
@@ -1261,6 +1408,7 @@ export type MarketResultUpdateWithoutResearchInput = {
   evidence?: Prisma.MarketEvidenceUpdateManyWithoutMarketResultNestedInput
   localizations?: Prisma.ProductLocalizationUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultUncheckedUpdateWithoutResearchInput = {
@@ -1284,6 +1432,7 @@ export type MarketResultUncheckedUpdateWithoutResearchInput = {
   evidence?: Prisma.MarketEvidenceUncheckedUpdateManyWithoutMarketResultNestedInput
   localizations?: Prisma.ProductLocalizationUncheckedUpdateManyWithoutMarketResultNestedInput
   pricingScenarios?: Prisma.PricingScenarioUncheckedUpdateManyWithoutMarketResultNestedInput
+  exportReadinessAssessments?: Prisma.ExportReadinessAssessmentUncheckedUpdateManyWithoutMarketResultNestedInput
 }
 
 export type MarketResultUncheckedUpdateManyWithoutResearchInput = {
@@ -1315,12 +1464,14 @@ export type MarketResultCountOutputType = {
   evidence: number
   localizations: number
   pricingScenarios: number
+  exportReadinessAssessments: number
 }
 
 export type MarketResultCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   evidence?: boolean | MarketResultCountOutputTypeCountEvidenceArgs
   localizations?: boolean | MarketResultCountOutputTypeCountLocalizationsArgs
   pricingScenarios?: boolean | MarketResultCountOutputTypeCountPricingScenariosArgs
+  exportReadinessAssessments?: boolean | MarketResultCountOutputTypeCountExportReadinessAssessmentsArgs
 }
 
 /**
@@ -1354,6 +1505,13 @@ export type MarketResultCountOutputTypeCountPricingScenariosArgs<ExtArgs extends
   where?: Prisma.PricingScenarioWhereInput
 }
 
+/**
+ * MarketResultCountOutputType without action
+ */
+export type MarketResultCountOutputTypeCountExportReadinessAssessmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ExportReadinessAssessmentWhereInput
+}
+
 
 export type MarketResultSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1378,6 +1536,7 @@ export type MarketResultSelect<ExtArgs extends runtime.Types.Extensions.Internal
   evidence?: boolean | Prisma.MarketResult$evidenceArgs<ExtArgs>
   localizations?: boolean | Prisma.MarketResult$localizationsArgs<ExtArgs>
   pricingScenarios?: boolean | Prisma.MarketResult$pricingScenariosArgs<ExtArgs>
+  exportReadinessAssessments?: boolean | Prisma.MarketResult$exportReadinessAssessmentsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketResultCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["marketResult"]>
 
@@ -1452,6 +1611,7 @@ export type MarketResultInclude<ExtArgs extends runtime.Types.Extensions.Interna
   evidence?: boolean | Prisma.MarketResult$evidenceArgs<ExtArgs>
   localizations?: boolean | Prisma.MarketResult$localizationsArgs<ExtArgs>
   pricingScenarios?: boolean | Prisma.MarketResult$pricingScenariosArgs<ExtArgs>
+  exportReadinessAssessments?: boolean | Prisma.MarketResult$exportReadinessAssessmentsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketResultCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MarketResultIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1468,6 +1628,7 @@ export type $MarketResultPayload<ExtArgs extends runtime.Types.Extensions.Intern
     evidence: Prisma.$MarketEvidencePayload<ExtArgs>[]
     localizations: Prisma.$ProductLocalizationPayload<ExtArgs>[]
     pricingScenarios: Prisma.$PricingScenarioPayload<ExtArgs>[]
+    exportReadinessAssessments: Prisma.$ExportReadinessAssessmentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1886,6 +2047,7 @@ export interface Prisma__MarketResultClient<T, Null = never, ExtArgs extends run
   evidence<T extends Prisma.MarketResult$evidenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResult$evidenceArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MarketEvidencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   localizations<T extends Prisma.MarketResult$localizationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResult$localizationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductLocalizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   pricingScenarios<T extends Prisma.MarketResult$pricingScenariosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResult$pricingScenariosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PricingScenarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  exportReadinessAssessments<T extends Prisma.MarketResult$exportReadinessAssessmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketResult$exportReadinessAssessmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExportReadinessAssessmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2403,6 +2565,30 @@ export type MarketResult$pricingScenariosArgs<ExtArgs extends runtime.Types.Exte
   take?: number
   skip?: number
   distinct?: Prisma.PricingScenarioScalarFieldEnum | Prisma.PricingScenarioScalarFieldEnum[]
+}
+
+/**
+ * MarketResult.exportReadinessAssessments
+ */
+export type MarketResult$exportReadinessAssessmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ExportReadinessAssessment
+   */
+  select?: Prisma.ExportReadinessAssessmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ExportReadinessAssessment
+   */
+  omit?: Prisma.ExportReadinessAssessmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExportReadinessAssessmentInclude<ExtArgs> | null
+  where?: Prisma.ExportReadinessAssessmentWhereInput
+  orderBy?: Prisma.ExportReadinessAssessmentOrderByWithRelationInput | Prisma.ExportReadinessAssessmentOrderByWithRelationInput[]
+  cursor?: Prisma.ExportReadinessAssessmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ExportReadinessAssessmentScalarFieldEnum | Prisma.ExportReadinessAssessmentScalarFieldEnum[]
 }
 
 /**

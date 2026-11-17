@@ -60,7 +60,10 @@ export const ModelName = {
   AiUsage: 'AiUsage',
   AiBudget: 'AiBudget',
   AiBudgetReservation: 'AiBudgetReservation',
-  PricingScenario: 'PricingScenario'
+  PricingScenario: 'PricingScenario',
+  ExportRequirement: 'ExportRequirement',
+  ExportReadinessAssessment: 'ExportReadinessAssessment',
+  ExportReadinessItem: 'ExportReadinessItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -258,6 +261,64 @@ export const PricingScenarioScalarFieldEnum = {
 } as const
 
 export type PricingScenarioScalarFieldEnum = (typeof PricingScenarioScalarFieldEnum)[keyof typeof PricingScenarioScalarFieldEnum]
+
+
+export const ExportRequirementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  category: 'category',
+  priority: 'priority',
+  countryCode: 'countryCode',
+  originCountryCode: 'originCountryCode',
+  productCategory: 'productCategory',
+  applicability: 'applicability',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  sourceCheckedAt: 'sourceCheckedAt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExportRequirementScalarFieldEnum = (typeof ExportRequirementScalarFieldEnum)[keyof typeof ExportRequirementScalarFieldEnum]
+
+
+export const ExportReadinessAssessmentScalarFieldEnum = {
+  id: 'id',
+  businessId: 'businessId',
+  productId: 'productId',
+  marketResultId: 'marketResultId',
+  status: 'status',
+  totalItems: 'totalItems',
+  completedItems: 'completedItems',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExportReadinessAssessmentScalarFieldEnum = (typeof ExportReadinessAssessmentScalarFieldEnum)[keyof typeof ExportReadinessAssessmentScalarFieldEnum]
+
+
+export const ExportReadinessItemScalarFieldEnum = {
+  id: 'id',
+  assessmentId: 'assessmentId',
+  requirementId: 'requirementId',
+  title: 'title',
+  description: 'description',
+  category: 'category',
+  priority: 'priority',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  sourceCheckedAt: 'sourceCheckedAt',
+  status: 'status',
+  completedAt: 'completedAt',
+  notes: 'notes',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExportReadinessItemScalarFieldEnum = (typeof ExportReadinessItemScalarFieldEnum)[keyof typeof ExportReadinessItemScalarFieldEnum]
 
 
 export const SortOrder = {
