@@ -31,7 +31,7 @@ const navigation: NavigationItem[] = [
   { name: "Market discovery", href: "/market-discovery", icon: Compass },
   { name: "Localization", href: "/localization", icon: Languages },
   { name: "Global pricing", href: "/global-pricing", icon: Wallet },
-  { name: "Export readiness", icon: FileCheck2 },
+  { name: "Export readiness", href: "/export-readiness", icon: FileCheck2 },
   { name: "My storefronts", icon: Store },
 ];
 

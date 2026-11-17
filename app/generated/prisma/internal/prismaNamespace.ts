@@ -406,7 +406,10 @@ export const ModelName = {
   AiUsage: 'AiUsage',
   AiBudget: 'AiBudget',
   AiBudgetReservation: 'AiBudgetReservation',
-  PricingScenario: 'PricingScenario'
+  PricingScenario: 'PricingScenario',
+  ExportRequirement: 'ExportRequirement',
+  ExportReadinessAssessment: 'ExportReadinessAssessment',
+  ExportReadinessItem: 'ExportReadinessItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -422,7 +425,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "business" | "product" | "marketResearch" | "marketResult" | "marketEvidence" | "productLocalization" | "aiUsage" | "aiBudget" | "aiBudgetReservation" | "pricingScenario"
+    modelProps: "business" | "product" | "marketResearch" | "marketResult" | "marketEvidence" | "productLocalization" | "aiUsage" | "aiBudget" | "aiBudgetReservation" | "pricingScenario" | "exportRequirement" | "exportReadinessAssessment" | "exportReadinessItem"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1166,6 +1169,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ExportRequirement: {
+      payload: Prisma.$ExportRequirementPayload<ExtArgs>
+      fields: Prisma.ExportRequirementFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ExportRequirementFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ExportRequirementFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>
+        }
+        findFirst: {
+          args: Prisma.ExportRequirementFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ExportRequirementFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>
+        }
+        findMany: {
+          args: Prisma.ExportRequirementFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>[]
+        }
+        create: {
+          args: Prisma.ExportRequirementCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>
+        }
+        createMany: {
+          args: Prisma.ExportRequirementCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ExportRequirementCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>[]
+        }
+        delete: {
+          args: Prisma.ExportRequirementDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>
+        }
+        update: {
+          args: Prisma.ExportRequirementUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>
+        }
+        deleteMany: {
+          args: Prisma.ExportRequirementDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ExportRequirementUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ExportRequirementUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>[]
+        }
+        upsert: {
+          args: Prisma.ExportRequirementUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportRequirementPayload>
+        }
+        aggregate: {
+          args: Prisma.ExportRequirementAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateExportRequirement>
+        }
+        groupBy: {
+          args: Prisma.ExportRequirementGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExportRequirementGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ExportRequirementCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExportRequirementCountAggregateOutputType> | number
+        }
+      }
+    }
+    ExportReadinessAssessment: {
+      payload: Prisma.$ExportReadinessAssessmentPayload<ExtArgs>
+      fields: Prisma.ExportReadinessAssessmentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ExportReadinessAssessmentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ExportReadinessAssessmentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>
+        }
+        findFirst: {
+          args: Prisma.ExportReadinessAssessmentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ExportReadinessAssessmentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>
+        }
+        findMany: {
+          args: Prisma.ExportReadinessAssessmentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>[]
+        }
+        create: {
+          args: Prisma.ExportReadinessAssessmentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>
+        }
+        createMany: {
+          args: Prisma.ExportReadinessAssessmentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ExportReadinessAssessmentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>[]
+        }
+        delete: {
+          args: Prisma.ExportReadinessAssessmentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>
+        }
+        update: {
+          args: Prisma.ExportReadinessAssessmentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>
+        }
+        deleteMany: {
+          args: Prisma.ExportReadinessAssessmentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ExportReadinessAssessmentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ExportReadinessAssessmentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>[]
+        }
+        upsert: {
+          args: Prisma.ExportReadinessAssessmentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessAssessmentPayload>
+        }
+        aggregate: {
+          args: Prisma.ExportReadinessAssessmentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateExportReadinessAssessment>
+        }
+        groupBy: {
+          args: Prisma.ExportReadinessAssessmentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExportReadinessAssessmentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ExportReadinessAssessmentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExportReadinessAssessmentCountAggregateOutputType> | number
+        }
+      }
+    }
+    ExportReadinessItem: {
+      payload: Prisma.$ExportReadinessItemPayload<ExtArgs>
+      fields: Prisma.ExportReadinessItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ExportReadinessItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ExportReadinessItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>
+        }
+        findFirst: {
+          args: Prisma.ExportReadinessItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ExportReadinessItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>
+        }
+        findMany: {
+          args: Prisma.ExportReadinessItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>[]
+        }
+        create: {
+          args: Prisma.ExportReadinessItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>
+        }
+        createMany: {
+          args: Prisma.ExportReadinessItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ExportReadinessItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>[]
+        }
+        delete: {
+          args: Prisma.ExportReadinessItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>
+        }
+        update: {
+          args: Prisma.ExportReadinessItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.ExportReadinessItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ExportReadinessItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ExportReadinessItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.ExportReadinessItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExportReadinessItemPayload>
+        }
+        aggregate: {
+          args: Prisma.ExportReadinessItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateExportReadinessItem>
+        }
+        groupBy: {
+          args: Prisma.ExportReadinessItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExportReadinessItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ExportReadinessItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExportReadinessItemCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1386,6 +1611,64 @@ export const PricingScenarioScalarFieldEnum = {
 export type PricingScenarioScalarFieldEnum = (typeof PricingScenarioScalarFieldEnum)[keyof typeof PricingScenarioScalarFieldEnum]
 
 
+export const ExportRequirementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  category: 'category',
+  priority: 'priority',
+  countryCode: 'countryCode',
+  originCountryCode: 'originCountryCode',
+  productCategory: 'productCategory',
+  applicability: 'applicability',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  sourceCheckedAt: 'sourceCheckedAt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExportRequirementScalarFieldEnum = (typeof ExportRequirementScalarFieldEnum)[keyof typeof ExportRequirementScalarFieldEnum]
+
+
+export const ExportReadinessAssessmentScalarFieldEnum = {
+  id: 'id',
+  businessId: 'businessId',
+  productId: 'productId',
+  marketResultId: 'marketResultId',
+  status: 'status',
+  totalItems: 'totalItems',
+  completedItems: 'completedItems',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExportReadinessAssessmentScalarFieldEnum = (typeof ExportReadinessAssessmentScalarFieldEnum)[keyof typeof ExportReadinessAssessmentScalarFieldEnum]
+
+
+export const ExportReadinessItemScalarFieldEnum = {
+  id: 'id',
+  assessmentId: 'assessmentId',
+  requirementId: 'requirementId',
+  title: 'title',
+  description: 'description',
+  category: 'category',
+  priority: 'priority',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  sourceCheckedAt: 'sourceCheckedAt',
+  status: 'status',
+  completedAt: 'completedAt',
+  notes: 'notes',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExportReadinessItemScalarFieldEnum = (typeof ExportReadinessItemScalarFieldEnum)[keyof typeof ExportReadinessItemScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1567,6 +1850,69 @@ export type ListEnumBudgetReservationStatusFieldRefInput<$PrismaModel> = FieldRe
 
 
 /**
+ * Reference to a field of type 'ExportRequirementCategory'
+ */
+export type EnumExportRequirementCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportRequirementCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'ExportRequirementCategory[]'
+ */
+export type ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportRequirementCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ExportRequirementPriority'
+ */
+export type EnumExportRequirementPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportRequirementPriority'>
+    
+
+
+/**
+ * Reference to a field of type 'ExportRequirementPriority[]'
+ */
+export type ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportRequirementPriority[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'ExportAssessmentStatus'
+ */
+export type EnumExportAssessmentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportAssessmentStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ExportAssessmentStatus[]'
+ */
+export type ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportAssessmentStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ExportChecklistStatus'
+ */
+export type EnumExportChecklistStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportChecklistStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ExportChecklistStatus[]'
+ */
+export type ListEnumExportChecklistStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExportChecklistStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -1740,6 +2086,9 @@ export type GlobalOmitConfig = {
   aiBudget?: Prisma.AiBudgetOmit
   aiBudgetReservation?: Prisma.AiBudgetReservationOmit
   pricingScenario?: Prisma.PricingScenarioOmit
+  exportRequirement?: Prisma.ExportRequirementOmit
+  exportReadinessAssessment?: Prisma.ExportReadinessAssessmentOmit
+  exportReadinessItem?: Prisma.ExportReadinessItemOmit
 }
 
 /* Types for Logging */

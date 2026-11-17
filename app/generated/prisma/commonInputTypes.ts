@@ -386,6 +386,104 @@ export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
   _max?: Prisma.NestedJsonFilter<$PrismaModel>
 }
 
+export type EnumExportRequirementCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementCategory | Prisma.EnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementCategoryFilter<$PrismaModel> | $Enums.ExportRequirementCategory
+}
+
+export type EnumExportRequirementPriorityFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementPriority | Prisma.EnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementPriorityFilter<$PrismaModel> | $Enums.ExportRequirementPriority
+}
+
+export type EnumBusinessCategoryNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.BusinessCategory | Prisma.EnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  in?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumBusinessCategoryNullableFilter<$PrismaModel> | $Enums.BusinessCategory | null
+}
+
+export type BoolFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
+}
+
+export type EnumExportRequirementCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementCategory | Prisma.EnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementCategoryWithAggregatesFilter<$PrismaModel> | $Enums.ExportRequirementCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportRequirementCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportRequirementCategoryFilter<$PrismaModel>
+}
+
+export type EnumExportRequirementPriorityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementPriority | Prisma.EnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementPriorityWithAggregatesFilter<$PrismaModel> | $Enums.ExportRequirementPriority
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportRequirementPriorityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportRequirementPriorityFilter<$PrismaModel>
+}
+
+export type EnumBusinessCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BusinessCategory | Prisma.EnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  in?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumBusinessCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.BusinessCategory | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBusinessCategoryNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBusinessCategoryNullableFilter<$PrismaModel>
+}
+
+export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedBoolFilter<$PrismaModel>
+  _max?: Prisma.NestedBoolFilter<$PrismaModel>
+}
+
+export type EnumExportAssessmentStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportAssessmentStatus | Prisma.EnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportAssessmentStatusFilter<$PrismaModel> | $Enums.ExportAssessmentStatus
+}
+
+export type EnumExportAssessmentStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportAssessmentStatus | Prisma.EnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportAssessmentStatusWithAggregatesFilter<$PrismaModel> | $Enums.ExportAssessmentStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportAssessmentStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportAssessmentStatusFilter<$PrismaModel>
+}
+
+export type EnumExportChecklistStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportChecklistStatus | Prisma.EnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportChecklistStatusFilter<$PrismaModel> | $Enums.ExportChecklistStatus
+}
+
+export type EnumExportChecklistStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportChecklistStatus | Prisma.EnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportChecklistStatusWithAggregatesFilter<$PrismaModel> | $Enums.ExportChecklistStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportChecklistStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportChecklistStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -715,6 +813,104 @@ export type NestedJsonFilterBase<$PrismaModel = never> = {
   gt?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   gte?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   not?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | Prisma.JsonNullValueFilter
+}
+
+export type NestedEnumExportRequirementCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementCategory | Prisma.EnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementCategoryFilter<$PrismaModel> | $Enums.ExportRequirementCategory
+}
+
+export type NestedEnumExportRequirementPriorityFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementPriority | Prisma.EnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementPriorityFilter<$PrismaModel> | $Enums.ExportRequirementPriority
+}
+
+export type NestedEnumBusinessCategoryNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.BusinessCategory | Prisma.EnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  in?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumBusinessCategoryNullableFilter<$PrismaModel> | $Enums.BusinessCategory | null
+}
+
+export type NestedBoolFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
+}
+
+export type NestedEnumExportRequirementCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementCategory | Prisma.EnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementCategory[] | Prisma.ListEnumExportRequirementCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementCategoryWithAggregatesFilter<$PrismaModel> | $Enums.ExportRequirementCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportRequirementCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportRequirementCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumExportRequirementPriorityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportRequirementPriority | Prisma.EnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportRequirementPriority[] | Prisma.ListEnumExportRequirementPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportRequirementPriorityWithAggregatesFilter<$PrismaModel> | $Enums.ExportRequirementPriority
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportRequirementPriorityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportRequirementPriorityFilter<$PrismaModel>
+}
+
+export type NestedEnumBusinessCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BusinessCategory | Prisma.EnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  in?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumBusinessCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.BusinessCategory | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBusinessCategoryNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBusinessCategoryNullableFilter<$PrismaModel>
+}
+
+export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedBoolFilter<$PrismaModel>
+  _max?: Prisma.NestedBoolFilter<$PrismaModel>
+}
+
+export type NestedEnumExportAssessmentStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportAssessmentStatus | Prisma.EnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportAssessmentStatusFilter<$PrismaModel> | $Enums.ExportAssessmentStatus
+}
+
+export type NestedEnumExportAssessmentStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportAssessmentStatus | Prisma.EnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportAssessmentStatus[] | Prisma.ListEnumExportAssessmentStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportAssessmentStatusWithAggregatesFilter<$PrismaModel> | $Enums.ExportAssessmentStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportAssessmentStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportAssessmentStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumExportChecklistStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportChecklistStatus | Prisma.EnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportChecklistStatusFilter<$PrismaModel> | $Enums.ExportChecklistStatus
+}
+
+export type NestedEnumExportChecklistStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExportChecklistStatus | Prisma.EnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ExportChecklistStatus[] | Prisma.ListEnumExportChecklistStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumExportChecklistStatusWithAggregatesFilter<$PrismaModel> | $Enums.ExportChecklistStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExportChecklistStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExportChecklistStatusFilter<$PrismaModel>
 }
 
 

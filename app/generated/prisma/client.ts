@@ -91,3 +91,18 @@ export type AiBudgetReservation = Prisma.AiBudgetReservationModel
  * 
  */
 export type PricingScenario = Prisma.PricingScenarioModel
+/**
+ * Model ExportRequirement
+ * 
+ */
+export type ExportRequirement = Prisma.ExportRequirementModel
+/**
+ * Model ExportReadinessAssessment
+ * 
+ */
+export type ExportReadinessAssessment = Prisma.ExportReadinessAssessmentModel
+/**
+ * Model ExportReadinessItem
+ * 
+ */
+export type ExportReadinessItem = Prisma.ExportReadinessItemModel
