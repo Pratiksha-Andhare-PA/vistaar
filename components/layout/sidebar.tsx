@@ -32,7 +32,7 @@ const navigation: NavigationItem[] = [
   { name: "Localization", href: "/localization", icon: Languages },
   { name: "Global pricing", href: "/global-pricing", icon: Wallet },
   { name: "Export readiness", href: "/export-readiness", icon: FileCheck2 },
-  { name: "My storefronts", icon: Store },
+  { name: "My storefronts", href: "/my-storefronts", icon: Store },
 ];
 
 export function Sidebar() {
