@@ -1,4 +1,4 @@
-
+import { ContactForm } from "@/components/dashboard/contact-form";
 import { DashboardShell } from "@/components/layout/dashboard-shell";
 import { WelcomeBanner } from "@/components/dashboard/welcome-banner";
 import { StatsCards } from "@/components/dashboard/stats-cards";
@@ -17,6 +17,8 @@ export default function Home() {
           <GettingStarted />
           <RecentActivity />
         </div>
+
+        <ContactForm />
 
         <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5 text-xs text-slate-400 dark:border-slate-800 dark:text-slate-500">
           <span>© 2026 Vistaar. Local Roots. Global Reach.</span>
