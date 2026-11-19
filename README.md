@@ -4,8 +4,8 @@
 
 **Vistaar** is an AI-powered global expansion copilot designed to help local Indian businesses discover international market opportunities, localize products for foreign audiences, calculate export-oriented pricing, understand export readiness, and create localized global storefronts.
 
-🌐 **Live Demo:** https://vistaarworld.in  
-💻 **GitHub Repository:** https://github.com/Pratiksha-Andhare-PA/vistaar
+🌐 **Live Demo:** [https://vistaarworld.in](https://vistaarworld.in)  
+💻 **GitHub Repository:** [https://github.com/Pratiksha-Andhare-PA/vistaar](https://github.com/Pratiksha-Andhare-PA/vistaar)
 
 ---
 
@@ -81,9 +81,11 @@ Create a business profile with business details, category, location, and contact
   <img src="docs/images/business-onboarding.jpeg" alt="Business onboarding form" width="480" />
 </p>
 
+
 <p align="center">
   <img src="docs/images/business-profile-saved.jpeg" alt="Saved business profile" width="680" />
 </p>
+
 
 ---
 
@@ -95,13 +97,16 @@ Add and manage products with descriptions, images, prices, and currencies. Maint
   <img src="docs/images/products.jpeg" alt="Product catalogue" width="680" />
 </p>
 
+
 <p align="center">
   <img src="docs/images/add-product.jpeg" alt="Add product form" width="480" />
 </p>
 
+
 <p align="center">
   <img src="docs/images/product-saved.jpeg" alt="Product saved successfully" width="680" />
 </p>
+
 
 ---
 
@@ -115,6 +120,7 @@ Market research helps businesses investigate opportunities across countries and 
   <img src="docs/images/market-discovery.jpeg" alt="Market discovery results" width="480" />
 </p>
 
+
 ---
 
 ### 4. Cultural Localization
@@ -126,6 +132,7 @@ Localization considers the selected target market and language while helping pre
 <p align="center">
   <img src="docs/images/localization.jpeg" alt="Product localization" width="480" />
 </p>
+
 
 ---
 
@@ -139,6 +146,7 @@ Pricing assumptions can be saved for reuse in localized storefronts.
   <img src="docs/images/global-pricing.jpeg" alt="International pricing calculator" width="480" />
 </p>
 
+
 ---
 
 ### 6. Export Readiness
@@ -148,6 +156,7 @@ Generate product- and market-oriented export preparation checklists to help busi
 <p align="center">
   <img src="docs/images/export-readiness.jpeg" alt="Export readiness assessment" width="480" />
 </p>
+
 
 ---
 
@@ -161,23 +170,52 @@ Storefronts support a workflow from draft creation and review to publishing and 
   <img src="docs/images/storefront-draft.jpeg" alt="Storefront draft" width="480" />
 </p>
 
+
 <p align="center">
   <img src="docs/images/storefront-preview.png" alt="Storefront preview" width="680" />
 </p>
+
 
 <p align="center">
   <img src="docs/images/storefront-published.png" alt="Storefront published confirmation" width="680" />
 </p>
 
+
 <p align="center">
   <img src="docs/images/storefront-live.jpeg" alt="Live storefront" width="680" />
 </p>
+
+
+---
+
+### 8. Contact Us
+
+A contact form that allows users to reach the Vistaar team with questions, feedback, or inquiries about the platform.
+
+
+Users can submit their name, email address, subject, and message. Upon successful submission, the platform displays a confirmation message and delivers the inquiry via email.
+
+<p align="center">
+  <img src="docs/images/contact-us-filled.png" alt="Contact Us form filled with inquiry details" width="480" />
+</p>
+
+
+<p align="center">
+  <img src="docs/images/contact-us-success.png" alt="Contact form submission success confirmation" width="480" />
+</p>
+
+
+<p align="center">
+  <img src="docs/images/contact-us-email-received.png" alt="Contact inquiry email received in mailbox" width="480" />
+</p>
+
 
 ---
 
 ## How Vistaar Works
 
 The global expansion workflow follows these steps:
+
 
 <p align="center">
   <img
@@ -186,6 +224,7 @@ The global expansion workflow follows these steps:
     height="650"
   />
 </p>
+
 
 **Business → Products → Market Discovery → Localization → Pricing → Export Readiness → Storefront**
 
@@ -201,6 +240,7 @@ Vistaar uses a web application architecture with a Next.js application, server-s
   <img src="docs/images/fig3-technical-architecture.png" alt="Vistaar technical architecture" width="850" />
 </p>
 
+
 The application connects its frontend workflows with backend API routes, business logic, database persistence, and AI-powered capabilities.
 
 ---
@@ -214,6 +254,7 @@ The database supports business profiles, products, market research, localization
 <p align="center">
   <img src="docs/images/database-erd.png" alt="Vistaar database entity relationship diagram" width="850" />
 </p>
+
 
 Major data entities include:
 
@@ -280,7 +321,7 @@ Vistaar is deployed on a GoDaddy VPS.
 - Caddy reverse proxy
 - HTTPS-enabled custom domain
 
-🌐 **Live application:** https://vistaarworld.in
+🌐 **Live application:** [https://vistaarworld.in](https://vistaarworld.in)
 
 ---
 
@@ -338,6 +379,7 @@ Open [http://localhost:3000](http://localhost:3000) to access Vistaar.
 
 > Refer to the repository's Docker Compose files and environment configuration for the exact database startup requirements.
 
+
 ---
 
 ## Limitations
@@ -346,7 +388,7 @@ Open [http://localhost:3000](http://localhost:3000) to access Vistaar.
 - Pricing scenarios are estimates and depend on user-provided cost inputs, currency conversion assumptions, duties, fees, and taxes.
 - Export readiness checklists are informational and do not replace professional export, customs, legal, or tax advice.
 - Market conditions, regulations, and exchange rates can change.
-- The current application is a hackathon prototype and is not a substitute for a complete export compliance or enterprise commerce platform.
+
 
 ---
 
