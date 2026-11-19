@@ -180,7 +180,11 @@ Storefronts support a workflow from draft creation and review to publishing and 
 The global expansion workflow follows these steps:
 
 <p align="center">
-  <img src="docs/images/fig2-workflow.png" alt="Vistaar end-to-end workflow" width="750" />
+  <img
+    src="docs/images/fig2-workflow.png"
+    alt="Vistaar end-to-end workflow"
+    height="650"
+  />
 </p>
 
 **Business → Products → Market Discovery → Localization → Pricing → Export Readiness → Storefront**
